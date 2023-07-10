@@ -1,0 +1,58 @@
+.preview_banner {
+  height: auto;
+  background-color: #E5DFD3;
+  position: fixed;
+  border-radius: 4vw 4vw 4vw 4vw;
+  display: grid;
+  align-items: center;
+}
+
+.preview_back {
+  height: 6vh;
+}
+
+.preview_banner h2 {
+  font-size: 1.875rem;
+  font-family: 'Montserrat', sans-serif;
+  padding-right: 20px;
+  margin: 0;
+}
+
+.all_preview {
+  overflow: auto;
+  background-color: white;
+  height: 65vh;
+}
+
+.infos {
+  max-height: 100vh;
+}
+
+.Define {
+  width: 30vw;
+  justify-content: flex-end;
+
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.haut_preview_noir {
+  width: 40px;
+  height: 14px;
+  border-radius: 10px;
+  background-color: #707070;
+}
+
+.gestion_top {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 55%;
+  height: 77px;
+}

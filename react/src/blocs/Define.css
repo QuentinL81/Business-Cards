@@ -1,0 +1,157 @@
+.define_block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.define_color {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid #707070;
+}
+
+.define_color h1 {
+    font-size: 1.563rem;
+    margin: 0;
+}
+
+.define_color h2 {
+    font-size: 1.25rem;
+}
+
+.primary,
+.secondary {
+    padding-bottom: 30px;
+
+}
+
+.inptP {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid black;
+    border-radius: 0.4rem 0px 0px 0.4rem;
+    cursor: pointer;
+    background-color: transparent;
+    width: 90px;
+    height: 40px;
+    padding: 0;
+}
+
+.inptP::-webkit-color-swatch {
+    border-radius: 0.4rem 0px 0px 0.4rem;
+    border: none;
+}
+
+.inptP::-moz-color-swatch {
+    border-radius: 0.4rem 0px 0px 0.4rem;
+    border: none;
+}
+
+.txtC {
+    width: 90px;
+    height: 40px;
+    border-radius: 0px 0.4rem 0.4rem 0px;
+    border: solid 1px #707070;
+    border-left: none;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.aligne_color1,
+.aligne_color2 {
+    display: flex;
+}
+
+/* --------------------------------------------------------------------------------------------*/
+
+.define_BP {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid #707070;
+}
+
+.define_BP h1 {
+    font-size: 1.563rem;
+    margin: 0;
+}
+
+.add_BP {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.plus_B {
+    width: 100%;
+    padding: 10%;
+}
+
+#file-upload {
+    display: none;
+}
+
+.new_image_background {
+    width: 140px;
+    height: 140px;
+    margin: 10px;
+    border-radius: 30px;
+}
+
+.barre{
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid #707070;
+    margin: 10px;
+}
+
+/* --------------------------------------------------------------------------------------------*/
+
+.define_PF {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.define_PF h1 {
+    font-size: 1.563rem;
+    margin: 0;
+}
+
+.add_PF {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.plus_P {
+    width: 100%;
+    padding: 10%;
+}
+
+#file-upload-pf {
+    display: none;
+}
+
+.new_profile_picture {
+    width: 141px;
+    height: 140px;
+    margin: 10px;
+    border-radius: 100px;
+}
+
+.homme,
+.femme{
+    width: 141px;
+    height: 140px;
+    margin: 10px;
+}

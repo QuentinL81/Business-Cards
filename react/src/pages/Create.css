@@ -1,0 +1,45 @@
+h1,
+h2 {
+    font-family: 'Ysabeau Office', sans-serif;
+}
+
+h1 {
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.padding {
+    height: 15vh;
+}
+
+.background {
+    height: auto !important;
+    width: auto !important;
+    background-image: url('../assets/background_web.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.blocks {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+}
+
+.block_deux {
+    padding-top: 3%;
+}
+
+.accordion_style_top .accordion-item {
+    border-radius: 50px 50px 0px 0px!important;
+}
+
+.accordion_style_top .accordion-button {
+    border-radius: 50px 50px 0px 0px!important;
+}

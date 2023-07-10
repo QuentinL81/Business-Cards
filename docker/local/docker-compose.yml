@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8.0.33-debian
+    container_name: mysql-card
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_USER=beorntech
+      - MYSQL_PASSWORD=beorntech
+      - MYSQL_DATABASE=business-cards
+      - MYSQL_ROOT_PASSWORD=beorntech
+    volumes:
+        - ./config/custom.cnf:/etc/mysql/conf.d/mysql.cnf
+        - ./config/mysql/mysql-backup.cnf:/docker-entrypoint-initdb.d/mysql-backup.cnf
+        - mysql-business-cards-data:/var/lib/mysql
+        - ./script/schema.sql:/docker-entrypoint-initdb.d/1.sql
+        - ./script/data.sql:/docker-entrypoint-initdb.d/2.sql
+    healthcheck:
+      test: mysql -u beorntech -pbeorntech -e "show global variables where Value like 3306 AND Variable_name like 'port'" | grep 3306
+      interval: 15s
+      timeout: 30s
+      retries: 20
+      start_period: 15s
+
+volumes:
+  mysql-business-cards-data:
