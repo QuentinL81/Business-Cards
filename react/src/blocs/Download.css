@@ -1,0 +1,55 @@
+.download {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.download h1 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.add_download {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.plus_B {
+    width: 100%;
+    padding: 10%;
+}
+
+#form-control {
+    display: none;
+}
+
+.download-preview {
+    width: 140px;
+    height: 140px;
+    margin: 10px;
+    border-radius: 30px;
+}
+
+.barre {
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid #707070;
+    margin: 10px;
+}
+
+.preview-image{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.remove-btn{
+    width: 35px;
+    position: absolute;
+}

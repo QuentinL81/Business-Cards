@@ -1,9 +1,10 @@
 import { Form, Row, Alert } from "react-bootstrap";
 import { useState } from "react";
 import './Links.css'
+import hyperlien from '../assets/hyperlien.svg'
 
-export default function Links({ 
-  handleChange 
+export default function Links({
+  handleChange
 }) {
   const [invalidUrl, setInvalidUrl] = useState(false);
 
@@ -27,10 +28,12 @@ export default function Links({
   return (
     <div className="container mt-3 mb-3">
       <Row className="mb-3">
-      <Form.Label><span className="required-field">*</span> </Form.Label>
+        <Form.Label><span className="required-field">*</span> Links </Form.Label>
+        <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
         <Form.Group controlId="Name" className="col">
-          <Form.Control type="text" name="site_name" placeholder="My Website" onChange={handleChange} required/>
+          <Form.Control type="text" name="site_name" placeholder="My Website" onChange={handleChange} required />
         </Form.Group>
+        <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
         <Form.Group controlId="Name" className="col">
           <Form.Control type="link" name="site_url" placeholder="www.mywebsite.com" onChange={handleUrlChange} required />
         </Form.Group>
@@ -40,6 +43,9 @@ export default function Links({
           URL is invalid. Please enter a valid URL. Domain name valid: .com|.fr|.dev|.net|.org|.io
         </Alert>
       )}
+      <div className='mandatoryFields'>
+        <p><span className="required-field">*</span> Field is mandatory</p>
+      </div>
     </div>
   );
 }

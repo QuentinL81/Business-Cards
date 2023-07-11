@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
+import './LoaderPage.css'
 
-export default function LoaderPage({ handleChange }) {
+export default function LoaderPage({ 
+  handleChange 
+}) {
   const [fileLinkLoader, setFileLinkLoader] = useState();
   const [error, setError] = useState('');
 
@@ -18,7 +22,7 @@ export default function LoaderPage({ handleChange }) {
 
     if (validFormats.includes(file.type) && file.size >= validSize) {
       const fileLink = URL.createObjectURL(file);
-      setFileLink(fileLink);expect.any(String) 
+      setFileLink(fileLink);
       setError('');
       handleChange({ target: { name: fileLinkName, value: fileLink } });
     } else {
@@ -42,7 +46,7 @@ export default function LoaderPage({ handleChange }) {
       <h2>Loader Page</h2>
       <input data-testid="loader-page-input" onChange={handleLoaderChange} type="file" accept="image/png, image/jpeg, image/gif" />
       {fileLinkLoader && <img src={fileLinkLoader} alt="LoaderPage" width="200" />}
-      {error && <p>{error}</p>}
+      {error && <Alert variant="danger">{error}</Alert>}
     </div>
   );
 }

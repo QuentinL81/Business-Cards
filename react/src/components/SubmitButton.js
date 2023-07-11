@@ -1,5 +1,6 @@
 import React from 'react';
 import CardDataService from "../services/card.service";
+import './SubmitButton.css'
 
 
 function SubmitButton({ digitalData }) {
