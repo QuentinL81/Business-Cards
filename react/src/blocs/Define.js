@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Define.css';
+import Alert from 'react-bootstrap/Alert';
 import plus from '../assets/plus2.svg'
 import barre from '../assets/barre.svg'
 import plusP from '../assets/plus3.svg'
@@ -100,7 +102,7 @@ function Define({
           <div className='aligne_color1'>
             <input onChange={handleColorPrimaryChange} className='inptP' type='color' name='primarycolor' value={colorPrimary} />
             <input data-testid="primary-color-input" onChange={handleColorPrimaryChange} className='txtC' id='primaryColorInput' type='text' value={colorPrimary} />
-            {colorPrimaryError && <p>{colorPrimaryError}</p>}
+            {colorPrimaryError && <Alert variant="danger">{colorPrimaryError}</Alert>}
           </div>
         </div>
         <div className='secondary'>
@@ -108,31 +110,31 @@ function Define({
           <div className='aligne_color2'>
             <input onChange={handleColorSecondaryChange} className='inptP' type='color' name='secondarycolor' value={colorSecondary} />
             <input data-testid="secondary-color-input" onChange={handleColorSecondaryChange} className='txtC' id='secondaryColorInput' type='text' value={colorSecondary} />
-            {colorSecondaryError && <p>{colorSecondaryError}</p>}
+            {colorSecondaryError && <Alert variant="danger">{colorSecondaryError}</Alert>}
           </div>
         </div>
       </div>
       <div className='define_BP'>
         <h1>Background<br />picture</h1>
         <div className='add_BP'>
-          <label for="file-upload">
+          <label htmlFor="file-upload">
             <img className='plus_B' src={plus} alt="Plus-logo" />
           </label>
           <input id="file-upload" data-testid="background-picture-input" onChange={handleBackgroundChange} type='file' accept='image/png, image/jpeg, image/gif' />
           {fileLinkBackground && !backgroundError && <img src={fileLinkBackground} className='new_image_background' alt='Background' />}
-          {backgroundError && <p>{backgroundError}</p>}
+          {backgroundError && <Alert variant="danger">{backgroundError}</Alert>}
           <img src={barre} className='barre' alt='barre-logo' />
         </div>
       </div>
       <div className='define_PF'>
         <h1>Profile picture</h1>
         <div className='add_PF'>
-          <label for="file-upload-pf">
+          <label htmlFor="file-upload-pf">
             <img className='plus_P' src={plusP} alt="Plus-logo" />
           </label>
-          <input id ="file-upload-pf" data-testid="profile-picture-input" onChange={handleProfileChange} type='file' accept='image/png, image/jpeg, image/gif' />
+          <input id="file-upload-pf" data-testid="profile-picture-input" onChange={handleProfileChange} type='file' accept='image/png, image/jpeg, image/gif' />
           {fileLinkProfile && !profileError && <img src={fileLinkProfile} className='new_profile_picture' alt='Profile' />}
-          {profileError && <p>{profileError}</p>}
+          {profileError && <Alert variant="danger">{profileError}</Alert>}
           <img src={homme} className='homme' alt='picto-homme' />
           <img src={femme} className='femme' alt='picto-femme' />
         </div>

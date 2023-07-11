@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Download.css';
+import plus from '../assets/plus2.svg'
+import barre from '../assets/barre.svg'
+import poubelle from '../assets/poubelle.svg'
 
-function Download({ 
-  handleChange 
-}) {
+import Alert from 'react-bootstrap/Alert';
+
+export default function Download({ handleChange }) {
   const [fileLinkDownload, setFileLinkDownload] = useState();
   const [error, setError] = useState('');
 
@@ -48,45 +51,24 @@ function Download({
   };
 
   return (
-    <div>
-      <Container>
-        <Row>
-          <Col>
-            <Form>
-              <Form.Group>
-                <Form.Label>Download Picture</Form.Label>
-                <Form.Control
-                  type="file"
-                  accept="image/png, image/jpeg, image/gif"
-                  onChange={handleDownloadChange}
-                  data-testid="download-picture-input"
-                />
-              </Form.Group>
-            </Form>
-          </Col>
-        </Row>
-        {fileLinkDownload && (
-          <Row>
-            <Col>
-              <div className="preview-image">
-                <img src={fileLinkDownload} alt="DownloadPreview" width='200'/>
-                <button className="remove-btn" data-testid="remove-picture-input" onClick={handleImageRemove}>
-                  Remove
-                </button>
-              </div>
-            </Col>
-          </Row>
-        )}
+    <div className='download'>
+      <h1>Download Picture</h1>
+      <div className='add_download'>
+        <label htmlFor="form-control">
+          <img className='plus_B' src={plus} alt="Plus-logo" />
+        </label>
+        <input id="form-control" data-testid="background-picture-input" onChange={handleDownloadChange} type='file' accept='image/png, image/jpeg, image/gif' />
         {error && (
-          <Row>
-            <Col>
-              <p className="error-message">{error}</p>
-            </Col>
-          </Row>
+          <Alert variant="danger">{error}</Alert>
         )}
-      </Container>
+        {fileLinkDownload && (
+          <div className="preview-image">
+            <img src={fileLinkDownload} className='download-preview' alt="DownloadPreview" />
+            <img src={poubelle} alt="remove" className="remove-btn" data-testid="remove-picture-input" onClick={handleImageRemove}/>
+          </div>
+        )}
+        <img src={barre} className='barre' alt='barre-logo' />
+      </div>
     </div>
   );
 }
-
-export default Download;

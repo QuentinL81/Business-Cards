@@ -57,6 +57,60 @@ export default function Informations({
       }
     }
 
+    if (name === 'compagny') {
+      if (value.length > 50) {
+        e.target.value = value.slice(0, 50);
+        newErrors[name] = 'Company name should not exceed 50 characters';
+      } else {
+        delete newErrors[name];
+      }
+    }
+  
+    if (name === 'position') {
+      if (value.length > 50) {
+        e.target.value = value.slice(0, 50);
+        newErrors[name] = 'Position should not exceed 50 characters';
+      } else {
+        delete newErrors[name];
+      }
+    }
+  
+    if (name === 'job_id') {
+      if (value.length > 30) {
+        e.target.value = value.slice(0, 30);
+        newErrors[name] = 'Job ID should not exceed 30 characters';
+      } else {
+        delete newErrors[name];
+      }
+    }
+  
+    if (name === 'department') {
+      if (value.length > 50) {
+        e.target.value = value.slice(0, 50);
+        newErrors[name] = 'Department name should not exceed 50 characters';
+      } else {
+        delete newErrors[name];
+      }
+    }
+  
+    if (name === 'address') {
+      if (value.length > 500) {
+        e.target.value = value.slice(0, 500);
+        newErrors[name] = 'Address should not exceed 500 characters';
+      } else {
+        delete newErrors[name];
+      }
+    }
+  
+    if (name === 'resume') {
+      if (value.length > 500) {
+        e.target.value = value.slice(0, 500);
+        newErrors[name] = 'Resume should not exceed 500 characters';
+      } else {
+        delete newErrors[name];
+      }
+    }
+
     setErrors(newErrors);
     handleChange(e);
   };
@@ -99,37 +153,47 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Organisation <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-              <Form.Control type ='text' id='compagny' name="compagny" placeholder='Name of the organisation' onChange={handleChange} required />
-            </Form.Group>
-            <Form.Group className="col">
-              <Form.Control type ='text' id='position' name="position" placeholder='Your position in the organisation' onChange={handleChange} required />
-            </Form.Group>
+            <Form.Control type="text" id="compagny" name="compagny" placeholder="Name of the organisation" onChange={handleInputChange} required />
+            {errors.compagny && <Alert variant="danger">{errors.compagny}</Alert>}
+          </Form.Group>
+          <Form.Group className="col">
+            <Form.Control type="text" id="position" name="position" placeholder="Your position in the organisation" onChange={handleInputChange} required />
+            {errors.position && <Alert variant="danger">{errors.position}</Alert>}
+          </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Label>More information <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-              <Form.Control type ='text' id='job_id' name='job_id' placeholder="Job ID" onChange={handleChange} required />
-            </Form.Group>
-            <Form.Group className="col">
-              <Form.Control type ='text' id='department' name='department' placeholder='Department name' onChange={handleChange} required />
-            </Form.Group>
-        </Row>
-
-        <Row className="mb-3" >
-          <Form.Label>Address <span className="required-field">*</span></Form.Label>
+            <Form.Control type="text" id="job_id" name="job_id" placeholder="Job ID" onChange={handleInputChange} required />
+            {errors.job_id && <Alert variant="danger">{errors.job_id}</Alert>}
+          </Form.Group>
           <Form.Group className="col">
-            <Form.Control as='textarea' row ={3} id='address' name='address' placeholder='Business Address ' onChange={handleChange} required />
+            <Form.Control type="text" id="department" name="department" placeholder="Department name" onChange={handleInputChange} required />
+            {errors.department && <Alert variant="danger">{errors.department}</Alert>}
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
-        <Form.Label>Resume <span className="required-field">*</span></Form.Label>
-          <Form.Group  className="col">
-              <Form.Control as='textarea' row ={3} id='resume' name='resume' placeholder='Brief about yourself and you skills ' onChange={handleChange} required/>
-            </Form.Group>
+          <Form.Label>Address <span className="required-field">*</span></Form.Label>
+          <Form.Group className="col">
+            <Form.Control as="textarea" rows={3} id="address" name="address" placeholder="Business Address" onChange={handleInputChange} required />
+            {errors.address && <Alert variant="danger">{errors.address}</Alert>}
+          </Form.Group>
         </Row>
+
+        <Row className="mb-3">
+          <Form.Label>Resume <span className="required-field">*</span></Form.Label>
+          <Form.Group className="col">
+            <Form.Control as="textarea" rows={3} id="resume" name="resume" placeholder="Brief about yourself and your skills" onChange={handleInputChange} required  />
+            {errors.resume && <Alert variant="danger">{errors.resume}</Alert>}
+          </Form.Group>
+        </Row>
+
       </Form>
+      <div className='mandatoryFields'>
+        <p><span className="required-field">*</span> Fields are mandatory</p>
+      </div>
     </div>
      
   )

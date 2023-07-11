@@ -1,0 +1,9 @@
+.SubmitButton{
+    background-color: #FFBD29;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 3.125rem;
+    font-family:'Montserrat', sans-serif;
+    width: 90%;
+}
