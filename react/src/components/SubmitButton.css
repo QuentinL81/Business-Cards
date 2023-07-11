@@ -7,3 +7,10 @@
     font-family:'Montserrat', sans-serif;
     width: 90%;
 }
+
+.button-submit{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: center;
+}

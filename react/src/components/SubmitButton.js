@@ -19,7 +19,7 @@ function SubmitButton({ digitalData }) {
   };
 
   return (
-    <div>
+    <div className='button-submit'>
       <button className="SubmitButton" type="button" onClick={handleSubmit}>
         Generate Card
       </button>
