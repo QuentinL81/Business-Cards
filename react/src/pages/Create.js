@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import Define from '../blocs/Define';
 import Download from '../blocs/Download';
 import Informations from '../blocs/Informations';
@@ -12,12 +11,10 @@ import Links from '../blocs/Links';
 import Preview from './Preview';
 import NavBar from '../components/Navbar';
 import QRCode from '../blocs/QRCode';
+import { DigitalModel } from '../models/Digital.models';
 
 export default function Create() {
-  const [userInformation, setUserInformation] = useState({
-    colorPrimary: '#ffffff',
-    colorSecondary: '#ffffff',
-  });
+  const [userInformation, setUserInformation] = useState(new DigitalModel());
 
   const handleChange = (event) => {
     console.log(event.target.value);
@@ -54,9 +51,9 @@ export default function Create() {
           <AccordionDisplay children={<Download handleChange={handleChange} />} title="Downloading images" />
           <AccordionDisplay children={<SocialNetwork handleChange={handleChange} />} title="Social Networks" />
           <AccordionDisplay children={<LoaderPage handleChange={handleChange} />} title="Page loader image" overlayButtonMessage="A page loader is an image displayed when it takes time to load the landing page after people scan this QR Code." showOverlayButton={true} />
-          <AccordionDisplay children={<QRCode handleChange={handleChange} />} title="Create QR Code" overlayButtonMessage="This QR Code is create with Qrcodemonkey :)" showOverlayButton={true} />
+          <AccordionDisplay children={<QRCode handleChange={handleChange} />} title="Create QR Code" overlayButtonMessage="This QR Code is beautiful :) (Quentin)" showOverlayButton={true} />
           <div className='blanc_button'>
-            <SubmitButton />
+            <SubmitButton digitalData={userInformation} />
           </div>
         </div>
         <div className='col-4 block_deux'>

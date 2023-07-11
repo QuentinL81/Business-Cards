@@ -24,6 +24,7 @@ export default function SocialNetwork({
       <IconNetwork image={yt} name="github" label="GitHub ID" handleChange={handleChange} />
       <IconNetwork image={whatsapp} name="slack" label="Slack ID" handleChange={handleChange} />
       <IconNetwork image={skype} name="skype" label="Skype ID" handleChange={handleChange} />
+
     </div>
   );
 }

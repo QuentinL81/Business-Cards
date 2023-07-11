@@ -6,20 +6,20 @@ export class DigitalModel {
         this.fileLinkBackground = fileLinkBackground;
         this.fileLinkProfile = fileLinkProfile;
 
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = first_name;
+        this.lastName = last_name;
         this.mobile = mobile;
         this.business_phone = business_phone;
         this.email = email;
         this.compagny = compagny;
         this.position = position;
-        this.job_id = job_id;
+        this.jobId = job_id;
         this.department = department; 
         this.address = address;
         this.resume = resume;
 
-        this.site_name = site_name;
-        this.site_url = site_url;
+        this.siteName = site_name;
+        this.siteUrl = site_url;
 
         this.fileLinkDownload = fileLinkDownload;
         
