@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Define.css';
 import Alert from 'react-bootstrap/Alert';
@@ -11,8 +11,8 @@ import femme from '../assets/picto-femme.svg'
 function Define({
   handleChange
 }) {
-  const [colorPrimary, setColorPrimary] = useState('#ffffff');
-  const [colorSecondary, setColorSecondary] = useState('#ffffff');
+  const [colorPrimary, setColorPrimary] = useState('#70C2DB');
+  const [colorSecondary, setColorSecondary] = useState('#830E7E');
 
   const [colorPrimaryError, setColorPrimaryError] = useState('');
   const [colorSecondaryError, setColorSecondaryError] = useState('');
@@ -22,6 +22,15 @@ function Define({
 
   const [backgroundError, setBackgroundError] = useState('');
   const [profileError, setProfileError] = useState('');
+
+  useEffect(() => {
+    handleChange({
+      target: {
+        name: 'primarycolor',
+        value: colorPrimary,
+      }
+    });
+  }, []);
 
   const handleColorPrimaryChange = (e) => {
     const color = e.target.value;

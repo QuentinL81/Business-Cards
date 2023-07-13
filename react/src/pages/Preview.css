@@ -5,6 +5,7 @@
   border-radius: 4vw 4vw 4vw 4vw;
   display: grid;
   align-items: center;
+  width: 30vw;
 }
 
 .preview_back {
@@ -25,7 +26,9 @@
 }
 
 .infos {
-  max-height: 100vh;
+  height: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .Define {
@@ -55,4 +58,245 @@
   justify-content: flex-end;
   width: 55%;
   height: 77px;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.profile1 {
+  display: flex;
+  justify-content: center;
+}
+
+.cercle1 {
+  border-radius: 50%;
+  width: 2000px;
+  height: 2000px;
+  transform: translateY(-91%);
+  position: absolute;
+}
+
+.profile-picture {
+  width: 141px;
+  height: 140px;
+  margin: 10px;
+  border-radius: 100px;
+  margin-top: 18%;
+  z-index: 1;
+  position: static;
+}
+
+.nom-prénom {
+  display: flex;
+  font-size: 2.188rem;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+  text-align: center;
+  line-height: 40px;
+}
+
+.profession {
+  display: flex;
+  font-size: 1.875rem;
+  text-transform: capitalize;
+  font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 50px;
+}
+
+.profile2 {
+  display: flex;
+  justify-content: center;
+}
+
+.cercle2 {
+  border-radius: 50%;
+  width: 2000px;
+  height: 2000px;
+  position: absolute;
+}
+
+.blue1 {
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  transform: translateY(-70px);
+}
+
+.blue2 {
+  height: 10%;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+}
+
+.cercle-chiant-haut,
+.cercle-chiant-bas {
+  position: absolute;
+  z-index: 2;
+
+}
+
+.cercle-chiant-haut {
+  transform: translateY(-25px);
+}
+
+.cercle-chiant-bas {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  transform: translateY(-15px);
+}
+
+.tel,
+.sms,
+.mail,
+.localisation {
+  background-color: white;
+  border-radius: 50px;
+  width: 50px;
+  height: auto;
+}
+
+.tel {
+  margin-right: 60px;
+}
+
+.localisation {
+  margin-left: 60px;
+}
+
+.sms {
+  margin-right: 20px;
+}
+
+.mail {
+  margin-left: 20px;
+}
+
+.information-preview {
+  background-color: white;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+
+.pastille-blanc {
+  z-index: 0;
+  transform: translateY(-15px);
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.title-info {
+  font-size: 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.except-title-information-preview {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.except-title-information-preview .p {
+  font-size: 0.938rem;
+  margin: 0;
+  padding: 0;
+  color: #B7B4AD;
+  font-family: 'Montserrat', sans-serif;
+}
+
+span {
+  text-transform: capitalize;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.span-exception {
+  text-transform: none;
+  overflow-wrap: anywhere;
+  text-align: justify;
+}
+
+.span-exception-resume{
+  text-transform: none;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.except-title-information-preview-resume{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: center;
+}
+
+.except-title-information-preview-resume .p{
+  font-size: 0.938rem;
+  margin: 0;
+  padding: 0;
+  color: #B7B4AD;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.map{
+  font-size: 0.938rem;
+  color: #B7B4AD;
+  border: 1px solid #B7B4AD;
+  border-radius: 5px;
+  width: 50%;
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.except-title-information-preview-localisation {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-left: 25px;
+  padding-right: 25px;
+  align-items: center;
+}
+
+.url{
+  text-transform: capitalize;
+  font-size: 0.938rem;
+  color: #B7B4AD;
+  border: 1px solid #B7B4AD;
+  border-radius: 5px;
+  width: 50%;
+  text-align: center;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+  padding: 5px;
+}
+
+.except-title-information-preview-portfolio{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }

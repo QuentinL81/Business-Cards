@@ -9,6 +9,7 @@ export default function Links({
   const [invalidUrl, setInvalidUrl] = useState(false);
 
   const isValidUrl = (url) => {
+    return true;
     const urlPattern = /^www\.[A-Za-z0-9-]+\.(com|fr|dev|net|org|io)(\/[^\s]*)?$/i;
     return urlPattern.test(url);
   };

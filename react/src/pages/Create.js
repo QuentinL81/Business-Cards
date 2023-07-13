@@ -42,7 +42,6 @@ export default function Create() {
       <NavBar />
       <div className='row background'>
         <div className='col-8 blocks'>
-          <div className='padding'></div>
           <div className='accordion_style_top'>
             <AccordionDisplay children={<Define handleChange={handleChange} />} title="Design and customize" overlayButtonMessage="Customize the color, background, and profile images of the landing page of the QR Code. A landing page is a web page user lands on after scanning the QR Code." showOverlayButton={true} />
           </div>
@@ -57,7 +56,6 @@ export default function Create() {
           </div>
         </div>
         <div className='col-4 block_deux'>
-          <div className='padding'></div>
           <Preview
             information={userInformation}
             colorPrimary={userInformation.colorPrimary}
