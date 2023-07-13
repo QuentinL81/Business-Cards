@@ -1,0 +1,21 @@
+.icon-network{
+   
+}
+
+.btn-primary{
+    background: transparent;
+    border: none;
+    padding: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    --bs-btn-hover-bg: none;
+}
+
+.input-group-text{
+    background-color: white;
+    border: none;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    border-radius: 10px;
+}
