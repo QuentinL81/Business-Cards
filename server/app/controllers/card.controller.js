@@ -73,10 +73,13 @@ exports.create = [
     // Save Card in the database
     Card.create(card, (err, data) => {
       if (err) {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Card.",
-        });
+        if (err.code === "ER_DUP_ENTRY") {
+          // Handle duplicate entry error
+          return res.status(400).json({ error: "Duplicate entry" });
+        } else {
+          // Handle other database errors
+          return res.status(500).json({ error: "Database error" });
+        }
       } else {
         res.send(data);
       }
@@ -88,10 +91,8 @@ exports.create = [
 exports.findAll = (req, res) => {
   Card.getAll((err, data) => {
     if (err) {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cards.",
-      });
+      // Handle database error
+      return res.status(500).json({ error: "Database error" });
     } else {
       res.send(ToCardsApi(data));
     }
@@ -181,13 +182,11 @@ exports.update = [
     Card.updateById(req.params.id, ToCardModel(req.body), (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Card with id ${req.params.id}.`,
-          });
+          // Handle not found error
+          return res.status(404).json({ error: "Card not found" });
         } else {
-          res.status(500).send({
-            message: "Error updating Card with id " + req.params.id,
-          });
+          // Handle other database errors
+          return res.status(500).json({ error: "Database error" });
         }
       } else {
         res.send(ToCardApi(data));
@@ -201,16 +200,14 @@ exports.delete = (req, res) => {
   Card.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found Card with id ${req.params.id}.`,
-        });
+        // Handle not found error
+        return res.status(404).json({ error: "Card not found" });
       } else {
-        res.status(500).send({
-          message: "Could not delete Card with id " + req.params.id,
-        });
+        // Handle other database errors
+        return res.status(500).json({ error: "Database error" });
       }
     } else {
-      res.send({ message: `Card was deleted successfully!` });
+      res.send({ message: "Card was deleted successfully!" });
     }
   });
 };
