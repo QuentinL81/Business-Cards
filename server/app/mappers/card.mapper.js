@@ -37,7 +37,7 @@ const Card = require("../models/card.model");
         model.youtube = card.youtube || '';
         model.github = card.github || '';
         model.youtube = card.youtube || '';
-        model.behince = card.behince || '';
+        model.behance = card.behance || '';
         model.whatsapp = card.whatsapp || '';
         // URL
         model.site_name = card.siteName || '';
@@ -81,7 +81,7 @@ const Card = require("../models/card.model");
         apiCard.slack = card.slack || '';
         apiCard.github = card.github || '';
         apiCard.youtube = card.youtube || '';
-        apiCard.behince = card.behince || '';
+        apiCard.behance = card.behance || '';
         apiCard.whatsapp = card.whatsapp || '';
         // URL
         apiCard.siteName = card.site_name || '';

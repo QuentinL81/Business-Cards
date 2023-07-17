@@ -41,7 +41,7 @@ exports.create = [
   body("github").trim().isLength({ max: 255 }).optional().isURL(),
   body("slack").trim().isLength({ max: 255 }).optional(),
   body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
-  body("behince").trim().isLength({ max: 255 }).optional().isURL(),
+  body("behance").trim().isLength({ max: 255 }).optional().isURL(),
   body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
 
   // Check for validation errors
@@ -144,7 +144,7 @@ exports.update = [
   body("github").trim().isLength({ max: 255 }).optional().isURL(),
   body("slack").trim().isLength({ max: 255 }).optional(),
   body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
-  body("behince").trim().isLength({ max: 255 }).optional().isURL(),
+  body("behance").trim().isLength({ max: 255 }).optional().isURL(),
   body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),  
 
   // Check for validation errors

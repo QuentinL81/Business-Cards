@@ -128,7 +128,7 @@ Card.updateById = (id, card, result) => {
       github = ?,
       slack = ?,
       youtube = ?,
-      behince = ?,
+      behance = ?,
       whatsapp = ?
     WHERE id = ?`;
 
@@ -162,7 +162,7 @@ Card.updateById = (id, card, result) => {
     updatedCard.github,
     updatedCard.slack,
     updatedCard.youtube,
-    updatedCard.behince,
+    updatedCard.behance,
     updatedCard.whatsapp,
     id
   ];
