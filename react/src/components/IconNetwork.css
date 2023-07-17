@@ -1,7 +1,3 @@
-.icon-network{
-   
-}
-
 .btn-primary{
     background: transparent;
     border: none;
@@ -18,4 +14,10 @@
 
 .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
     border-radius: 10px;
+}
+
+.isOpen{
+    width: auto;
+    position: relative;
+    flex-direction: column;
 }
