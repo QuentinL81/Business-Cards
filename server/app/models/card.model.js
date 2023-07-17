@@ -6,7 +6,25 @@ const Card = function() {
 }
 
 Card.create = (newCard, result) => {
-  sql.query("INSERT INTO card SET ?", newCard, (err, res) => {
+  const {
+    file_link_profil,
+    file_link_background,
+    file_link_download,
+    file_link_loader,
+    ...cardData
+  } = newCard;
+
+  const sqlQuery = "INSERT INTO card SET ?";
+  const sqlValues = {
+    ...cardData,
+    // Convert the file
+    file_link_profil: file_link_profil || Buffer.alloc(0),
+    file_link_background: file_link_background || Buffer.alloc(0),
+    file_link_download: file_link_download || Buffer.alloc(0),
+    file_link_loader: file_link_loader || Buffer.alloc(0)
+  };
+
+  sql.query(sqlQuery, sqlValues, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -27,18 +45,27 @@ Card.findById = (id, result) => {
     }
 
     if (res.length) {
-      console.log("found card: ", res[0]);
-      result(null, res[0]);
+      const cardData = res[0];
+
+      // Convert the file contents from bytes to a buffer
+      cardData.file_link_profil = Buffer.from(cardData.file_link_profil, 'binary');
+      cardData.file_link_background = Buffer.from(cardData.file_link_background, 'binary');
+      cardData.file_link_download = Buffer.from(cardData.file_link_download, 'binary');
+      cardData.file_link_loader = Buffer.from(cardData.file_link_loader, 'binary');
+
+      console.log("found card: ", cardData);
+      result(null, cardData);
       return;
     }
 
-    // not found card with the id
+    // Card not found with the given id
     result({ kind: "not_found" }, null);
   });
 };
 
 Card.getAll = (result) => {
-  let query = "SELECT * FROM card";
+  // CONVERT = convert columns file > manipulate files as binary data in app
+  let query = "SELECT *, CONVERT(file_link_profil USING utf8) AS file_link_profil, CONVERT(file_link_background USING utf8) AS file_link_background, CONVERT(file_link_download USING utf8) AS file_link_download, CONVERT(file_link_loader USING utf8) AS file_link_loader FROM card";
 
   sql.query(query, (err, res) => {
     if (err) {
@@ -47,50 +74,100 @@ Card.getAll = (result) => {
       return;
     }
 
-    console.log("card: ", res);
-    result(null, res);
+    // Convert the file contents from bytes to buffers
+    const cardsData = res.map(card => {
+      card.file_link_profil = Buffer.from(card.file_link_profil, 'binary');
+      card.file_link_background = Buffer.from(card.file_link_background, 'binary');
+      card.file_link_download = Buffer.from(card.file_link_download, 'binary');
+      card.file_link_loader = Buffer.from(card.file_link_loader, 'binary');
+      return card;
+    });
+
+    console.log("cards: ", cardsData);
+    result(null, cardsData);
   });
 };
 
 Card.updateById = (id, card, result) => {
-  sql.query(
-    "UPDATE card SET " +
-      "first_name = ?,  last_name = ?,  mobile = ?,  business_phone = ?," +
-      "email = ?,  company = ?,  position = ?,  job_id = ?," +
-      "department = ?,  address = ?,  resume = ?," +
-      "color_primary = ?,  color_secondary = ?," +
-      "file_link_profil = ?,  file_link_background = ?,  file_link_download = ?,  file_link_loader = ?," +
-      "facebook = ?,  twitter = ?,  linkedin = ?,  instagram = ?," +
-      "skype = ?,  github = ?,  slack = ?,  github = ?,  youtube = ?" +
-      " WHERE id = ?",
-    [card.first_name, card.last_name, card.mobile, card.business_phone,
-      card.email, card.company, card.position, card.job_id,
-      card.department, card.address, card.resume,
-      card.color_primary, card.color_secondary,
-      card.file_link_profil, card.file_link_background, card.file_link_download, card.file_link_loader,
-      card.facebook, card.twitter, card.linkedin, card.instagram,
-      card.skype, card.github, card.slack, card.github, card.youtube, id],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
+  const { file_link_profil, file_link_background, file_link_download, file_link_loader, ...updatedCard } = card;
 
-      if (res.affectedRows == 0) {
-        // not found card with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
+  // Convert file data to bytes
+  const file_link_profil_bytes = Buffer.from(file_link_profil);
+  const file_link_background_bytes = Buffer.from(file_link_background);
+  const file_link_download_bytes = Buffer.from(file_link_download);
+  const file_link_loader_bytes = Buffer.from(file_link_loader);
 
-      console.log("updated card: ", { id: id, ...card });
-      result(null, { id: id, ...card });
-    }
-  );
-};
+  const query = `
+    UPDATE card SET 
+      first_name = ?,
+      last_name = ?,
+      mobile = ?,
+      business_phone = ?,
+      email = ?,
+      company = ?,
+      position = ?,
+      job_id = ?,
+      department = ?,
+      address = ?,
+      resume = ?,
+      
+      color_primary = ?,
+      color_secondary = ?,
+      qr_code = ?,
 
-Card.remove = (id, result) => {
-  sql.query("DELETE FROM card WHERE id = ?", id, (err, res) => {
+      file_link_profil = ?,
+      file_link_background = ?,
+      file_link_download = ?,
+      file_link_loader = ?,
+      
+      facebook = ?,
+      twitter = ?,
+      linkedin = ?,
+      instagram = ?,
+      skype = ?,
+      github = ?,
+      slack = ?,
+      youtube = ?,
+      behince = ?,
+      whatsapp = ?
+    WHERE id = ?`;
+
+  const values = [
+    updatedCard.first_name,
+    updatedCard.last_name,
+    updatedCard.mobile,
+    updatedCard.business_phone,
+    updatedCard.email,
+    updatedCard.company,
+    updatedCard.position,
+    updatedCard.job_id,
+    updatedCard.department,
+    updatedCard.address,
+    updatedCard.resume,
+
+    updatedCard.color_primary,
+    updatedCard.color_secondary,
+    updatedCard.qr_code,
+
+    file_link_profil_bytes,
+    file_link_background_bytes,
+    file_link_download_bytes,
+    file_link_loader_bytes,
+
+    updatedCard.facebook,
+    updatedCard.twitter,
+    updatedCard.linkedin,
+    updatedCard.instagram,
+    updatedCard.skype,
+    updatedCard.github,
+    updatedCard.slack,
+    updatedCard.youtube,
+    updatedCard.behince,
+    updatedCard.whatsapp,
+    id
+  ];
+
+  sql.query(query, values, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -103,22 +180,97 @@ Card.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted card with id: ", id);
-    result(null, res);
+    console.log("updated card: ", { id: id, ...updatedCard });
+    result(null, { id: id, ...updatedCard });
   });
 };
 
+
+const fs = require("fs");
+
+Card.remove = (id, result) => {
+  // Get card information before deleting
+  sql.query(`SELECT * FROM card WHERE id = ${id}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length === 0) {
+      // Card not found
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    const card = res[0];
+
+    // Delete corresponding files
+    deleteFile(card.file_link_profil);
+    deleteFile(card.file_link_background);
+    deleteFile(card.file_link_download);
+    deleteFile(card.file_link_loader);
+
+    // Delete the card from the database
+    sql.query("DELETE FROM card WHERE id = ?", id, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows === 0) {
+        // Card not found
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("deleted card with id: ", id);
+      result(null, res);
+    });
+  });
+};
+
+
+function deleteFile(filePath) {
+  if (!filePath) return;
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.log("error deleting file: ", err);
+    }
+  });
+}
+
+
 Card.removeAll = result => {
-  sql.query("DELETE FROM card", (err, res) => {
+  sql.query("SELECT file_link_profil, file_link_background, file_link_download, file_link_loader FROM card", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} card`);
-    result(null, res);
+    // Delete the associated files
+    res.forEach(card => {
+      deleteFile(card.file_link_profil);
+      deleteFile(card.file_link_background);
+      deleteFile(card.file_link_download);
+      deleteFile(card.file_link_loader);
+    });
+
+    // Once the associated files are deleted, delete all cards from the database
+    sql.query("DELETE FROM card", (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      console.log(`deleted ${res.affectedRows} card(s)`);
+      result(null, res);
+    });
   });
 };
+
 
 module.exports = Card;

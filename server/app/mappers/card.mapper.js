@@ -1,10 +1,10 @@
-
 // constructor
 const Card = require("../models/card.model");
 
     exports.ToCardModel = (card) => {
         let model = new Card();
         model.id = card.id;
+        // User
         model.first_name = card.firstName || '';
         model.last_name = card.lastName || '';
         model.mobile = card.mobile || '';
@@ -16,12 +16,16 @@ const Card = require("../models/card.model");
         model.department = card.department || '';
         model.address = card.address || '';
         model.resume = card.resume || '';
+        // Colors
         model.color_primary = card.colorPrimary || '';
         model.color_secondary = card.colorSecondary || '';
-        model.file_link_profil = card.fileLinkProfil || '';
-        model.file_link_background = card.fileLinkBackground || '';
-        model.file_link_download = card.fileLinkDownload || '';
-        model.file_link_loader = card.fileLinkLoader || '';
+        model.qr_code = card.qr_code || '';
+        // Files
+        model.file_link_profil = card.fileLinkProfil || Buffer.alloc(0),
+        model.file_link_background = card.fileLinkBackground || Buffer.alloc(0),
+        model.file_link_download = card.fileLinkDownload || Buffer.alloc(0),
+        model.file_link_loader = card.fileLinkLoader || Buffer.alloc(0),
+        // Social networks
         model.facebook = card.facebook || '';
         model.twitter = card.twitter || '';
         model.linkedin = card.linkedin || '';
@@ -33,7 +37,9 @@ const Card = require("../models/card.model");
         model.youtube = card.youtube || '';
         model.github = card.github || '';
         model.youtube = card.youtube || '';
-
+        model.behince = card.behince || '';
+        model.whatsapp = card.whatsapp || '';
+        // URL
         model.site_name = card.siteName || '';
         model.site_url = card.siteUrl || '';
 
@@ -44,6 +50,7 @@ const Card = require("../models/card.model");
     exports.ToCardApi = (card) => {
         let apiCard = new Card();
         apiCard.id = card.id;
+        // User
         apiCard.firstName = card.first_name || '';
         apiCard.lastName = card.last_name || '';
         apiCard.mobile = card.mobile || '';
@@ -55,12 +62,16 @@ const Card = require("../models/card.model");
         apiCard.department = card.department || '';
         apiCard.address = card.address || '';
         apiCard.resume = card.resume || '';
+        // Colors
         apiCard.colorPrimary = card.color_primary || '';
         apiCard.colorSecondary = card.color_secondary || '';
-        apiCard.fileLinkProfil = card.file_link_profil || '';
-        apiCard.fileLinkBackground = card.file_link_background || '';
-        apiCard.fileLinkDownload = card.file_link_download || '';
-        apiCard.fileLinkLoader = card.file_link_loader || '';
+        apiCard.qr_code = card.qr_code || '';
+        // Files
+        model.file_link_profil = card.fileLinkProfil || Buffer.alloc(0),
+        model.file_link_background = card.fileLinkBackground || Buffer.alloc(0),
+        model.file_link_download = card.fileLinkDownload || Buffer.alloc(0),
+        model.file_link_loader = card.fileLinkLoader || Buffer.alloc(0),
+        // Social Networks
         apiCard.facebook = card.facebook || '';
         apiCard.twitter = card.twitter || '';
         apiCard.linkedin = card.linkedin || '';
@@ -70,7 +81,9 @@ const Card = require("../models/card.model");
         apiCard.slack = card.slack || '';
         apiCard.github = card.github || '';
         apiCard.youtube = card.youtube || '';
-
+        apiCard.behince = card.behince || '';
+        apiCard.whatsapp = card.whatsapp || '';
+        // URL
         apiCard.siteName = card.site_name || '';
         apiCard.siteUrl = card.site_url || '';
         return apiCard;

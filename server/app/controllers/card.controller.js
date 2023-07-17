@@ -1,118 +1,100 @@
 const Card = require("../models/card.model.js");
-const {ToCardsApi, ToCardApi, ToCardModel} = require("../mappers/card.mapper");
+const { ToCardsApi, ToCardApi, ToCardModel } = require("../mappers/card.mapper");
+const { body, validationResult } = require("express-validator");
+const fs  = require("fs");
+
+// Escape special characters
+function escapeSpecialCharacters(str) {
+  // Exclude email field from escaping special characters
+  if (str === "email") {
+    return str;
+  }// Exclude URL fields from escaping special characters
+  if (str.includes("http://") || str.includes("https://")) {
+    return str;
+  }
+  const { escape } = require("validator");
+  return escape(str,["@", ".", "-", "_"]);
+}
 
 // Create and Save a new Card
-exports.create = (req, res) => {
-  // Validate request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
+exports.create = [
+  // Required fields and constraints validation
+  body("firstName").trim().isLength({ max: 30 }).notEmpty(),
+  body("lastName").trim().isLength({ max: 30 }).notEmpty(),
+  body("mobile").trim().isLength({ max: 20 }).notEmpty(),
+  body("businessPhone").trim().isLength({ max: 20 }).notEmpty(),
+  body("email").trim().isLength({ max: 100 }).notEmpty().isEmail(),
+  body("compagny").trim().isLength({ max: 50 }).notEmpty(),
+  body("position").trim().isLength({ max: 50 }).notEmpty(),
+  body("jobId").trim().isLength({ max: 30 }).notEmpty(),
+  body("department").trim().isLength({ max: 50 }).notEmpty(),
+  body("address").trim().isLength({ max: 500 }).notEmpty(),
+  body("resume").trim().isLength({ max: 500 }).notEmpty(),
+  body("siteName").trim().isLength({ max: 255 }).notEmpty(),
+  body("siteUrl").trim().isLength({ max: 255 }).notEmpty().isURL(),
+  // Social networks, optional fields
+  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
+  body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
+  body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
+  body("skype").trim().isLength({ max: 255 }).optional(),
+  body("github").trim().isLength({ max: 255 }).optional().isURL(),
+  body("slack").trim().isLength({ max: 255 }).optional(),
+  body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
+  body("behince").trim().isLength({ max: 255 }).optional().isURL(),
+  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
 
-  // Create a Card
-  const card = ToCardModel(req.body);
+  // Check for validation errors
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
 
-  console.log(card)
-  //Vérifier les champs
-  
-  const requiredFields = [
-    'firstName',
-    'lastName',
-    'mobile',
-    'businessPhone',
-    'email',
-    'compagny',
-    'position',
-    'jobId',
-    'department',
-    'address',
-    'resume',
-    'siteName',
-    'siteUrl',
-    'facebook',
-    'twitter',
-    'linkedin',
-    'instagram',
-    'skype',
-    'github',
-    'slack',
-    'youtube'
-  ];
-  
-  const fieldConstraints = {
-    firstName: { maxLength: 30 },
-    lastName: { maxLength: 30 },
-    mobile: { maxLength: 20 },
-    businessPhone: { maxLength: 20 },
-    email: { maxLength: 100 },
-    compagny: { maxLength: 50 },
-    position: { maxLength: 50 },
-    jobId: { maxLength: 30 },
-    department: { maxLength: 50 },
-    address: { maxLength: 500 },
-    resume: { maxLength: 500 },
-    siteName: { maxLength: 255 },
-    siteUrl: { maxLength: 255 },
-    facebook: { maxLength: 255 },
-    twitter: { maxLength: 255 },
-    linkedin: { maxLength: 255 },
-    instagram: { maxLength: 255 },
-    skype: { maxLength: 255 },
-    github: { maxLength: 255 },
-    slack: { maxLength: 255 },
-    youtube: { maxLength: 255 }
-  };
-  
-  let isValid = true;
-  
-  for (const field of requiredFields) {
-    if (field !== 'facebook' && field !== 'twitter' && field !== 'linkedin' && field !== 'instagram' && field !== 'skype' && field !== 'github' && field !== 'slack' && field !== 'youtube') {
-      if (card[field] === null || card[field] === undefined || card[field].trim() === '') {
-        isValid = false;
-        break;
-      }
-    
-      if (fieldConstraints[field] && card[field].length > fieldConstraints[field].maxLength) {
-        isValid = false;
-        break;
+  // Card creation
+  (req, res) => {
+    const card = ToCardModel(req.body);
+
+    // Escape special characters
+    for (const prop in card) {
+      if (typeof card[prop] === "string") {
+        card[prop] = escapeSpecialCharacters(card[prop]);
       }
     }
-  }
-  
-  if (!isValid) {
-    res.status(400).send({
-      message: "Some required fields are missing, empty, or exceed the maximum length!"
+
+    // Save files as bytes
+    card.file_link_profil = saveFileAsBytes(req.file_link_profil);
+    card.file_link_background = saveFileAsBytes(req.file_link_background);
+    card.file_link_download = saveFileAsBytes(req.file_link_download);
+    card.file_link_loader = saveFileAsBytes(req.file_link_loader);
+
+    // Save Card in the database
+    Card.create(card, (err, data) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Card.",
+        });
+      } else {
+        res.send(data);
+      }
     });
-    return;
-  }
-
-  
-  //Banaliser les caractères spéciaux
-
-
-  // Save Card in the database
-  Card.create(card, (err, data) => {
-
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Card."
-      });
-    else res.send(data);
-  });
-};
+  },
+];
 
 // Retrieve all Cards from the database (with condition).
 exports.findAll = (req, res) => {
-
   Card.getAll((err, data) => {
-    if (err)
+    if (err) {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving cards."
+          err.message || "Some error occurred while retrieving cards.",
       });
-    else res.send(ToCardsApi(data));
+    } else {
+      res.send(ToCardsApi(data));
+    }
   });
 };
 
@@ -122,46 +104,97 @@ exports.findOne = (req, res) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Card with id ${req.params.id}.`
+          message: `Not found Card with id ${req.params.id}.`,
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Card with id " + req.params.id
+          message: "Error retrieving Card with id " + req.params.id,
         });
       }
-    } else res.send(ToCardApi(data));
+    } else {
+      res.send(ToCardApi(data));
+    }
   });
 };
 
 // Update a Card identified by the id in the request
-exports.update = (req, res) => {
-  // Validate Request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
+exports.update = [
+  // Required fields and constraints validation
+  body("firstName").trim().isLength({ max: 30 }).notEmpty(),
+  body("lastName").trim().isLength({ max: 30 }).notEmpty(),
+  body("mobile").trim().isLength({ max: 20 }).notEmpty(),
+  body("businessPhone").trim().isLength({ max: 20 }).notEmpty(),
+  body("email").trim().isLength({ max: 100 }).notEmpty().isEmail(),
+  body("compagny").trim().isLength({ max: 50 }).notEmpty(),
+  body("position").trim().isLength({ max: 50 }).notEmpty(),
+  body("jobId").trim().isLength({ max: 30 }).notEmpty(),
+  body("department").trim().isLength({ max: 50 }).notEmpty(),
+  body("address").trim().isLength({ max: 500 }).notEmpty(),
+  body("resume").trim().isLength({ max: 500 }).notEmpty(),
+  // URL
+  body("siteName").trim().isLength({ max: 255 }).notEmpty(),
+  body("siteUrl").trim().isLength({ max: 255 }).notEmpty().isURL(),
+  // Social Networks, optional fields
+  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
+  body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
+  body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
+  body("skype").trim().isLength({ max: 255 }).optional(),
+  body("github").trim().isLength({ max: 255 }).optional().isURL(),
+  body("slack").trim().isLength({ max: 255 }).optional(),
+  body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
+  body("behince").trim().isLength({ max: 255 }).optional().isURL(),
+  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),  
 
-  console.log(req.body);
+  // Check for validation errors
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
 
-  Card.updateById(
-    req.params.id,
-    ToCardModel(req.body),
-    (err, data) => {
+  // Update map
+  (req, res) => {
+    // Escape special characters
+    for (const prop in card) {
+      if (typeof card[prop] === "string") {
+        card[prop] = escapeSpecialCharacters(card[prop]);
+      }
+    }
+    // Save files as bytes
+    if (req.file_link_profil) {
+      card.file_link_profil = saveFileAsBytes(req.file_link_profil);
+    }
+    if (req.file_link_background) {
+      card.file_link_background = saveFileAsBytes(req.file_link_background);
+    }
+    if (req.file_link_download) {
+      card.file_link_download = saveFileAsBytes(req.file_link_download);
+    }
+    if (req.file_link_loader) {
+      card.file_link_loader = saveFileAsBytes(req.file_link_loader);
+    }
+
+    // Update Card in the database
+    Card.updateById(req.params.id, ToCardModel(req.body), (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Card with id ${req.params.id}.`
+            message: `Not found Card with id ${req.params.id}.`,
           });
         } else {
           res.status(500).send({
-            message: "Error updating Card with id " + req.params.id
+            message: "Error updating Card with id " + req.params.id,
           });
         }
-      } else res.send(ToCardApi(data));
-    }
-  );
-};
+      } else {
+        res.send(ToCardApi(data));
+      }
+    });
+  },
+];
 
 // Delete a Card with the specified id in the request
 exports.delete = (req, res) => {
@@ -169,13 +202,15 @@ exports.delete = (req, res) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Card with id ${req.params.id}.`
+          message: `Not found Card with id ${req.params.id}.`,
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Card with id " + req.params.id
+          message: "Could not delete Card with id " + req.params.id,
         });
       }
-    } else res.send({ message: `Card was deleted successfully!` });
+    } else {
+      res.send({ message: `Card was deleted successfully!` });
+    }
   });
 };
