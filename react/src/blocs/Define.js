@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Define.css';
-import Alert from 'react-bootstrap/Alert';
-import plus from '../assets/plus2.svg'
-import barre from '../assets/barre.svg'
-import plusP from '../assets/plus3.svg'
-import homme from '../assets/picto-homme.svg'
-import femme from '../assets/picto-femme.svg'
+import {Alert} from 'react-bootstrap';
+import plus from '../assets/plus2.svg';
+import bar from '../assets/bar.svg';
+import plusP from '../assets/plus3.svg';
+import defaultProfile from '../assets/user.png';
+import defaultBackground from '../assets/background_default.png'
 
 function Define({
   handleChange
@@ -102,6 +102,18 @@ function Define({
     }
   };
 
+  const handleUseDefaultBackground = () => {
+    setFileLinkBackground(null);
+    setBackgroundError('');
+    handleChange({ target: { name: 'fileLinkBackground', value: null } });
+  };
+
+  const handleUseDefaultProfile = () => {
+    setFileLinkProfile(null);
+    setProfileError('');
+    handleChange({ target: { name: 'fileLinkProfile', value: null } });
+  };
+
   return (
     <div className='define_block'>
       <div className='define_color'>
@@ -109,7 +121,7 @@ function Define({
         <div className='primary'>
           <h2>Primary</h2>
           <div className='aligne_color1'>
-            <input onChange={handleColorPrimaryChange} className='inptP' type='color' name='primarycolor' value={colorPrimary} />
+            <input onChange={handleColorPrimaryChange} className='inptP' type='color' name='colorPrimary' value={colorPrimary} />
             <input data-testid="primary-color-input" onChange={handleColorPrimaryChange} className='txtC' id='primaryColorInput' type='text' value={colorPrimary} />
             {colorPrimaryError && <Alert variant="danger">{colorPrimaryError}</Alert>}
           </div>
@@ -117,35 +129,49 @@ function Define({
         <div className='secondary'>
           <h2>Secondary</h2>
           <div className='aligne_color2'>
-            <input onChange={handleColorSecondaryChange} className='inptP' type='color' name='secondarycolor' value={colorSecondary} />
+            <input onChange={handleColorSecondaryChange} className='inptP' type='color' name='colorSecondary' value={colorSecondary} />
             <input data-testid="secondary-color-input" onChange={handleColorSecondaryChange} className='txtC' id='secondaryColorInput' type='text' value={colorSecondary} />
             {colorSecondaryError && <Alert variant="danger">{colorSecondaryError}</Alert>}
           </div>
         </div>
       </div>
+      
       <div className='define_BP'>
         <h1>Background<br />picture</h1>
         <div className='add_BP'>
           <label htmlFor="file-upload">
             <img className='plus_B' src={plus} alt="Plus-logo" />
           </label>
+
           <input id="file-upload" data-testid="background-picture-input" onChange={handleBackgroundChange} type='file' accept='image/png, image/jpeg, image/gif' />
           {fileLinkBackground && !backgroundError && <img src={fileLinkBackground} className='new_image_background' alt='Background' />}
           {backgroundError && <Alert variant="danger">{backgroundError}</Alert>}
-          <img src={barre} className='barre' alt='barre-logo' />
+          {fileLinkBackground && !backgroundError && <button className='sliderbis' onClick={handleBackgroundChange}></button>}
+          
+          <div className="default-background-option">
+            <img src={bar} className='barDefine' alt='bar-logo' />
+            {!fileLinkBackground && <img src={defaultBackground} className='default_background' alt='Default Profile' />}
+            {!fileLinkBackground && <button className='slider' onClick={handleUseDefaultBackground}></button>}
+          </div>
+          
         </div>
       </div>
+      
       <div className='define_PF'>
         <h1>Profile picture</h1>
         <div className='add_PF'>
-          <label htmlFor="file-upload-pf">
-            <img className='plus_P' src={plusP} alt="Plus-logo" />
-          </label>
-          <input id="file-upload-pf" data-testid="profile-picture-input" onChange={handleProfileChange} type='file' accept='image/png, image/jpeg, image/gif' />
-          {fileLinkProfile && !profileError && <img src={fileLinkProfile} className='new_profile_picture' alt='Profile' />}
-          {profileError && <Alert variant="danger">{profileError}</Alert>}
-          <img src={homme} className='homme' alt='picto-homme' />
-          <img src={femme} className='femme' alt='picto-femme' />
+          <div className="profile-image-options">
+            <label htmlFor="file-upload-pf">
+              <img className='plus_P' src={plusP} alt="Plus-logo" />
+            </label>
+            <input id="file-upload-pf" data-testid="profile-picture-input" onChange={handleProfileChange} type='file' accept='image/png, image/jpeg, image/gif' />
+            {fileLinkProfile && !profileError && <img src={fileLinkProfile} className='new_profile_picture' alt='Profile' />}
+            {profileError && <Alert variant="danger">{profileError}</Alert>}
+          </div>
+          <div className="default-profile-option">
+            {!fileLinkProfile && <img src={defaultProfile} className='new_profile_picture' alt='Default Profile' />}
+            <button onClick={handleUseDefaultProfile}>Use Default Profile Picture</button>
+          </div>
         </div>
       </div>
     </div>

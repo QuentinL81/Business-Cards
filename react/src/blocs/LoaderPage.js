@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import './LoaderPage.css'
+import plus from '../assets/plus2.svg';
+import bar from '../assets/bar.svg'
 
-export default function LoaderPage({ 
-  handleChange 
+export default function LoaderPage({
+  handleChange
 }) {
   const [fileLinkLoader, setFileLinkLoader] = useState();
   const [error, setError] = useState('');
@@ -42,11 +44,24 @@ export default function LoaderPage({
   };
 
   return (
-    <div>
-      <h2>Loader Page</h2>
-      <input data-testid="loader-page-input" onChange={handleLoaderChange} type="file" accept="image/png, image/jpeg, image/gif" />
-      {fileLinkLoader && <img src={fileLinkLoader} alt="LoaderPage" width="200" />}
-      {error && <Alert variant="danger">{error}</Alert>}
+
+    <div className='define_LP'>
+      <h1>Loader image</h1>
+      <div className='add_LP'>
+        
+        <label htmlFor="file-loader">
+          <img className='plus_B' src={plus} alt="Plus-logo" />
+        </label>
+        
+        <input id='file-loader' data-testid="loader-page-input" onChange={handleLoaderChange} type="file" accept="image/png, image/jpeg, image/gif" />
+        {error && <Alert variant="danger">{error}</Alert>}
+        {fileLinkLoader && 
+        <div className='preview-loader'>
+          <img src={fileLinkLoader} className='new_image_loader' alt="LoaderPage" width="200" />
+        </div>}
+
+        <img src={bar} className='bar' alt='bar-logo' />
+      </div>
     </div>
   );
 }

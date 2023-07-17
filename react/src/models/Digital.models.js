@@ -1,25 +1,25 @@
 export class DigitalModel {
 
-    constructor(colorPrimary, colorSecondary,fileLinkBackground, fileLinkProfile, first_name, last_name, mobile, business_phone, email, compagny, position, job_id, department, address, resume, site_name, site_url, fileLinkDownload, facebook, twitter, linkedin, instagram, skype, github, slack, youtube, fileLinkLoader) {
+    constructor(colorPrimary, colorSecondary,fileLinkBackground, fileLinkProfile, firstName, lastName, mobile, businessPhone, email, compagny, position, jobId, department, address, resume, siteName, siteUrl, fileLinkDownload, facebook, twitter, linkedin, instagram, skype, github, slack, youtube, fileLinkLoader, QRCodeColor) {
         this.colorPrimary = colorPrimary;
         this.colorSecondary = colorSecondary;
         this.fileLinkBackground = fileLinkBackground;
         this.fileLinkProfile = fileLinkProfile;
 
-        this.firstName = first_name;
-        this.lastName = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.mobile = mobile;
-        this.business_phone = business_phone;
+        this.businessPhone = businessPhone;
         this.email = email;
         this.compagny = compagny;
         this.position = position;
-        this.jobId = job_id;
+        this.jobId = jobId;
         this.department = department; 
         this.address = address;
         this.resume = resume;
 
-        this.siteName = site_name;
-        this.siteUrl = site_url;
+        this.siteName = siteName;
+        this.siteUrl = siteUrl;
 
         this.fileLinkDownload = fileLinkDownload;
         
@@ -32,7 +32,8 @@ export class DigitalModel {
         this.slack = slack;
         this.youtube = youtube;
 
-        this.fileLinkLoader= fileLinkLoader;
+        this.fileLinkLoader = fileLinkLoader;
 
+        this.QRCodeColor = QRCodeColor
     }
 } 

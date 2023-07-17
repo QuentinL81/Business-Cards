@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Download.css';
 import plus from '../assets/plus2.svg'
-import barre from '../assets/barre.svg'
+import bar from '../assets/bar.svg'
 import poubelle from '../assets/poubelle.svg'
 
 import Alert from 'react-bootstrap/Alert';
@@ -67,7 +67,7 @@ export default function Download({ handleChange }) {
             <img src={poubelle} alt="remove" className="remove-btn" data-testid="remove-picture-input" onClick={handleImageRemove}/>
           </div>
         )}
-        <img src={barre} className='barre' alt='barre-logo' />
+        <img src={bar} className='barre' alt='barre-logo' />
       </div>
     </div>
   );

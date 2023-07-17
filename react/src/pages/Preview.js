@@ -158,6 +158,15 @@ export default function Preview({
 
             </div>
           </div>
+          <div className='QRCode'>
+            <p>QRCode</p>
+          < div className="color-box" style={{QRCodeColor: information.QRCodeColor}}></div>
+          </div>
+
+          <div className='QRCode'>
+            <p>QRCode</p>
+          < div className="color-box" style={{QRCodeColor: information.QRCodeColor}}></div>
+          </div>
         </div>
       </div>
       <div className='preview_back' />
