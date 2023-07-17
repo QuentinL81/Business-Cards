@@ -13,6 +13,84 @@ exports.create = (req, res) => {
   // Create a Card
   const card = ToCardModel(req.body);
 
+  console.log(card)
+  //Vérifier les champs
+  
+  const requiredFields = [
+    'firstName',
+    'lastName',
+    'mobile',
+    'businessPhone',
+    'email',
+    'compagny',
+    'position',
+    'jobId',
+    'department',
+    'address',
+    'resume',
+    'siteName',
+    'siteUrl',
+    'facebook',
+    'twitter',
+    'linkedin',
+    'instagram',
+    'skype',
+    'github',
+    'slack',
+    'youtube'
+  ];
+  
+  const fieldConstraints = {
+    firstName: { maxLength: 30 },
+    lastName: { maxLength: 30 },
+    mobile: { maxLength: 20 },
+    businessPhone: { maxLength: 20 },
+    email: { maxLength: 100 },
+    compagny: { maxLength: 50 },
+    position: { maxLength: 50 },
+    jobId: { maxLength: 30 },
+    department: { maxLength: 50 },
+    address: { maxLength: 500 },
+    resume: { maxLength: 500 },
+    siteName: { maxLength: 255 },
+    siteUrl: { maxLength: 255 },
+    facebook: { maxLength: 255 },
+    twitter: { maxLength: 255 },
+    linkedin: { maxLength: 255 },
+    instagram: { maxLength: 255 },
+    skype: { maxLength: 255 },
+    github: { maxLength: 255 },
+    slack: { maxLength: 255 },
+    youtube: { maxLength: 255 }
+  };
+  
+  let isValid = true;
+  
+  for (const field of requiredFields) {
+    if (field !== 'facebook' && field !== 'twitter' && field !== 'linkedin' && field !== 'instagram' && field !== 'skype' && field !== 'github' && field !== 'slack' && field !== 'youtube') {
+      if (card[field] === null || card[field] === undefined || card[field].trim() === '') {
+        isValid = false;
+        break;
+      }
+    
+      if (fieldConstraints[field] && card[field].length > fieldConstraints[field].maxLength) {
+        isValid = false;
+        break;
+      }
+    }
+  }
+  
+  if (!isValid) {
+    res.status(400).send({
+      message: "Some required fields are missing, empty, or exceed the maximum length!"
+    });
+    return;
+  }
+
+  
+  //Banaliser les caractères spéciaux
+
+
   // Save Card in the database
   Card.create(card, (err, data) => {
 
