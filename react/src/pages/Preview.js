@@ -40,6 +40,12 @@ export default function Preview({
             {information.fileLinkProfile && <img className='profile-picture' src={information.fileLinkProfile} alt='Profile' />}
           </div>
 
+         <div className='background_picture'>
+          {information.fileLinkBackground && <img src={information.fileLinkBackground} alt='Background' />}
+         </div> 
+
+
+
           <div className='nom-prénom' style={{ color: information.colorPrimary }}>
             {information.first_name}<br></br>{information.last_name}
           </div>

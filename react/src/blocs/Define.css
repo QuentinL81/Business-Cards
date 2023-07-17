@@ -72,6 +72,7 @@
     width: 100%;
     align-items: center;
     border-bottom: 1px solid #707070;
+    padding-bottom: 20px;
 }
 
 .define_BP h1 {
@@ -128,22 +129,26 @@
 
 .slider{
     position: absolute;
-    width: 120px;
-    height: 7 px;
-    margin-top: 110%;
+    width: 140px;
+    height: 13px;
+    margin-top: 120%;
     border-radius: 30px;
-    border-color: green;
-    background-color: green;
+    border: none;
+    background-color: #78C142;
+    cursor: auto!important;
 }
 
 .sliderbis{
     position: absolute;
-    width: 120px;
-    height: 7 px;
+    width: 140px;
+    height: 13px;
     border-radius: 30px;
-    border-color: green;
-    background-color: green;
+    border: none;
+    background-color: #78C142;
     animation: slideAnimation 0.5s ease;
+    margin-top: 170px;
+    cursor: auto!important;
+    margin-left: 90px;
 }
 
 @keyframes slideAnimation {

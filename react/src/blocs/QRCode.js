@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QRCode from "react-qr-code";
 import { Alert } from 'react-bootstrap';
+import './QRCode.css';
 
 export default function QRCodeGenerator({
   handleChange
@@ -29,7 +30,7 @@ export default function QRCodeGenerator({
   return (
     <div className='QRCode'>
       <QRCode
-        style={{ height: "auto", maxWidth: "250px", width: "250px" }}
+        style={{ height: "auto", maxWidth: "150px", width: "150px" }}
         value={value}
         fgColor={QRCodeColor}
         level="H"
@@ -38,9 +39,11 @@ export default function QRCodeGenerator({
 
       <div className='ChangeColor'>
         <h2>Choose your color</h2>
-        <input onChange={handleQRCodeColorChange} className='inputQRCode' type='color' name='QRCodeColor' value={QRCodeColor} />
-        <input data-testid="QRcode-color-input" onChange={handleQRCodeColorChange} className='txtQRCode' id='QRCodeColorInput' type='text' value={QRCodeColor} />
-        {colorQRCodeError && <Alert variant="danger">{colorQRCodeError}</Alert>}
+        <div className='aligne_color_QR'>
+          <input onChange={handleQRCodeColorChange} className='inputQRCode' type='color' name='QRCodeColor' value={QRCodeColor} />
+          <input data-testid="QRcode-color-input" onChange={handleQRCodeColorChange} className='txtQRCode' id='QRCodeColorInput' type='text' value={QRCodeColor} />
+          {colorQRCodeError && <Alert variant="danger">{colorQRCodeError}</Alert>}
+        </div>
       </div>
     </div>
   );
