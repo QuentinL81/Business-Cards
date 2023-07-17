@@ -165,7 +165,7 @@ function Define({
             {!fileLinkBackground && <img src={defaultBackground} className='default_background' alt='Default Profile' />}
             {!fileLinkBackground && <div className='slider' onClick={handleUseDefaultBackground}></div>}
           </div>
-          
+
         </div>
       </div>
       
@@ -176,16 +176,21 @@ function Define({
             <label htmlFor="file-upload-pf">
               <img className='plus_P' src={plusP} alt="Plus-logo" />
             </label>
+
             <input id="file-upload-pf" data-testid="profile-picture-input" onChange={handleProfileChange} type='file' accept='image/png, image/jpeg, image/gif' />
             {fileLinkProfile && !profileError && <img src={fileLinkProfile} className='new_profile_picture' alt='Profile' />}
             {profileError && <Alert variant="danger">{profileError}</Alert>}
+            {fileLinkProfile && !profileError && <div className='sliderProfileBis' onClick={handleProfileChange}></div>}
           </div>
+
           <div className="default-profile-option">
-            {!fileLinkProfile && <img src={defaultProfile} className='new_profile_picture' alt='Default Profile' />}
-            <button onClick={handleUseDefaultProfile}>Use Default Profile Picture</button>
+            {!fileLinkProfile && <img src={defaultProfile} className='default_profile' alt='Default Profile' />}
+            {!fileLinkProfile && <div className='sliderProfile' onClick={handleUseDefaultProfile}></div>}
           </div>
+
         </div>
       </div>
+      
     </div>
   );
 }
