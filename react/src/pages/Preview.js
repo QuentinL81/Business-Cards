@@ -18,8 +18,8 @@ import yt from '../assets/yt.svg';
 import skype from '../assets/skype.svg';
 import whatsapp from '../assets/whatsapp.svg';
 import behance from '../assets/behance.svg';
-{/*import github from '../assets';
-import slack from '../assets';*/}
+import github from '../assets/github.svg';
+import slack from '../assets/slack.svg';
 
 export default function Preview({
   information
@@ -49,8 +49,8 @@ export default function Preview({
           </div>
           <div className='profile2'>
             <div className='cercle-chiant-haut'>
-              <Sms className='sms' fill={information.colorSecondary} stroke={information.colorSecondary} />
-              <Mail className='mail' fill={information.colorSecondary} stroke={information.colorSecondary} />
+              <Sms  id='special_css_svg' className='sms' fill={information.colorSecondary} stroke={information.colorSecondary} />
+              <Mail id='special_css_svg' className='mail' fill={information.colorSecondary} stroke={information.colorSecondary} />
             </div>
             <div className='cercle-chiant-bas'>
               <Tel className='tel' fill={information.colorSecondary} stroke={information.colorSecondary} />
@@ -128,15 +128,17 @@ export default function Preview({
                   <Social fill={information.colorSecondary} stroke={information.colorSecondary} />
                 </div>
                 <h1 className='title-info' style={{ color: information.colorSecondary }}>Social Networks</h1>
-                <div className='except-title-information-preview-portfolio'>
-                <img className='facebook' src={information.facebook} alt="logo-facebook" />
-                <p>Twitter : {information.twitter}</p>
-                <p>LinkedIn : {information.linkedin}</p>
-                <p>Instagram : {information.instagram}</p>
-                <p>Skype : {information.skype}</p>
-                <p>Github : {information.github}</p>
-                <p>Slack : {information.slack}</p>
-                <p>YouTube : {information.yt}</p>
+                <div className='except-title-information-preview-social'>
+                  {information.facebook && <a href={information.facebook} target='_blank'><img className='facebook' src={facebook} alt="logo-facebook" /></a>}
+                  {information.linkedin && <a href={information.linkedin} target='_blank'><img className='linkedin' src={linkedin} alt="logo-linkedin" /></a>}
+                  {information.twitter && <a href={information.twitter} target='_blank'><img className='twitter' src={twitter} alt="logo-twitter" /></a>}
+                  {information.instagram && <a href={information.instagram} target='_blank'><img className='instagram' src={instagram} alt="logo-instagram" /></a>}
+                  {information.skype && <a href={information.skype} target='_blank'><img className='skype' src={skype} alt="logo-skype" /></a>}
+                  {information.github && <a href={information.github} target='_blank'><img className='github' src={github} alt="logo-github" /></a>}
+                  {information.slack && <a href={information.slack} target='_blank'><img className='slack' src={slack} alt="logo-slack" /></a>}
+                  {information.yt && <a href={information.yt} target='_blank'><img className='yt' src={yt} alt="logo-yt" /></a>}
+                  {information.behance && <a href={information.behance} target='_blank'><img className='behance' src={behance} alt="logo-behance" /></a>}
+                  {information.whatsapp && <a href={information.whatsapp} target='_blank'><img className='whatsapp' src={whatsapp} alt="logo-whatsapp" /></a>}
                 </div>
               </div>
 
