@@ -23,11 +23,12 @@ CREATE TABLE IF NOT EXISTS card (
     siteName VARCHAR (255),
     siteUrl VARCHAR(255),
 
-    /* /images/nom_prenom/file_profil.png   */
-    file_link_profil VARCHAR(255),
-    file_link_background VARCHAR(255),
-    file_link_download VARCHAR(255),
-    file_link_loader VARCHAR(255),
+    /* Image*/
+    file_link_profil BLOB,
+    file_link_background VBLOB,
+    file_link_download BLOB,
+    file_link_loader BLOB,
+
     /* Social Networks  */
     facebook VARCHAR(255),
     twitter VARCHAR(255),web sud toulouse
