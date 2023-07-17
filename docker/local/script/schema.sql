@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS card (
 
     /* Image*/
     file_link_profil BLOB,
-    file_link_background VBLOB,
+    file_link_background BLOB,
     file_link_download BLOB,
     file_link_loader BLOB,
 
