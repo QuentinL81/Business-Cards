@@ -9,6 +9,8 @@ import yt from '../assets/yt.svg';
 import skype from '../assets/skype.svg';
 import whatsapp from '../assets/whatsapp.svg';
 import behance from '../assets/behance.svg';
+import github from '../assets/github.svg';
+import slack from '../assets/slack.svg';
 
 export default function SocialNetwork({
   handleChange
@@ -19,12 +21,13 @@ export default function SocialNetwork({
       <IconNetwork image={facebook} name="facebook" label="www.facebook.com/yourpage" handleChange={handleChange} />
       <IconNetwork image={linkedin} name="linkedin" label="www.linkedin.com/yourpage" handleChange={handleChange} />
       <IconNetwork image={twitter} name="twitter" label="www.twitter.com/yourpage" handleChange={handleChange} />
-      <IconNetwork image={behance} name="youtube" label="www.youtube.com/yourpage"  handleChange={handleChange} />
+      <IconNetwork image={yt} name="youtube" label="www.youtube.com/yourpage"  handleChange={handleChange} />
       <IconNetwork image={instagram} name="instagram" label="www.instagram.com/yourpage"  handleChange={handleChange} />
-      <IconNetwork image={yt} name="github" label="GitHub ID" handleChange={handleChange} />
-      <IconNetwork image={whatsapp} name="slack" label="Slack ID" handleChange={handleChange} />
+      <IconNetwork image={github} name="github" label="GitHub ID" handleChange={handleChange} />
+      <IconNetwork image={slack} name="slack" label="Slack ID" handleChange={handleChange} />
       <IconNetwork image={skype} name="skype" label="Skype ID" handleChange={handleChange} />
-
+      <IconNetwork image={whatsapp} name="whatsapp" label="Whatsapp ID" handleChange={handleChange} />
+      <IconNetwork image={behance} name="behance" label="Behance ID" handleChange={handleChange} />
     </div>
   );
 }

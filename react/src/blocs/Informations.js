@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Form, Row, Alert } from 'react-bootstrap';
 import './Information.css';
 
-export default function Informations({ 
-  handleChange 
+export default function Informations({
+  handleChange
 }) {
+
   const [errors, setErrors] = useState({});
 
   const validatePhoneNumber = (phoneNumber) => {
@@ -41,9 +42,9 @@ export default function Informations({
         delete newErrors[name];
       }
     }
-  
+
     if (value.length > 21 && (name === 'mobile' || name === 'business_phone')) {
-      e.target.value = value.slice(0, 20); 
+      e.target.value = value.slice(0, 20);
     }
 
     if (name === 'email') {
@@ -65,7 +66,7 @@ export default function Informations({
         delete newErrors[name];
       }
     }
-  
+
     if (name === 'position') {
       if (value.length > 50) {
         e.target.value = value.slice(0, 50);
@@ -74,7 +75,7 @@ export default function Informations({
         delete newErrors[name];
       }
     }
-  
+
     if (name === 'job_id') {
       if (value.length > 30) {
         e.target.value = value.slice(0, 30);
@@ -83,7 +84,7 @@ export default function Informations({
         delete newErrors[name];
       }
     }
-  
+
     if (name === 'department') {
       if (value.length > 50) {
         e.target.value = value.slice(0, 50);
@@ -92,7 +93,7 @@ export default function Informations({
         delete newErrors[name];
       }
     }
-  
+
     if (name === 'address') {
       if (value.length > 500) {
         e.target.value = value.slice(0, 500);
@@ -101,7 +102,7 @@ export default function Informations({
         delete newErrors[name];
       }
     }
-  
+
     if (name === 'resume') {
       if (value.length > 500) {
         e.target.value = value.slice(0, 500);
@@ -114,11 +115,11 @@ export default function Informations({
     setErrors(newErrors);
     handleChange(e);
   };
-  
+
   return (
     <div>
       <Form className="container mt-3 mb-3">
-      <Row className="mb-3">
+        <Row className="mb-3">
           <Form.Label>Name <span className="required-field">*</span> </Form.Label>
           <Form.Group className="col">
             <Form.Control type="text" id="first_name" name="first_name" placeholder="First name" onChange={handleInputChange} required />
@@ -185,7 +186,7 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Resume <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control as="textarea" rows={3} id="resume" name="resume" placeholder="Brief about yourself and your skills" onChange={handleInputChange} required  />
+            <Form.Control as="textarea" rows={3} id="resume" name="resume" placeholder="Brief about yourself and your skills" onChange={handleInputChange} required />
             {errors.resume && <Alert variant="danger">{errors.resume}</Alert>}
           </Form.Group>
         </Row>
@@ -195,6 +196,6 @@ export default function Informations({
         <p><span className="required-field">*</span> Fields are mandatory</p>
       </div>
     </div>
-     
+
   )
 }

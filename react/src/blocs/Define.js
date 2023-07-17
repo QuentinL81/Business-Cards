@@ -30,6 +30,18 @@ function Define({
         value: colorPrimary,
       }
     });
+    handleChange({
+      target: {
+        name: 'secondarycolor',
+        value: colorSecondary,
+      }
+    });
+    handleChange({
+      target: {
+        name: 'profilepicture',
+        value: defaultProfile,
+      }
+    });
   }, []);
 
   const handleColorPrimaryChange = (e) => {
@@ -146,12 +158,12 @@ function Define({
           <input id="file-upload" data-testid="background-picture-input" onChange={handleBackgroundChange} type='file' accept='image/png, image/jpeg, image/gif' />
           {fileLinkBackground && !backgroundError && <img src={fileLinkBackground} className='new_image_background' alt='Background' />}
           {backgroundError && <Alert variant="danger">{backgroundError}</Alert>}
-          {fileLinkBackground && !backgroundError && <button className='sliderbis' onClick={handleBackgroundChange}></button>}
+          {fileLinkBackground && !backgroundError && <div className='sliderbis' onClick={handleBackgroundChange}></div>}
           
           <div className="default-background-option">
             <img src={bar} className='barDefine' alt='bar-logo' />
             {!fileLinkBackground && <img src={defaultBackground} className='default_background' alt='Default Profile' />}
-            {!fileLinkBackground && <button className='slider' onClick={handleUseDefaultBackground}></button>}
+            {!fileLinkBackground && <div className='slider' onClick={handleUseDefaultBackground}></div>}
           </div>
           
         </div>
