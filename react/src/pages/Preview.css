@@ -73,6 +73,7 @@
   height: 2000px;
   transform: translateY(-90%);
   position: absolute;
+  z-index: 1;
 }
 
 .profile-picture {
@@ -83,6 +84,15 @@
   margin-top: 18%;
   z-index: 1;
   position: static;
+}
+
+.background_picture{
+  position: absolute;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 500px;
 }
 
 .nom-prénom {

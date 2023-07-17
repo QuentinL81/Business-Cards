@@ -1,0 +1,36 @@
+.inputQRCode{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid black;
+    border-radius: 0.4rem 0px 0px 0.4rem;
+    cursor: pointer;
+    background-color: transparent;
+    width: 90px;
+    height: 40px;
+    padding: 0;
+}
+
+.txtQRCode{
+    width: 90px;
+    height: 40px;
+    border-radius: 0px 0.4rem 0.4rem 0px;
+    border: solid 1px #707070;
+    border-left: none;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.aligne_color_QR{
+    display: flex;
+}
+
+.QRCode{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.QRCode .ChangeColor h2{
+    font-size: 1.25rem;
+}
