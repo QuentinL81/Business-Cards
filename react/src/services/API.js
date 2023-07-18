@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Axios configuration
-axios.defaults.baseURL = 'http://exemple.com'; // URL de l'API
+axios.defaults.baseURL = 'http://localhost:3000'; // URL de l'API
 
 function saveCard(digitalData) {
 
@@ -35,7 +35,7 @@ function saveCard(digitalData) {
         fileLinkLoader: digitalData.fileLinkLoader,
       };    
 
-    axios.post('/api/savecards', formData) // endpoint d'enregistrement de cartes back-end
+    axios.post('/API/savecards', formData) // endpoint d'enregistrement de cartes back-end
     .then(response => {
       // Gérer la réponse du serveur après l'envoi réussi
       console.log(response.data);
