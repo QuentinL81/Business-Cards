@@ -1,10 +1,11 @@
 import './Home.css'
-import beorn_image from '../assets/Logo-Beorn_Solutions.svg'
+import beorn_image from '../assets/Logo-beorn-blanc.svg'
 import plus from '../assets/Picto-Plus_bouton-accueil.svg'
 
 function Home() {
   return (
-    <div className='backgroundH'>
+    <div className="all_home">
+      <div className='backgroundH' />
       <img className='beorn_image' src={beorn_image} alt="Beorn Logo" />
       <div className='lien'>
         <div className='create_img'>
@@ -17,7 +18,7 @@ function Home() {
         </div>
         <a className='view' href='/cards'> <u>VIEW ALREADY SAVED V-CARD</u></a>
       </div>
-    </div >
+    </div>
   )
 }
 

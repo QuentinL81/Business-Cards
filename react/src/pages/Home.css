@@ -1,26 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
+.all_home{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .backgroundH {
-    position: relative;
+    position: absolute;
     height: 100vh;
     width: 100%;
     background-image: url("../assets/background_home_web.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    z-index: -1;
 }
 
 .lien {
     display: flex;
-    margin-top: 10%;
+    margin-top: 30%;
     flex-direction: column;
     color: #4E4E4E;
     font-family: 'Montserrat', sans-serif;
 }
 
-.backgroundH .beorn_image {
-    margin-top: 8%;
-    margin-left: 10%;
-    width: 20vw;
+.beorn_image {
+    margin-top: 2%;
+    margin-left: -50%;
+    width: 15vw;
+    position: fixed;
 }
 
 .create_img {
@@ -59,6 +68,66 @@ a {
     height: 160px;
 }
 
-p{
+p {
     padding-left: 25px;
+}
+
+@media only screen and (max-width: 850px) {
+    .create {
+        text-decoration: none;
+        font-size: 1.438rem;
+        display: flex;
+        justify-content: flex-start;
+        line-height: 30px;
+        background-color: #E5DFD3;
+        border: 10px solid #FFFFFF;
+        border-radius: 146px;
+        width: 330px;
+        padding-left: 15px;
+        align-items: center;
+        margin-top: 40%;
+        margin-bottom: 50px;
+    }
+
+    .view {
+        font-size: 0.938rem;
+        text-align: center;
+    }
+
+    .create_img img {
+        width: auto;
+        padding: 0.8rem;
+        height: 106px;
+    }
+
+    p {
+        padding-left: 25px;
+        margin-bottom: 0;
+    }
+
+    .beorn_image {
+        width: 120px;
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+    .backgroundH{
+        position: fixed;
+        width: 200%;
+        background-repeat: no-repeat;
+        background-image: url('../assets/background_web.jpg');
+        border-radius: 0px 0px 50% 50%;
+        height: 70%;
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+    }
+    .lien{
+    display: flex;
+    margin-top: 400px;
+    flex-direction: column;
+    color: #4E4E4E;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    }
 }
