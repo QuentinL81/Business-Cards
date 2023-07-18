@@ -1,16 +1,84 @@
-.SubmitButton{
+.SubmitButton {
     background-color: #FFBD29;
     color: white;
     border-radius: 20px;
     border: none;
     font-size: 3.125rem;
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     width: 90%;
 }
 
-.button-submit{
+.button-submit {
     display: flex;
     align-items: center;
     width: 90%;
     justify-content: center;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 20%;
+    right: 4%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+}
+
+.close-button:hover {
+    color: #555;
+}
+
+.close-button:focus {
+    outline: none;
+}
+
+.custom-modal h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.custom-modal p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.missing-fields-list {
+    margin-left: 20px;
+}
+
+.missing-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.missing-field-marker {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff5252;
+    margin-right: 10px;
+}
+
+.missing-field-name {
+    font-size: 14px;
 }
