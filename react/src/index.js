@@ -27,6 +27,10 @@ const router = createBrowserRouter([
     path: "/cards/:id",
     element: <View/>,
   },
+  {
+    path: "/view",
+    element: <View/>,
+  },
 ]);
 
 

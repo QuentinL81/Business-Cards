@@ -10,7 +10,8 @@ function View() {
 
 const [card, setCard] = useState({});
     const { id } = useParams();
-    useEffect(() => {
+    
+      useEffect(() => {
         CardDataService.get(id)
             .then(response => {
                 setCard(response.data);
@@ -19,7 +20,7 @@ const [card, setCard] = useState({});
             .catch(e => {
                 console.log(e);
             });
-    }, []);
+    }, [id]);
 
 
 
