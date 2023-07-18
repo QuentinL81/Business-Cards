@@ -1,29 +1,86 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CardDataService from "../services/card.service";
-import './SubmitButton.css'
+import './SubmitButton.css';
+import Modal from 'react-modal';
 
-export default function SubmitButton({ 
-  digitalData 
-}) {
+Modal.setAppElement('#root');
+
+export default function SubmitButton({ digitalData }) {
+  const [isFieldsComplete, setIsFieldsComplete] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [missingFields, setMissingFields] = useState([]);
+
+  const getMissingFields = (data) => {
+    const requiredFields = [
+      'first_name',
+      'last_name',
+      'mobile',
+      'business_phone',
+      'email',
+      'compagny',
+      'position',
+      'job_id',
+      'department',
+      'address',
+      'resume',
+      'site_name',
+      'site_url',
+    ];
+  
+    const missingFields = requiredFields.filter(field => !data[field] || data[field].trim() === '');
+    return missingFields;
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const modalContent = (
+    <div className="custom-modal">
+      <button className="close-button" onClick={handleModalClose}>
+        &#x2716;
+      </button>
+      <h2>Missing or invalid fields</h2>
+      <p>Please fill out all required fields :</p>
+      <div className="missing-fields-list">
+        {missingFields.map(field => (
+          <div key={field} className="missing-field">
+            <span className="missing-field-marker"></span>
+            <span className="missing-field-name">{field}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  useEffect(() => {
+    const isFieldsValid = checkFields(digitalData);
+    setIsFieldsComplete(isFieldsValid);
+  }, [digitalData]);
 
   const handleSubmit = () => {
     console.log('Button "Generate Card" clicked');
     console.log(digitalData);
-    checkFields(digitalData)
 
     const isFieldsValid = checkFields(digitalData);
+    setIsFieldsComplete(isFieldsValid);
 
     if (isFieldsValid) {
-        const updatedData = {
-          ...digitalData,
-          colorPrimary: digitalData.colorPrimary !== null && digitalData.colorPrimary !== undefined ? digitalData.colorPrimary : '#70C2DB',
-          colorSecondary: digitalData.colorSecondary !== null && digitalData.colorSecondary !== undefined ? digitalData.colorSecondary : '#830E7E',
-          fileLinkBackground: digitalData.fileLinkBackground !== null && digitalData.fileLinkBackground !== undefined ? digitalData.fileLinkBackground : 'defaultFileLinkBackground',
-          fileLinkProfile: digitalData.fileLinkProfile !== null && digitalData.fileLinkProfile !== undefined ? digitalData.fileLinkProfile : 'defaultFileLinkProfile',
-          fileLinkLoader: digitalData.fileLinkLoader !== null && digitalData.fileLinkLoader !== undefined ? digitalData.fileLinkLoader : 'defaultFileLinkLoader',
-          QRCodeColor: digitalData.QRCodeColor !== null && digitalData.QRCodeColor !== undefined ? digitalData.QRCodeColor : '#830E7E',
-          fileLinkDownload: digitalData.fileLinkDownload !== null && digitalData.fileLinkDownload !== undefined ? digitalData.fileLinkDownload : 'defaultFileLinkDownload'
-        };
+      const defaultColors = {
+        colorPrimary: '#70C2DB',
+        colorSecondary: '#830E7E',
+        fileLinkBackground: 'defaultFileLinkBackground',
+        fileLinkProfile: 'defaultFileLinkProfile',
+        fileLinkLoader: 'defaultFileLinkLoader',
+        QRCodeColor: '#830E7E',
+        fileLinkDownload: 'defaultFileLinkDownload'
+      };
+
+      const updatedData = {
+        ...digitalData,
+        ...Object.fromEntries(Object.entries(defaultColors).map(([key, value]) => [key, digitalData[key] !== null && digitalData[key] !== undefined ? digitalData[key] : value]))
+      };
+
       CardDataService.create(updatedData)
         .then(response => {
           console.log(response.data);
@@ -32,25 +89,31 @@ export default function SubmitButton({
           console.log(e);
         });
     } else {
+      const missingFields = getMissingFields(digitalData);
+      setMissingFields(missingFields);
+      setIsModalOpen(true);
       console.log('Some required fields are missing or invalid');
     }
   };
 
+  const isTextValid = (value) => /^[A-Za-z0-9\s]+$/.test(value ?? '');
+  const isTextLengthValid = (value, maxLength) => (value ?? '').length <= maxLength;
+
   const checkFields = (data) => { //mandatory fieldss
     const requiredFields = [
-      'firstName',
-      'lastName',
+      'first_name',
+      'last_name',
       'mobile',
-      'businessPhone',
+      'business_phone',
       'email',
       'compagny',
       'position',
-      'jobId',
+      'job_id',
       'department',
       'address',
       'resume',
-      'siteName',
-      'siteUrl',
+      'site_name',
+      'site_url',
     ];
 
     const optionalFields = [
@@ -61,42 +124,29 @@ export default function SubmitButton({
       'skype',
       'github',
       'slack',
-      'youtube'
+      'youtube',
+      'behance',
+      'whatsapp'
     ];
-  
+
     for (const field of optionalFields) {
       if (data[field] !== null && data[field] !== undefined) {
         if (data[field].length > 255) {
           return false;
         }
       } else {
-        data[field] = "pp";
+        data[field] = "";
       }
     }
 
-    const isNameValid = /^[A-Za-z\s]+$/.test(data.firstName ?? '') && /^[A-Za-z\s]+$/.test(data.lastName ?? '') && (data.firstName ?? '').length <= 30 && (data.lastName ?? '').length <= 30;
+    const isCompagnyValid = isTextValid(data.compagny) && isTextLengthValid(data.ompagny, 50);
+    const isPositionValid = isTextValid(data.position) && isTextLengthValid(data.position, 50);
+    const isDepartmentValid = isTextValid(data.epartment) && isTextLengthValid(data.department, 50);
+    const isJobIdValid = isTextValid(data.jobId) && isTextLengthValid(data.obId, 30);
+    const isAddressValid = isTextValid(data.address) && isTextLengthValid(data.address, 500);
+    const isResumeValid = isTextValid(data.resume) && isTextLengthValid(data.resume, 500);
 
-    if (!isNameValid) {
-      return false;
-    }
-
-    const isPhoneNumberValid = /^\d{10,20}$/.test(data.mobile) && /^\d{10,20}$/.test(data.businessPhone);
-
-    if (!isPhoneNumberValid) {
-      return false;
-    }
-
-    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email ?? '') && (data.email ?? '').length <= 100;
-
-    if (!isEmailValid) {
-      return false;
-    }
-
-    const isTextValid = /^[A-Za-z0-9\s]+$/.test(data.compagny ?? '') && /^[A-Za-z0-9\s]+$/.test(data.position ?? '') && /^[A-Za-z0-9\s]+$/.test(data.department ?? '') && /^[A-Za-z0-9\s]+$/.test(data.jobId ?? '') && /^[A-Za-z0-9\s]+$/.test(data.address ?? '') && /^[A-Za-z0-9\s]+$/.test(data.resume ?? '');
-    const isTextLengthValid = (data.compagny ?? '').length <= 50 && (data.position ?? '').length <= 50 && (data.department ?? '').length <= 50 && (data.jobId ?? '').length <= 30 && (data.address ?? '').length <= 500 && (data.resume ?? '').length <= 500;
-
-
-    if (!isTextValid || !isTextLengthValid) {
+    if (!isCompagnyValid || !isPositionValid || !isDepartmentValid || !isJobIdValid || !isAddressValid || !isResumeValid) {
       return false;
     }
 
@@ -112,7 +162,7 @@ export default function SubmitButton({
     }
 
     for (const field of requiredFields) {
-      if (!data[field] || data[field].trim() === '') {
+      if (!digitalData[field] || digitalData[field].trim() === '') {
         return false;
       }
     }
@@ -121,10 +171,19 @@ export default function SubmitButton({
   };
 
   return (
-    <div className='button-submit'>
-      <button className="SubmitButton" type="button" onClick={handleSubmit} >
+    <div className="button-submit">
+      <button className="SubmitButton" type="button" onClick={handleSubmit}>
         Generate Card
       </button>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={handleModalClose}
+        contentLabel="Champs manquants ou invalides"
+        className="custom-modal"
+        overlayClassName="custom-modal-overlay"
+      >
+        {modalContent}
+      </Modal>
     </div>
   );
 }
