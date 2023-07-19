@@ -11,10 +11,10 @@ function Navbar() {
   return (
     <div>
       <div className="nav_mobile">
-        <nav class="navbar navbar-dark bg-dark">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon">
+        <nav className="navbar navbar-dark bg-dark">
+          <div className="container-fluid">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon">
                 <div className="block-color"></div>
                 <div className="block-color"></div>
                 <div className="block-color"></div>
@@ -22,11 +22,11 @@ function Navbar() {
             </button>
           </div>
         </nav>
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <a class="text-white h4" href='/'>HOME </a>
-            <a class="text-white h4" href='/create'>GENERATE A NEW CARD </a>
-            <a class="text-white h4" href='/view'>VIEW ALREADY SAVED CARD </a>
+        <div className="collapse" id="navbarToggleExternalContent">
+          <div className="bg-dark p-4">
+            <a className="text-white h4" href='/'>HOME </a>
+            <a className="text-white h4" href='/create'>GENERATE A NEW CARD </a>
+            <a className="text-white h4" href='/view'>VIEW ALREADY SAVED CARD </a>
           </div>
         </div>
       </div>

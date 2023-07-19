@@ -12,6 +12,7 @@ import Preview from './Preview';
 import NavBar from '../components/Navbar';
 import QRCode from '../blocs/QRCode';
 import { DigitalModel } from '../models/Digital.models';
+import ButtonPreviewMobile from '../components/Button_preview_mobile' 
 
 export default function Create() {
   const [userInformation, setUserInformation] = useState(new DigitalModel());
@@ -61,6 +62,9 @@ export default function Create() {
             colorPrimary={userInformation.colorPrimary}
             colorSecondary={userInformation.colorSecondary}
           />
+        </div>
+        <div className='fixed-bottom'>
+        <ButtonPreviewMobile/>
         </div>
       </div>
     </div>
