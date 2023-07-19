@@ -29,7 +29,7 @@ function ViewAll() {
         <div>
             <NavBar />
             <div className="row" >
-                <div className="" style={{marginTop: 300 + 'px'}}>
+                <div className="" style={{ marginTop: 300 + 'px' }}>
                     {cards.map(card =>
                         <div className="col-1" key={card.id}>{card.id} / {card.email}
 
@@ -37,7 +37,7 @@ function ViewAll() {
                                 to={"/cards/" + card.id}
                             >
                                 Preview
-                            </Link></div>
+                            </Link></div>   
                     )}
                 </div>
             </div>

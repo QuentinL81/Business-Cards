@@ -65,22 +65,29 @@
     display: flex;
 }
 
+.secondary{
+    padding-right: 13%;
+}
+
 /* --------------------------------------------------------------------------------------------*/
 
-.define_BP {
+.define_BP, .define_PF {
     display: flex;
     width: 100%;
     align-items: center;
+}
+
+.define_BP{
     border-bottom: 1px solid #707070;
     padding-bottom: 20px;
 }
 
-.define_BP h1 {
+.define_BP h1, .define_PF h1 {
     font-size: 1.563rem;
     margin: 0;
 }
 
-.add_BP {
+.add_BP , .add_PF{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -88,24 +95,24 @@
     width: 100%;
 }
 
-.plus_B {
+.plus_B, .plus_P{
     width: 100%;
     padding: 10%;
 }
 
-#file-upload {
+#file-upload, #file-upload-pf {
     display: none;
 }
 
-.new_image_background{
+.new_image_background, .new_profile_picture{
     width: 140px;
-    height: 140px;
+    height: 170px;
     margin: 10px;
-    border-radius: 30px;
+    border-radius: 20%;
     position: relative;
 }
 
-.default-background-option{
+.default-background-option, .default-profile-option{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -115,7 +122,10 @@
     width: 140px;
     height: 140px;
     margin: 2%;
-    border-radius: 30px;
+    border-radius: 20%;
+}
+
+.default-background-option{
     border: 1px solid #707070;
 }
 
@@ -127,7 +137,7 @@
     display: none;   
 }
 
-.slider{
+.slider, .sliderProfile{
     position: absolute;
     width: 140px;
     height: 13px;
@@ -138,7 +148,7 @@
     cursor: auto!important;
 }
 
-.sliderbis{
+.sliderbis, .sliderProfileBis{
     position: absolute;
     width: 140px;
     height: 13px;
@@ -148,7 +158,6 @@
     animation: slideAnimation 0.5s ease;
     margin-top: 170px;
     cursor: auto!important;
-    margin-left: 90px;
 }
 
 @keyframes slideAnimation {
@@ -162,51 +171,18 @@
 
 /* --------------------------------------------------------------------------------------------*/
 
-.define_PF {
-    display: flex;
-    width: 100%;
-    align-items: center;
-}
-
-.define_PF h1 {
-    font-size: 1.563rem;
-    margin: 0;
-}
-
-.add_PF {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.plus_P {
-    width: 100%;
-    padding: 10%;
-}
-
-#file-upload-pf {
-    display: none;
-}
-
-.new_profile_picture {
-    width: 141px;
-    height: 140px;
-    margin: 10px;
-    border-radius: 100px;
-    position: relative;
-}
-
 .default_profile{
-    width: 141px;
-    height: 140px;
+    width: 147px;
+    height: 147px;
     margin: 10px;
-    border-radius: 100px;
     position: absolute;
 }
 
-.default-profile-option{
+.new_profile_picture{
+    border-radius: 100%;
+}
+
+.test{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -214,40 +190,7 @@
     position: relative;
     z-index: 2;
     width: 140px;
-    height: 140px;
+    height: 153px;
     margin: 2%;
     border-radius: 30px;
-    border: 1px solid #707070;
 }
-
-.sliderProfile{
-    position: absolute;
-    width: 140px;
-    height: 13px;
-    margin-top: 120%;
-    border-radius: 30px;
-    border: none;
-    background-color: #78C142;
-    cursor: auto!important;
-}
-
-.sliderProfileBis{
-    position: absolute;
-    width: 140px;
-    height: 13px;
-    border-radius: 30px;
-    border: none;
-    background-color: #78C142;
-    animation: slideAnimationb 0.5s ease;
-    cursor: auto!important;
-    margin-left: 90px;
-}
-
-@keyframes slideAnimationb {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
