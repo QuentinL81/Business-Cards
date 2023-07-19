@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import './View.css'
+import NavBar from '../components/Navbar'
 import CardDataService from "../services/card.service";
 
 function View() {
