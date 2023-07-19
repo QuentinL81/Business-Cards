@@ -6,10 +6,15 @@ axios.defaults.baseURL = 'http://localhost:3000'; // URL de l'API
 function saveCard(digitalData) {
 
     const formData = {
+        // Colors
         colorPrimary: digitalData.colorPrimary,
         colorSecondary: digitalData.colorSecondary,
+        // Images
         fileLinkBackground: digitalData.fileLinkBackground,
         fileLinkProfile: digitalData.fileLinkProfile,
+        fileLinkDownload: digitalData.fileLinkDownload,
+        fileLinkLoader: digitalData.fileLinkLoader,
+        // User
         first_name: digitalData.first_name,
         last_name: digitalData.last_name,
         mobile: digitalData.mobile,
@@ -21,9 +26,10 @@ function saveCard(digitalData) {
         department: digitalData.department,
         address: digitalData.address,
         resume: digitalData.resume,
+        // URL
         site_name: digitalData.site_name,
         site_url: digitalData.site_url,
-        fileLinkDownload: digitalData.fileLinkDownload,
+        // Social Networks
         facebook: digitalData.facebook,
         twitter: digitalData.twitter,
         linkedin: digitalData.linkedin,
@@ -32,7 +38,9 @@ function saveCard(digitalData) {
         github: digitalData.github,
         slack: digitalData.slack,
         youtube: digitalData.youtube,
-        fileLinkLoader: digitalData.fileLinkLoader,
+        behance: digitalData.behance,
+        whatsapp: digitalData.whatsapp,
+    
       };    
 
     axios.post('/API/savecards', formData) // endpoint d'enregistrement de cartes back-end
