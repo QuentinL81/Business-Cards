@@ -60,272 +60,98 @@
   height: 77px;
 }
 
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-.profile1 {
-  display: flex;
-  justify-content: center;
+@media only screen and (max-width: 850px) {
+  .preview_banner {
+    display: none;
+  }
 }
 
-.cercle1 {
-  border-radius: 50%;
-  width: 2000px;
-  height: 2000px;
-  transform: translateY(-90%);
-  position: absolute;
-  z-index: 1;
+@media only screen and (min-width: 850px) {
+  .offcanvas {
+    display: none;
+  }
 }
 
-.profile-picture {
-  width: 141px;
-  height: 140px;
-  margin: 10px;
-  border-radius: 100px;
-  margin-top: 18%;
-  z-index: 1;
-  position: static;
+.modal-backdrop.show {
+  display: none;
 }
 
-.background_picture{
-  position: absolute;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    width: 500px;
-    height: 500px;
-}
-
-.nom-prénom {
-  display: flex;
-  font-size: 2.188rem;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  justify-content: center;
-  text-align: center;
-  line-height: 40px;
-}
-
-.profession {
-  display: flex;
-  font-size: 1.875rem;
-  text-transform: capitalize;
-  font-family: 'Montserrat', sans-serif;
-  justify-content: center;
-  text-align: center;
-  line-height: 40px;
-  margin-bottom: 50px;
-}
-
-.profile2 {
-  display: flex;
-  justify-content: center;
-}
-
-.cercle2 {
-  border-radius: 50%;
-  width: 2000px;
-  height: 2000px;
-  position: absolute;
-}
-
-.blue1 {
-  height: 10%;
-  width: 100%;
-  position: absolute;
-  transform: translateY(-70px);
-}
-
-.blue2 {
-  height: 10%;
-  width: 100%;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-}
-
-.profile {
-  display: flex;
-  justify-content: center;
-}
-
-.cercle-chiant-haut,
-.cercle-chiant-bas {
-  position: absolute;
-  z-index: 2;
-
-}
-
-.cercle-chiant-haut {
-  transform: translateY(-25px);
-}
-
-.cercle-chiant-bas {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  transform: translateY(-15px);
-}
-
-
-.tel,
-.sms,
-.mail,
-.localisation {
-  background-color: white;
-  border-radius: 50px;
-  width: 50px;
-  height: auto;
-}
-
-#special_css_svg .a, #special_css_svg .d { fill: none; }
-#special_css_svg .a { stroke: current; stroke-width: 3px; }
-#special_css_svg .b { fill: current; }
-#special_css_svg .c { stroke: none; }
-
-.tel {
-  margin-right: 60px;
-}
-
-.localisation {
-  margin-left: 60px;
-}
-
-.sms {
-  margin-right: 20px;
-}
-
-.mail {
-  margin-left: 20px;
-}
-
-.information-preview {
-  background-color: white;
-  z-index: 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  border-radius: 10px;
-  padding-bottom: 20px;
-}
-
-.pastille-blanc {
-  z-index: 0;
-  transform: translateY(-15px);
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-}
-
-.title-info {
-  font-size: 1.25rem;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.except-title-information-preview {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
-.except-title-information-preview .p {
-  font-size: 0.938rem;
-  margin: 0;
+.offcanvas-body {
   padding: 0;
-  color: #B7B4AD;
-  font-family: 'Montserrat', sans-serif;
 }
 
-span {
-  text-transform: capitalize;
-  font-family: 'Montserrat', sans-serif;
+.offcanvas.offcanvas-bottom {
+  height: 90%;
+  border-radius: 20px 20px 0px 0px;
 }
 
-.span-exception {
-  text-transform: none;
-  overflow-wrap: anywhere;
-  text-align: justify;
-}
-
-.span-exception-resume{
-  text-transform: none;
-  overflow-wrap: anywhere;
-  text-align: center;
-}
-
-.except-title-information-preview-resume{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  padding-left: 25px;
-  padding-right: 25px;
-  text-align: center;
-}
-
-.except-title-information-preview-resume .p{
-  font-size: 0.938rem;
-  margin: 0;
-  padding: 0;
-  color: #B7B4AD;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.map{
-  font-size: 0.938rem;
-  color: #B7B4AD;
-  border: 1px solid #B7B4AD;
-  border-radius: 5px;
-  width: 50%;
-  text-align: center;
-  margin-top: 10px;
-  padding: 5px;
-}
-
-.except-title-information-preview-localisation {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  padding-left: 25px;
-  padding-right: 25px;
-  align-items: center;
-}
-
-.url{
-  text-transform: capitalize;
-  font-size: 0.938rem;
-  color: #B7B4AD;
-  border: 1px solid #B7B4AD;
-  border-radius: 5px;
-  width: 50%;
-  text-align: center;
-  margin-top: 10px;
-  overflow-wrap: anywhere;
-  padding: 5px;
-}
-
-.except-title-information-preview-portfolio{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-}
-
-.except-title-information-preview-social{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+.btn-close {
+  background-size: 20px;
   width: 80%;
+  background-position-y: -2px;
+  background: none;
+  position: absolute;
 }
 
-.except-title-information-preview-social a{
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4E4E4E;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.circle_preview {
+  background-color: #4E4E4E;
+  width: 20%;
+  border-radius: 50%;
+  height: 50px;
+  z-index: -1;
+  position: absolute;
+  transform: scaleY(2);
   display: flex;
   justify-content: center;
+}
+
+.offcanvas-title {
+  color: white;
+}
+
+.position_circle_header {
+  display: flex;
+  justify-content: center;
+
+}
+
+.svg-ouvert {
+  transform: translateY(-19px) rotate(180deg);
+  width: 20px;
+}
+
+.bouton-preview{
+  display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: #4E4E4E;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.circle_preview_button {
+  background-color: #4E4E4E;
+  width: 20%;
+  border-radius: 50%;
+  height: 50px;
+  position: absolute;
+  transform: scaleY(2);
+  display: flex;
+  justify-content: center;
+}
+
+.offcanvas.offcanvas-bottom{
+  right: 5vw;
+  left: 5vw;
 }

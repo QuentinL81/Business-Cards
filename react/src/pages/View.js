@@ -27,7 +27,6 @@ const [card, setCard] = useState({});
   return (
     <div>
       <NavBar />
-        <Preview information={card}></Preview>
     </div>
   )
 }

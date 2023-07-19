@@ -11,6 +11,7 @@
     background-color: #E5DFD3;
     font-size: 1.875rem;
     font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
 }
 
 .accordion-item {
@@ -22,7 +23,7 @@
     background-color: white;
 }
 
-.alignement{
+.alignement {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -31,4 +32,11 @@
 
 .accordion-item:first-of-type .accordion-button {
     border-radius: 0;
+}
+
+@media only screen and (max-width: 880px) {
+    .alignement {
+        font-size: 0.938rem;
+    }
+
 }
