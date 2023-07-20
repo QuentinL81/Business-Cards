@@ -163,7 +163,7 @@
               <img className='plus_B' src={plus} alt="Plus-logo" />
             </label>
 
-            <div className='test'>
+            <div className='filedefine'>
               <input id="file-upload" data-testid="background-picture-input" onChange={handleBackgroundChange} type='file' accept='image/png, image/jpeg, image/gif' />
               {fileLinkBackground && !backgroundError && <img src={fileLinkBackground} className='new_image_background' alt='Background' />}
               {backgroundError && <Alert variant="danger">{backgroundError}</Alert>}
@@ -187,7 +187,7 @@
               <img className='plus_P' src={plusP} alt="Plus-logo" />
             </label>
 
-            <div className='test'>
+            <div className='filedefine'>
               <input id="file-upload-pf" data-testid="profile-picture-input" onChange={handleProfileChange} type='file' accept='image/png, image/jpeg, image/gif' />
               {fileLinkProfile && !profileError && <img src={fileLinkProfile} className='new_profile_picture' alt='Profile' />}
               {profileError && <Alert variant="danger">{profileError}</Alert>}
