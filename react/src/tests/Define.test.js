@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent} from '@testing-library/react';
+import { render, fireEvent, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Define from '../blocs/Define';
 
@@ -98,12 +98,11 @@ describe('Test Define bloc', () => {
         const file = new File([''], 'profile.txt', { type: 'image/txt', size: 6000000 });
     
         fireEvent.change(backgroundPictureInput, { target: { files: [file] } });
-        const errorMessage = queryByText((content, element) => {
-            return element.tagName.toLowerCase() === 'p' 
-            && content.includes('Invalid format: not a TXT file');
-        });
 
-        expect(errorMessage).toBeInTheDocument();
+        waitFor(() => {
+            const errorMessage = queryByText('Invalid format: not a TXT file');
+            expect(errorMessage).toBeInTheDocument();
+        });
     });
 
     test('Check the error message for invalid background picture size', () => {
@@ -149,12 +148,11 @@ describe('Test Define bloc', () => {
         const file = new File([''], 'profile.txt', { type: 'image/txt', size: 600000 });
     
         fireEvent.change(profilePictureInput, { target: { files: [file] } });
-        const errorMessage = queryByText((content, element) => {
-            return element.tagName.toLowerCase() === 'p' 
-            && content.includes('Invalid format: not a TXT file');
-        });
 
-        expect(errorMessage).toBeInTheDocument();
+        waitFor(() => {
+            const errorMessage = queryByText('Invalid format: not a TXT file');
+            expect(errorMessage).toBeInTheDocument();
+        });
     });
 
     test('Check the error message for invalid profile picture size', () => {
