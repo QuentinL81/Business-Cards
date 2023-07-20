@@ -34,3 +34,15 @@
 .QRCode .ChangeColor h2{
     font-size: 1.25rem;
 }
+
+@media only screen and (max-width: 550px) {
+    .inputQRCode {
+        width: 40px;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .QRCode h2 {
+        font-size: 0.8rem!important;
+    }
+}

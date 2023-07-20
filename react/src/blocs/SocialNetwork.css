@@ -1,4 +1,48 @@
-.social-networks{
-    display:flex;
+.social-networks {
+    display: grid;
+    grid-auto-rows: 60px;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
+    padding: 2vw;
+    align-items: center;
+    justify-items: center;
+}
+
+.social-networks .svg-rs {
+    width: 50px;
+}
+
+
+.petit_reseaux {
+    display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-top: 20px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    display: flex;
+    align-items: center;
+}
+
+.all-responsive {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image-aveclabel {
+    width: 50px;
+}
+
+.petit_reseaux .form-control{
+    height: 50px;
+
+}
+
+.petit_reseaux .alert-danger{
+    margin-left: 3vw;
+    margin-right: 2vw;
 }

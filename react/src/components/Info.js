@@ -24,7 +24,7 @@ import slack from '../assets/slack.svg';
 export default function Info({
     information
 }) {
-    console.log(information.site_url)
+
     return (
 
         <div className='infos'>
@@ -137,7 +137,7 @@ export default function Info({
                             {information.skype && <a href={information.skype} target='_blank'><img className='skype' src={skype} alt="logo-skype" /></a>}
                             {information.github && <a href={information.github} target='_blank'><img className='github' src={github} alt="logo-github" /></a>}
                             {information.slack && <a href={information.slack} target='_blank'><img className='slack' src={slack} alt="logo-slack" /></a>}
-                            {information.yt && <a href={information.yt} target='_blank'><img className='yt' src={yt} alt="logo-yt" /></a>}
+                            {information.youtube && <a href={information.youtube} target='_blank'><img className='yt' src={yt} alt="logo-yt" /></a>}
                             {information.behance && <a href={information.behance} target='_blank'><img className='behance' src={behance} alt="logo-behance" /></a>}
                             {information.whatsapp && <a href={information.whatsapp} target='_blank'><img className='whatsapp' src={whatsapp} alt="logo-whatsapp" /></a>}
                         </div>

@@ -93,3 +93,15 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+@media only screen and (max-width: 880px) {
+    .define_LP h1 {
+       font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .add_LP{
+        flex-direction: column-reverse;
+    }
+  }

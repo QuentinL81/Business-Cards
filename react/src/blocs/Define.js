@@ -137,6 +137,7 @@
         
         <div className='define_color'>
           <h1>Colors</h1>
+          <div className='les-2-div'>
           <div className='primary'>
             <h2>Primary</h2>
             <div className='aligne_color1'>
@@ -152,6 +153,7 @@
               <input data-testid="secondary-color-input" onChange={handleColorSecondaryChange} className='txtC' id='secondaryColorInput' type='text' value={colorSecondary} />
               {colorSecondaryError && <Alert variant="danger">{colorSecondaryError}</Alert>}
             </div>
+          </div>
           </div>
         </div>
 
