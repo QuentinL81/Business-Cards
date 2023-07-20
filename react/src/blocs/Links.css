@@ -3,5 +3,28 @@
 }
 
 .hyperlien_img {
-  width: 60px;
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.position-name{
+  display: flex;
+  align-items: center;
+}
+
+.position-website-links{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 600px) {
+  .position-website-links{
+    flex-direction: column;
+  }
+  .position-name{
+    margin-bottom: 20px;
+  }
+
 }

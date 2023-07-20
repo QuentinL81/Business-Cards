@@ -65,29 +65,28 @@
     display: flex;
 }
 
-.secondary{
-    padding-right: 13%;
-}
-
 /* --------------------------------------------------------------------------------------------*/
 
-.define_BP, .define_PF {
+.define_BP,
+.define_PF {
     display: flex;
     width: 100%;
     align-items: center;
 }
 
-.define_BP{
+.define_BP {
     border-bottom: 1px solid #707070;
     padding-bottom: 20px;
 }
 
-.define_BP h1, .define_PF h1 {
+.define_BP h1,
+.define_PF h1 {
     font-size: 1.563rem;
     margin: 0;
 }
 
-.add_BP , .add_PF{
+.add_BP,
+.add_PF {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -95,24 +94,28 @@
     width: 100%;
 }
 
-.plus_B, .plus_P{
+.plus_B,
+.plus_P {
     width: 100%;
     padding: 10%;
 }
 
-#file-upload, #file-upload-pf {
+#file-upload,
+#file-upload-pf {
     display: none;
 }
 
-.new_image_background, .new_profile_picture{
+.new_image_background,
+.new_profile_picture {
     width: 140px;
-    height: 170px;
+    height: 133px;
     margin: 10px;
     border-radius: 20%;
     position: relative;
 }
 
-.default-background-option, .default-profile-option{
+.default-background-option,
+.default-profile-option {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -125,19 +128,20 @@
     border-radius: 20%;
 }
 
-.default-background-option{
+.default-background-option {
     border: 1px solid #707070;
 }
 
-.barDefine{
+.barDefine {
     position: absolute;
 }
 
-.default_background{
-    display: none;   
+.default_background {
+    display: none;
 }
 
-.slider, .sliderProfile{
+.slider,
+.sliderProfile {
     position: absolute;
     width: 140px;
     height: 13px;
@@ -145,10 +149,11 @@
     border-radius: 30px;
     border: none;
     background-color: #78C142;
-    cursor: auto!important;
+    cursor: auto !important;
 }
 
-.sliderbis, .sliderProfileBis{
+.sliderbis,
+.sliderProfileBis {
     position: absolute;
     width: 140px;
     height: 13px;
@@ -157,32 +162,33 @@
     background-color: #78C142;
     animation: slideAnimation 0.5s ease;
     margin-top: 170px;
-    cursor: auto!important;
+    cursor: auto !important;
 }
 
 @keyframes slideAnimation {
     0% {
-      transform: translateX(-100%);
+        transform: translateX(-100%);
     }
+
     100% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
-  }
+}
 
 /* --------------------------------------------------------------------------------------------*/
 
-.default_profile{
+.default_profile {
     width: 147px;
     height: 147px;
     margin: 10px;
     position: absolute;
 }
 
-.new_profile_picture{
+.new_profile_picture {
     border-radius: 100%;
 }
 
-.filedefine{
+.filedefine {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -193,4 +199,58 @@
     height: 153px;
     margin: 2%;
     border-radius: 30px;
+}
+
+.les-2-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+@media only screen and (max-width: 850px) {
+    .filedefine{
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .define_block h1 {
+        font-size: 0.9rem;
+    }
+
+    .define_block h2 {
+        font-size: 0.8rem;
+    }
+
+    .define_color .secondary {
+        padding-right: 0;
+    }
+
+
+}
+
+@media only screen and (max-width: 550px) {
+    .inptP {
+        width: 40px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .les-2-div {
+        flex-direction: column;
+    }
+
+    .primary{
+        padding-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .add_BP, .add_PF {
+        flex-direction: column-reverse;
+}
+.filedefine{
+    margin-bottom: 20px;
+}
 }

@@ -47,16 +47,22 @@ export default function Links({
     <div className="container mt-3 mb-3">
       <Row className="mb-3">
         <Form.Label><span className="required-field">*</span> Links </Form.Label>
-        <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
-        <Form.Group controlId="Name" className="col">
-          <Form.Control type="text" name="siteName" placeholder="My Website" onChange={handleInputChange} required />
-          {errors.siteName && <Alert variant="danger">{errors.siteName}</Alert>}
-        </Form.Group>
-        <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
-        <Form.Group controlId="Url" className="col">
-          <Form.Control type="text" name="siteUrl" placeholder="www.mywebsite.com" onChange={handleInputChange} required />
-          {errors.siteUrl && <Alert variant="danger">{errors.siteUrl}</Alert>}
-        </Form.Group>
+        <div className="position-website-links">
+          <div className="position-name">
+            <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
+            <Form.Group controlId="Name" className="col">
+              <Form.Control type="text" name="site_name" placeholder="My Website" onChange={handleInputChange} required />
+              {errors.siteName && <Alert variant="danger">{errors.siteName}</Alert>}
+            </Form.Group>
+          </div>
+          <div className="position-name">
+            <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
+            <Form.Group controlId="Url" className="col">
+              <Form.Control type="text" name="site_url" placeholder="www.mywebsite.com" onChange={handleInputChange} required />
+              {errors.siteUrl && <Alert variant="danger">{errors.siteUrl}</Alert>}
+            </Form.Group>
+          </div>
+        </div>
       </Row>
       <div className='mandatoryFields'>
         <p><span className="required-field">*</span> Field is mandatory</p>
