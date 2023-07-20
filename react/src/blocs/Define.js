@@ -5,7 +5,7 @@
   import plus from '../assets/plus2.svg';
   import bar from '../assets/bar.svg';
   import plusP from '../assets/plus3.svg';
-  import defaultProfile from '../assets/user.png';
+  import defaultProfile from '../assets/user.jpg';
   import defaultBackground from '../assets/background_default.png'
 
   function Define({
