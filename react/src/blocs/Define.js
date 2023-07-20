@@ -137,7 +137,6 @@
         
         <div className='define_color'>
           <h1>Colors</h1>
-          <div className='les-2-div'>
           <div className='primary'>
             <h2>Primary</h2>
             <div className='aligne_color1'>
@@ -153,7 +152,6 @@
               <input data-testid="secondary-color-input" onChange={handleColorSecondaryChange} className='txtC' id='secondaryColorInput' type='text' value={colorSecondary} />
               {colorSecondaryError && <Alert variant="danger">{colorSecondaryError}</Alert>}
             </div>
-          </div>
           </div>
         </div>
 
@@ -174,7 +172,7 @@
 
             <div className="default-background-option" onClick={handleUseDefaultBackground}>
               <img src={bar} className='barDefine' alt='bar-logo' />
-              {!fileLinkBackground && <img src={defaultBackground} className='default_background' alt='Default Profile' />}
+              {!fileLinkBackground && <img src={defaultBackground} className='default_background' alt='Default Background' />}
               {!fileLinkBackground && <div className='slider'onClick={handleUseDefaultBackground}></div>}
             </div>
 

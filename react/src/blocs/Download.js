@@ -25,6 +25,12 @@ export default function Download({ handleChange }) {
     handleChange({ target: { name: 'fileLinkDownload', value: null } });
   };
 
+  const handleUseDefaultDownload = () => {
+    setFileLinkDownload(null);
+    setError('');
+    handleChange({ target: { name: 'fileLinkDownload', value: null } });
+  }
+
   const validateFile = (file, setError, setFileLink, fileLinkName) => {
     const validFormats = ['image/png', 'image/jpeg', 'image/gif'];
     const validSize = 500000; // Minimum file size (0.5 MB)
@@ -54,20 +60,30 @@ export default function Download({ handleChange }) {
     <div className='download'>
       <h1>Download Picture</h1>
       <div className='add_download'>
+
         <label htmlFor="form-control">
           <img className='plus_B' src={plus} alt="Plus-logo" />
         </label>
-        <input id="form-control" data-testid="background-picture-input" onChange={handleDownloadChange} type='file' accept='image/png, image/jpeg, image/gif' />
-        {error && (
-          <Alert variant="danger">{error}</Alert>
-        )}
-        {fileLinkDownload && (
-          <div className="preview-image">
-            <img src={fileLinkDownload} className='download-preview' alt="DownloadPreview" />
-            <img src={poubelle} alt="remove" className="remove-btn" data-testid="remove-picture-input" onClick={handleImageRemove}/>
-          </div>
-        )}
-        <img src={bar} className='barre' alt='barre-logo' />
+
+        <div className='filedefine'>
+          <input id="form-control" data-testid="background-picture-input" onChange={handleDownloadChange} type='file' accept='image/png, image/jpeg, image/gif' />
+          {fileLinkDownload && !setError && <img src={fileLinkDownload} className='new_download_picture' alt='Download' />}
+          {error && (<Alert variant="danger">{error}</Alert>)}
+
+
+          {fileLinkDownload && (
+            <div className="preview-image">
+              <img src={fileLinkDownload} className='download-preview' alt="DownloadPreview" />
+              <img src={poubelle} alt="remove" className="remove-btn" data-testid="remove-picture-input" onClick={handleImageRemove} />
+              {fileLinkDownload && <div className='sliderbis' onClick={handleUseDefaultDownload}></div>}
+            </div>)}
+        </div>
+
+        <div className='default-background-option' onClick={handleUseDefaultDownload}>
+          <img src={bar} className='barDefine' alt='bar-logo' />
+          {!fileLinkDownload && <div className='slider' onClick={handleDownloadChange}></div>}
+        </div>
+
       </div>
     </div>
   );

@@ -105,3 +105,14 @@
         flex-direction: column-reverse;
     }
   }
+
+.sliderLoader {
+    position: absolute;
+    width: 140px;
+    height: 13px;
+    margin-left: 0.5%;
+    border-radius: 30px;
+    border: none;
+    background-color: #78C142;
+    cursor: auto !important;
+}
