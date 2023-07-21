@@ -33,7 +33,7 @@
     border-radius: 30px;
 }
 
-.barre, .bar {
+.barDownload {
     width: 140px;
     height: 140px;
     padding: 10px;
@@ -64,4 +64,17 @@
     .add_download {
        flex-direction: column-reverse;
     }
+}
+
+.default-Download-option{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 140px;
+    height: 140px;
+    margin: 2%;
+    border-radius: 20%;
 }

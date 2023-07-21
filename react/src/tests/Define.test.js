@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Define from '../blocs/Define';
 
-describe('Test Define bloc', () => {
+describe('Define component tests', () => {
 
     test('Check colorPrimary state (update) and call handleChange', () => {
         const handleChange = jest.fn();
