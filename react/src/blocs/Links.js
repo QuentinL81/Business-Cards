@@ -51,14 +51,14 @@ export default function Links({
           <div className="position-name">
             <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
             <Form.Group controlId="Name" className="col">
-              <Form.Control type="text" name="site_name" placeholder="My Website" onChange={handleInputChange} required />
+              <Form.Control type="text" data-testid="site-name-input" name="site_name" placeholder="My Website" onChange={handleInputChange} required />
               {errors.siteName && <Alert variant="danger">{errors.siteName}</Alert>}
             </Form.Group>
           </div>
           <div className="position-name">
             <img className='hyperlien_img' src={hyperlien} alt="hyperlien-img" />
             <Form.Group controlId="Url" className="col">
-              <Form.Control type="text" name="site_url" placeholder="www.mywebsite.com" onChange={handleInputChange} required />
+              <Form.Control type="text" data-testid="site-url-input" name="site_url" placeholder="www.mywebsite.com" onChange={handleInputChange} required />
               {errors.siteUrl && <Alert variant="danger">{errors.siteUrl}</Alert>}
             </Form.Group>
           </div>

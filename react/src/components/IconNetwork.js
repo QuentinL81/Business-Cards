@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './IconNetwork.css'
 
-export default function InconNetwork({
+export default function IconNetwork({
   image,
   label,
   name,
