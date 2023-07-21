@@ -30,9 +30,9 @@ Card.create = (newCard, result) => {
       result(err, null);
       return;
     }
-
-    console.log("created card: ", { id: res.insertId, ...newCard });
-    result(null, { id: res.insertId, ...newCard });
+    newCard.id = res.insertId;
+    console.log("created card: ", newCard );
+    result(null, newCard);
   });
 };
 

@@ -19,20 +19,21 @@ function escapeSpecialCharacters(str) {
 // Create and Save a new Card
 exports.create = [
   // Required fields and constraints validation
-  body("firstName").trim().isLength({ max: 30 }).notEmpty(),
-  body("lastName").trim().isLength({ max: 30 }).notEmpty(),
+  body("first_name").trim().isLength({ max: 30 }).notEmpty(),
+  body("last_name").trim().isLength({ max: 30 }).notEmpty(),
   body("mobile").trim().isLength({ max: 20 }).notEmpty(),
-  body("businessPhone").trim().isLength({ max: 20 }).notEmpty(),
+  body("business_phone").trim().isLength({ max: 20 }).notEmpty(),
   body("email").trim().isLength({ max: 100 }).notEmpty().isEmail(),
   body("compagny").trim().isLength({ max: 50 }).notEmpty(),
   body("position").trim().isLength({ max: 50 }).notEmpty(),
-  body("jobId").trim().isLength({ max: 30 }).notEmpty(),
+  body("job_id").trim().isLength({ max: 30 }).notEmpty(),
   body("department").trim().isLength({ max: 50 }).notEmpty(),
   body("address").trim().isLength({ max: 500 }).notEmpty(),
   body("resume").trim().isLength({ max: 500 }).notEmpty(),
-  body("siteName").trim().isLength({ max: 255 }).notEmpty(),
-  body("siteUrl").trim().isLength({ max: 255 }).notEmpty().isURL(),
+  body("site_name").trim().isLength({ max: 255 }).notEmpty(),
+  body("site_url").trim().isLength({ max: 255 }).notEmpty().isURL(),
   // Social networks, optional fields
+  /*
   body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
   body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
   body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
@@ -43,9 +44,12 @@ exports.create = [
   body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
   body("behance").trim().isLength({ max: 255 }).optional().isURL(),
   body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
+  */
 
   // Check for validation errors
   (req, res, next) => {
+
+    console.log("DEBUT VALIDATION FIELDS")    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -55,7 +59,12 @@ exports.create = [
 
   // Card creation
   (req, res) => {
+
+    console.log("DEBUT AJOUT DB")
+
     const card = ToCardModel(req.body);
+
+    console.log("card",card)
 
     // Escape special characters
     for (const prop in card) {
@@ -65,10 +74,12 @@ exports.create = [
     }
 
     // Save files as bytes
+    /*
     card.file_link_profil = saveFileAsBytes(req.file_link_profil);
     card.file_link_background = saveFileAsBytes(req.file_link_background);
     card.file_link_download = saveFileAsBytes(req.file_link_download);
     card.file_link_loader = saveFileAsBytes(req.file_link_loader);
+*/
 
     // Save Card in the database
     Card.create(card, (err, data) => {
@@ -81,6 +92,7 @@ exports.create = [
           return res.status(500).json({ error: "Database error" });
         }
       } else {
+        
         res.send(data);
       }
     });

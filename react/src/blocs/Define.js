@@ -26,25 +26,25 @@
     useEffect(() => {
       handleChange({
         target: {
-          name: 'primarycolor',
+          name: 'color_primary',
           value: colorPrimary,
         }
       });
       handleChange({
         target: {
-          name: 'secondarycolor',
+          name: 'color_secondary',
           value: colorSecondary,
         }
       });
       handleChange({
         target: {
-          name: 'fileLinkProfile',
+          name: 'file_link_profile',
           value: defaultProfile,
         }
       });
       handleChange({
         target: {
-          name: 'fileLinkBackground',
+          name: 'file_link_background',
           value: defaultBackground,
         }
       });
@@ -56,7 +56,7 @@
       validateColor(color, setColorPrimaryError);
       handleChange({
         target: {
-          name: 'primarycolor',
+          name: 'color_primary',
           value: color,
         }
       });
@@ -68,7 +68,7 @@
       validateColor(color, setColorSecondaryError);
       handleChange({
         target: {
-          name: 'secondarycolor',
+          name: 'color_secondary',
           value: color,
         },
       });
@@ -107,7 +107,7 @@
     const handleBackgroundChange = (e) => {
       if (e.target.files) {
         const file = e.target.files[0];
-        validateFile(file, setBackgroundError, setFileLinkBackground, 'fileLinkBackground');
+        validateFile(file, setBackgroundError, setFileLinkBackground, 'file_link_background');
         setProfileError('');
       }
     };
@@ -115,7 +115,7 @@
     const handleProfileChange = (e) => {
       if (e.target.files) {
         const file = e.target.files[0];
-        validateFile(file, setProfileError, setFileLinkProfile, 'fileLinkProfile');
+        validateFile(file, setProfileError, setFileLinkProfile, 'file_link_profile');
         setBackgroundError('');
       }
     };
@@ -123,13 +123,13 @@
     const handleUseDefaultBackground = () => {
       setFileLinkBackground(null);
       setBackgroundError('');
-      handleChange({ target: { name: 'fileLinkBackground', value: defaultBackground } });
+      handleChange({ target: { name: 'file_link_background', value: defaultBackground } });
     };
 
     const handleUseDefaultProfile = () => {
       setFileLinkProfile(null);
       setProfileError('');
-      handleChange({ target: { name: 'fileLinkProfile', value: defaultProfile } });
+      handleChange({ target: { name: 'file_link_profile', value: defaultProfile } });
     };
 
     return (
@@ -140,7 +140,7 @@
           <div className='primary'>
             <h2>Primary</h2>
             <div className='aligne_color1'>
-              <input onChange={handleColorPrimaryChange} className='inptP' type='color' name='colorPrimary' value={colorPrimary} />
+              <input onChange={handleColorPrimaryChange} className='inptP' type='color' name='color_primary' value={colorPrimary} />
               <input data-testid="primary-color-input" onChange={handleColorPrimaryChange} className='txtC' id='primaryColorInput' type='text' value={colorPrimary} />
               {colorPrimaryError && <Alert variant="danger">{colorPrimaryError}</Alert>}
             </div>
@@ -148,7 +148,7 @@
           <div className='secondary'>
             <h2>Secondary</h2>
             <div className='aligne_color2'>
-              <input onChange={handleColorSecondaryChange} className='inptP' type='color' name='colorSecondary' value={colorSecondary} />
+              <input onChange={handleColorSecondaryChange} className='inptP' type='color' name='color_secondary' value={colorSecondary} />
               <input data-testid="secondary-color-input" onChange={handleColorSecondaryChange} className='txtC' id='secondaryColorInput' type='text' value={colorSecondary} />
               {colorSecondaryError && <Alert variant="danger">{colorSecondaryError}</Alert>}
             </div>
