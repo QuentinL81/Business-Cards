@@ -6,7 +6,7 @@ import './QRCode.css';
 export default function QRCodeGenerator({
   handleChange
 }) {
-  const value = "https://google.fr"
+  const value = window.location.href;
   const [QRCodeColor, setQRCodeColor] = useState('#000000');
   const [colorQRCodeError, setColorQRCodeError] = useState('');
 
@@ -21,7 +21,7 @@ export default function QRCodeGenerator({
     validateColor(color, setColorQRCodeError);
     handleChange({
       target: {
-        name: 'QRCodeColor',
+        name: 'qr_code',
         value: color,
       }
     });
@@ -40,7 +40,7 @@ export default function QRCodeGenerator({
       <div className='ChangeColor'>
         <h2>Choose your color</h2>
         <div className='aligne_color_QR'>
-          <input onChange={handleQRCodeColorChange} className='inputQRCode' type='color' name='QRCodeColor' value={QRCodeColor} />
+          <input onChange={handleQRCodeColorChange} className='inputQRCode' type='color' name='qr_code' value={QRCodeColor} />
           <input data-testid="QRcode-color-input" onChange={handleQRCodeColorChange} className='txtQRCode' id='QRCodeColorInput' type='text' value={QRCodeColor} />
           {colorQRCodeError && <Alert variant="danger">{colorQRCodeError}</Alert>}
         </div>

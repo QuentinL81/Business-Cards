@@ -5,26 +5,26 @@ const Card = require("../models/card.model");
         let model = new Card();
         model.id = card.id;
         // User
-        model.first_name = card.firstName || '';
-        model.last_name = card.lastName || '';
+        model.first_name = card.first_name || '';
+        model.last_name = card.last_name || '';
         model.mobile = card.mobile || '';
-        model.business_phone = card.businessPhone || '';
+        model.business_phone = card.business_phone || '';
         model.email = card.email || '';
         model.company = card.company || '';
         model.position = card.position || '';
-        model.job_id = card.jobId || '';
+        model.job_id = card.job_id || '';
         model.department = card.department || '';
         model.address = card.address || '';
         model.resume = card.resume || '';
         // Colors
-        model.color_primary = card.colorPrimary || '';
-        model.color_secondary = card.colorSecondary || '';
+        model.color_primary = card.color_primary || '';
+        model.color_secondary = card.color_secondary || '';
         model.qr_code = card.qr_code || '';
         // Files
-        model.file_link_profil = card.fileLinkProfil || Buffer.alloc(0),
-        model.file_link_background = card.fileLinkBackground || Buffer.alloc(0),
-        model.file_link_download = card.fileLinkDownload || Buffer.alloc(0),
-        model.file_link_loader = card.fileLinkLoader || Buffer.alloc(0),
+        model.file_link_profil = card.file_link_profil || Buffer.alloc(0),
+        model.file_link_background = card.file_link_background || Buffer.alloc(0),
+        model.file_link_download = card.file_link_download || Buffer.alloc(0),
+        model.file_link_loader = card.file_link_loader || Buffer.alloc(0),
         // Social networks
         model.facebook = card.facebook || '';
         model.twitter = card.twitter || '';
@@ -40,8 +40,8 @@ const Card = require("../models/card.model");
         model.behance = card.behance || '';
         model.whatsapp = card.whatsapp || '';
         // URL
-        model.site_name = card.siteName || '';
-        model.site_url = card.siteUrl || '';
+        model.site_name = card.site_name || '';
+        model.site_url = card.site_url || '';
 
         return model;
     };
@@ -51,26 +51,26 @@ const Card = require("../models/card.model");
         let apiCard = new Card();
         apiCard.id = card.id;
         // User
-        apiCard.firstName = card.first_name || '';
-        apiCard.lastName = card.last_name || '';
+        apiCard.first_name = card.first_name || '';
+        apiCard.last_name = card.last_name || '';
         apiCard.mobile = card.mobile || '';
-        apiCard.businessPhone = card.business_phone || '';
+        apiCard.business_phone = card.business_phone || '';
         apiCard.email = card.email || '';
         apiCard.company = card.company || '';
         apiCard.position = card.position || '';
-        apiCard.jobId = card.job_id || '';
+        apiCard.job_id = card.job_id || '';
         apiCard.department = card.department || '';
         apiCard.address = card.address || '';
         apiCard.resume = card.resume || '';
         // Colors
-        apiCard.colorPrimary = card.color_primary || '';
-        apiCard.colorSecondary = card.color_secondary || '';
+        apiCard.color_primary = card.color_primary || '';
+        apiCard.color_secondary = card.color_secondary || '';
         apiCard.qr_code = card.qr_code || '';
         // Files
-        model.file_link_profil = card.fileLinkProfil || Buffer.alloc(0),
-        model.file_link_background = card.fileLinkBackground || Buffer.alloc(0),
-        model.file_link_download = card.fileLinkDownload || Buffer.alloc(0),
-        model.file_link_loader = card.fileLinkLoader || Buffer.alloc(0),
+        apiCard.file_link_profil = card.file_link_profil || Buffer.alloc(0),
+        apiCard.file_link_background = card.file_link_background || Buffer.alloc(0),
+        apiCard.file_link_download = card.file_link_download || Buffer.alloc(0),
+        apiCard.file_link_loader = card.file_link_loader || Buffer.alloc(0),
         // Social Networks
         apiCard.facebook = card.facebook || '';
         apiCard.twitter = card.twitter || '';
@@ -84,8 +84,8 @@ const Card = require("../models/card.model");
         apiCard.behance = card.behance || '';
         apiCard.whatsapp = card.whatsapp || '';
         // URL
-        apiCard.siteName = card.site_name || '';
-        apiCard.siteUrl = card.site_url || '';
+        apiCard.site_name = card.site_name || '';
+        apiCard.site_url = card.site_url || '';
         return apiCard;
     };
 

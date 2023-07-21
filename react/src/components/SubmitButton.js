@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CardDataService from "../services/card.service";
 import './SubmitButton.css';
 import Modal from 'react-modal';
+import PopupQR from './PopupQR';
 
 Modal.setAppElement('#root');
 
@@ -9,6 +10,8 @@ export default function SubmitButton({ digitalData }) {
   const [isFieldsComplete, setIsFieldsComplete] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [missingFields, setMissingFields] = useState([]);
+  const [isPopUpQRCodeOpen, setPopUpQRCodeOpen] = useState(false);
+  const [QRCode, setQRCode] = useState()
 
   const getMissingFields = (data) => {
     const requiredFields = [
@@ -83,7 +86,23 @@ export default function SubmitButton({ digitalData }) {
 
       CardDataService.create(updatedData)
         .then(response => {
+
+
           console.log(response.data);
+
+
+          //si tu as bien le lien
+          setPopUpQRCodeOpen(true);
+          console.log(isPopUpQRCodeOpen)
+          let qrcode = {
+            value: window.location.origin + "/view/" + response.data.id,
+            color: response.data.qr_code
+          }
+          setQRCode(qrcode)
+
+
+
+
         })
         .catch(e => {
           console.log(e);
@@ -100,6 +119,10 @@ export default function SubmitButton({ digitalData }) {
   const isTextLengthValid = (value, maxLength) => (value ?? '').length <= maxLength;
 
   const checkFields = (data) => { //mandatory fieldss
+
+    console.log("VERIIER LES ACCENTS : TODO");
+
+    console.log(data)
     const requiredFields = [
       'first_name',
       'last_name',
@@ -129,6 +152,7 @@ export default function SubmitButton({ digitalData }) {
       'whatsapp'
     ];
 
+    
     for (const field of optionalFields) {
       if (data[field] !== null && data[field] !== undefined) {
         if (data[field].length > 255) {
@@ -139,10 +163,10 @@ export default function SubmitButton({ digitalData }) {
       }
     }
 
-    const isCompagnyValid = isTextValid(data.compagny) && isTextLengthValid(data.ompagny, 50);
+    const isCompagnyValid = isTextValid(data.compagny) && isTextLengthValid(data.compagny, 50);
     const isPositionValid = isTextValid(data.position) && isTextLengthValid(data.position, 50);
-    const isDepartmentValid = isTextValid(data.epartment) && isTextLengthValid(data.department, 50);
-    const isJobIdValid = isTextValid(data.jobId) && isTextLengthValid(data.obId, 30);
+    const isDepartmentValid = isTextValid(data.department) && isTextLengthValid(data.department, 50);
+    const isJobIdValid = isTextValid(data.job_id) && isTextLengthValid(data.job_id, 30);
     const isAddressValid = isTextValid(data.address) && isTextLengthValid(data.address, 500);
     const isResumeValid = isTextValid(data.resume) && isTextLengthValid(data.resume, 500);
 
@@ -150,19 +174,19 @@ export default function SubmitButton({ digitalData }) {
       return false;
     }
 
-    if (!data.siteUrl || data.siteUrl.trim() === '') {
+    if (!data.site_url || data.site_url.trim() === '') {
       return false;
     }
 
     const urlPattern = /^www\.[A-Za-z0-9-]+\.(com|fr|dev|net|org|io)(\/[^\s]*)?$/i;
-    const isUrlValid = urlPattern.test(data.siteUrl) && data.siteUrl.length <= 255;
+    const isUrlValid = urlPattern.test(data.site_url) && data.site_url.length <= 255;
 
     if (!isUrlValid) {
       return false;
     }
 
     for (const field of requiredFields) {
-      if (!digitalData[field] || digitalData[field].trim() === '') {
+      if (!data[field] || data[field].trim() === '') {
         return false;
       }
     }
@@ -175,6 +199,7 @@ export default function SubmitButton({ digitalData }) {
       <button className="SubmitButton" type="button" onClick={handleSubmit}>
         Generate Card
       </button>
+      <div>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={handleModalClose}
@@ -184,6 +209,9 @@ export default function SubmitButton({ digitalData }) {
       >
         {modalContent}
       </Modal>
+      </div>
+      { isPopUpQRCodeOpen && <PopupQR valueQRCode={QRCode.value} colorQRCode={QRCode.color} showPopUp={isPopUpQRCodeOpen} />}
+
     </div>
   );
 }

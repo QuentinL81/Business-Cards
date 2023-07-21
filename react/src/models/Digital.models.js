@@ -1,10 +1,13 @@
 export class DigitalModel {
 
-    constructor(colorPrimary, colorSecondary,fileLinkBackground, fileLinkProfile, first_name, last_name, mobile, business_phone, email, compagny, position, job_id, department, address, resume, site_name, site_url, fileLinkDownload, facebook, twitter, linkedin, instagram, skype, github, slack, youtube, behance, whatsapp, fileLinkLoader, QRCodeColor) {
-        this.colorPrimary = colorPrimary;
-        this.colorSecondary = colorSecondary;
-        this.fileLinkBackground = fileLinkBackground;
-        this.fileLinkProfile = fileLinkProfile;
+    constructor(color_primary, color_secondary, file_link_background, file_link_profile, first_name, last_name, mobile, business_phone, email, compagny, position,
+         job_id, department, address, resume, site_name, site_url, file_link_download, facebook, twitter, linkedin, instagram, skype, github, slack, youtube,
+          behance, whatsapp, file_link_loader, qr_code) {
+
+        this.color_primary = color_primary;
+        this.color_secondary = color_secondary;
+        this.file_link_background = file_link_background;
+        this.file_link_profile = file_link_profile;
 
         this.first_name = first_name;
         this.last_name = last_name;
@@ -21,7 +24,7 @@ export class DigitalModel {
         this.site_name = site_name;
         this.site_url = site_url;
 
-        this.fileLinkDownload = fileLinkDownload;
+        this.file_link_download = file_link_download;
         
         this.facebook = facebook;
         this.twitter = twitter;
@@ -34,8 +37,8 @@ export class DigitalModel {
         this.behance = behance;
         this.whatsapp = whatsapp;
 
-        this.fileLinkLoader = fileLinkLoader;
+        this.file_link_loader = file_link_loader;
 
-        this.QRCodeColor = QRCodeColor
+        this.qr_code = qr_code
     }
 } 
