@@ -9,7 +9,7 @@ describe('Define component tests', () => {
         const handleChange = jest.fn();
         const { getByTestId } = render(<Define handleChange={handleChange} />);
         const primaryColorInput = getByTestId('primary-color-input');
-        const newColor = '#ff0000';
+        const newColor = '#70C2DB';
 
         fireEvent.change(primaryColorInput, { target: { value: newColor } });
 
@@ -18,7 +18,7 @@ describe('Define component tests', () => {
             expect.objectContaining({ 
                 target: { 
                     value: newColor,
-                    name:'primarycolor',
+                    name:'color_primary',
                 },
             })
         );
@@ -28,7 +28,7 @@ describe('Define component tests', () => {
         const handleChange = jest.fn();
         const { getByTestId } = render(<Define handleChange={handleChange} />);
         const secondaryColorInput = getByTestId('secondary-color-input');
-        const newColor = '#00ff00';
+        const newColor = '#830E7E';
     
         fireEvent.change(secondaryColorInput, { target: { value: newColor } });
     
@@ -37,7 +37,7 @@ describe('Define component tests', () => {
             expect.objectContaining({
                 target: {
                     value: newColor,
-                    name: 'secondarycolor',
+                    name: 'color_secondary',
                 },
             })
         );
@@ -76,7 +76,7 @@ describe('Define component tests', () => {
 
         expect(handleChange).toHaveBeenCalledWith(
         expect.objectContaining({
-            target: { name: 'fileLinkBackground', value:null },
+            target: { name: 'file_link_background', value: 'background_default.png' },
         })
         );
     });
@@ -126,7 +126,7 @@ describe('Define component tests', () => {
 
         expect(handleChange).toHaveBeenCalledWith(
         expect.objectContaining({
-            target: { name: 'fileLinkProfile', value:null },
+            target: { name: 'file_link_profile', value:'user.jpg' },
         })
         );
     });

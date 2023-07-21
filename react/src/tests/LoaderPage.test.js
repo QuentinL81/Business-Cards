@@ -23,17 +23,13 @@ describe('Test LoaderPage bloc', () => {
     });
 
     test('Check the error message is displayed for an invalid file format', () => {
-        const { getByTestId, queryByText } = render(<LoaderPage handleChange={handleChange} />);
-        const file = new File(['exampleFile'], 'example.txt', { type: 'text/plain', size: '600000' });
+        const { getByTestId, getByText, queryByText } = render(<LoaderPage handleChange={handleChange} />);
+        const file = new File(['exampleFile'], 'example.txt', { type: 'text/plain', size: 600000 });
         const input = getByTestId('loader-page-input');
-
-        fireEvent.change(input, { target: { files: [file] } });
-
-        const errorMessage = queryByText((content, element) => {
-            return element.tagName.toLowerCase() === 'p' 
-            && content.includes('Invalid format: not a TXT file');
-        });
-        expect(errorMessage).toBeInTheDocument();
+    
+        fireEvent.change(input, { target: { files: [file] } })
+        
+        expect(getByText(/Invalid format: not a TXT file/)).toBeInTheDocument();
         expect(handleChange).toHaveBeenCalledTimes(1);
         expect(handleChange).toHaveBeenCalledWith({ 
             target: { 
@@ -41,7 +37,9 @@ describe('Test LoaderPage bloc', () => {
                 value: null 
             } 
         });
-    });
+    
+        
+      });
 
     test('Check the error message is displayed for an invalid file size', () => {
         const { getByTestId, getByText } = render(<LoaderPage handleChange={handleChange} />);

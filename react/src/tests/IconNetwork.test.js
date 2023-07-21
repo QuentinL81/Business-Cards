@@ -1,39 +1,36 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import InconNetwork from '../components/IconNetwork';
+import IconNetwork from '../components/IconNetwork';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Test IconNetwork component', () => {
-
+describe('IconNetwork component tests', () => {
     test('Check the compoment button', () => {
-        render(<InconNetwork image="picture.png" label="Label" />);
+        render(<IconNetwork image="picture.png" label="Label" addLink={jest.fn()} removeLink={jest.fn()} />);
         const component = screen.getByRole('button');
         expect(component).toBeInTheDocument();
     });
 
-    test('Check the component form when button is clicked', () => {
-        render(<InconNetwork image="picture.png" label="Label" />);
-
-        const button = screen.getByRole('button');
-        fireEvent.click(button);
-
-        const form = screen.getByPlaceholderText('Label');
-        expect(form).toBeInTheDocument();
+    test('Check if the image and "alt" attribute are rendered correctly', () => {
+        render(<IconNetwork image="picture.png" label="Label" addLink={jest.fn()} removeLink={jest.fn()} />);
+        const imageElement = screen.getByAltText('Click here');
+        expect(imageElement).toBeInTheDocument();
+        expect(imageElement).toHaveAttribute('src', 'picture.png');
     });
 
-    test('Check the form is submitted correctly', () => {
-        const handleChange = jest.fn();
-        render(<InconNetwork image="picture.png" label="Label" handleChange={handleChange} />);
-      
-        const button = screen.getByRole('button');
-        fireEvent.click(button);
-      
-        const form = screen.getByPlaceholderText('Label');
-        fireEvent.change(form, { target: { value: 'https://example.com' } });
-      
-        fireEvent.submit(form);
-      
-        expect(screen.queryByPlaceholderText('Label')).toBeInTheDocument();
-        expect(screen.queryByRole('textbox', { name: 'name' })).not.toBeInTheDocument();
-      });
-      
+    test('Check the calls addLink or removeLink function', () => {
+        const addLinkMock = jest.fn();
+        const removeLinkMock = jest.fn();
+        render(<IconNetwork image="picture.png" label="Label" addLink={addLinkMock} removeLink={removeLinkMock} />);
+        const buttonElement = screen.getByRole('button');
+
+        // Click on the button when "open" is false
+        fireEvent.click(buttonElement);
+        expect(addLinkMock).toHaveBeenCalledTimes(1);
+        expect(removeLinkMock).not.toHaveBeenCalled();
+
+        // Click on the button when "open" is true
+        fireEvent.click(buttonElement);
+        expect(removeLinkMock).toHaveBeenCalledTimes(1);
+        expect(addLinkMock).toHaveBeenCalledTimes(1);
+    });
+
 });

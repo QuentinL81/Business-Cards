@@ -172,7 +172,7 @@
 
             <div className="default-background-option" onClick={handleUseDefaultBackground}>
               <img src={bar} className='barDefine' alt='bar-logo' />
-              {!fileLinkBackground && <img src={defaultBackground} className='default_background' alt='Default Background' />}
+              {<img src={defaultBackground} className='default_background' alt='Default Background' />}
               {!fileLinkBackground && <div className='slider'onClick={handleUseDefaultBackground}></div>}
             </div>
 
