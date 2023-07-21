@@ -66,7 +66,7 @@ export default function Download({ handleChange }) {
         </label>
 
         <div className='filedefine'>
-          <input id="form-control" data-testid="background-picture-input" onChange={handleDownloadChange} type='file' accept='image/png, image/jpeg, image/gif' />
+          <input id="form-control" data-testid="Download-picture-input" onChange={handleDownloadChange} type='file' accept='image/png, image/jpeg, image/gif' />
           {fileLinkDownload && !setError && <img src={fileLinkDownload} className='new_download_picture' alt='Download' />}
           {error && (<Alert variant="danger">{error}</Alert>)}
 
@@ -79,8 +79,8 @@ export default function Download({ handleChange }) {
             </div>)}
         </div>
 
-        <div className='default-background-option' onClick={handleUseDefaultDownload}>
-          <img src={bar} className='barDefine' alt='bar-logo' />
+        <div className='default-Download-option' onClick={handleUseDefaultDownload}>
+          <img src={bar} className='barDownload' alt='bar-logo' />
           {!fileLinkDownload && <div className='slider' onClick={handleDownloadChange}></div>}
         </div>
 

@@ -3,7 +3,7 @@ import AccordionDisplay from '../components/Accordion';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 
-describe('Test AccordionDisplay component', () => {
+describe('AccordionDisplay component tests', () => {
 
     test('Check the title is present', () => {
         const title = "TITRE";
