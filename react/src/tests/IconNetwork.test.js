@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import IconNetwork from '../components/IconNetwork';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('IconNetwork component tests', () => {
+describe('Tests IconNetwork component', () => {
     test('Check the compoment button', () => {
         render(<IconNetwork image="picture.png" label="Label" addLink={jest.fn()} removeLink={jest.fn()} />);
         const component = screen.getByRole('button');
