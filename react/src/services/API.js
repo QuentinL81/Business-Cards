@@ -7,13 +7,13 @@ function saveCard(digitalData) {
 
     const formData = {
         // Colors
-        colorPrimary: digitalData.colorPrimary,
-        colorSecondary: digitalData.colorSecondary,
+        color_primary: digitalData.color_primary,
+        color_secondary: digitalData.color_secondary,
         // Images
-        fileLinkBackground: digitalData.fileLinkBackground,
-        fileLinkProfile: digitalData.fileLinkProfile,
-        fileLinkDownload: digitalData.fileLinkDownload,
-        fileLinkLoader: digitalData.fileLinkLoader,
+        file_link_background: digitalData.file_link_background,
+        file_link_profile: digitalData.file_link_profile,
+        file_link_download: digitalData.file_link_download,
+        file_link_loader: digitalData.file_link_loader,
         // User
         first_name: digitalData.first_name,
         last_name: digitalData.last_name,
