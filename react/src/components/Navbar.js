@@ -26,7 +26,7 @@ function Navbar() {
           <div className="bg-dark p-4">
             <a className="text-white h4" href='/'>HOME </a>
             <a className="text-white h4" href='/create'>GENERATE A NEW CARD </a>
-            <a className="text-white h4" href='/view'>VIEW ALREADY SAVED CARD </a>
+            <a className="text-white h4" href='/cards'>VIEW ALREADY SAVED CARD </a>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ function Navbar() {
             <img className='beorn_navbar' src={beorn_image} alt="Beorn Logo" />
           </div>
           <li>
-            <a className='viewB' href='/view' onClick={handleClick}>{viewBView}</a>
+            <a className='viewB' href='/cards' onClick={handleClick}>{viewBView}</a>
           </li>
         </ul>
       </nav>

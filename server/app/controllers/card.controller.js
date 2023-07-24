@@ -74,12 +74,11 @@ exports.create = [
     }
 
     // Save files as bytes
-    /*
     card.file_link_profil = saveFileAsBytes(req.file_link_profil);
     card.file_link_background = saveFileAsBytes(req.file_link_background);
     card.file_link_download = saveFileAsBytes(req.file_link_download);
     card.file_link_loader = saveFileAsBytes(req.file_link_loader);
-*/
+
 
     // Save Card in the database
     Card.create(card, (err, data) => {

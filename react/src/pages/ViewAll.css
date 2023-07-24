@@ -1,13 +1,15 @@
-.view-all{
+.view-all {
     margin-top: 0;
 }
 
 
-.one-card{
+.one-card {
     background-color: #F0F0F0;
+    display: flex;
+    width: 90%;
 }
 
-.banner-card{
+.banner-card {
     background-color: #E5DFD3;
     border-radius: 50px;
     display: flex;
@@ -15,19 +17,46 @@
     align-items: center;
 }
 
-.banner-card h1{
+.banner-card h1 {
     color: #4E4E4E;
     font-size: 1.875rem;
     font-family: 'Montserrat', sans-serif;
 
 }
 
-.profile-card{
+.profile-card {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 }
 
-.all-cards{
+.all-cards {
     width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+}
+
+.nom-prénom-allview {
+    font-size: 2.188rem;
+    text-align: start;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat';
+}
+
+.mdd {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.563rem;
+    font-family: 'Montserrat';
+    color: #000000;
+    opacity: 0.29;
+}
+
+.mdd a {
+    display: flex;
+    align-items: center;
 }

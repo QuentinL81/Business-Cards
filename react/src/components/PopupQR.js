@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./PopupQR.css"
 import telecharger from "../assets/Picto-telecharger.svg"
@@ -37,7 +36,7 @@ function PopupQR({
         value={valueQRCode}
         fgColor={colorQRCode}
         level="H"
-        viewBox={`0 0 256 256`}
+        viewBox={`10 10 256 256`}
       />
           <a><img src={telecharger} alt="téléchargement" />Download</a>
 
