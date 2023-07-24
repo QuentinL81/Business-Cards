@@ -84,7 +84,32 @@ function ViewAll(
                     )}
                 </div>
             </div>
+            <div className='col-4 block_deux'>
+            {cards.map(card =>
+                <Preview
+                    information={card}
+
+                />
+                )}
+            </div>
         </div>
+
+
+        /* <div className='container m-0 mw-100 p-0'>
+        <NavBar />
+        <div className='row background'>
+          <div className='col-8 blocks'>
+
+          </div>
+          <div className='col-4 block_deux'>
+            <Preview
+              information={userInformation}
+              colorPrimary={userInformation.colorPrimary}
+              colorSecondary={userInformation.colorSecondary}
+            />
+        </div>
+      </div>
+      */
     )
 }
 
