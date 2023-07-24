@@ -28,19 +28,18 @@ export default function IconNetwork({
 
   return (
     <div className='icon-network'>
-      <Button className='buttons'
-        onClick={() => onClickButton({
-          image: imageOpen,
-          label: label,
-          link: "",
-          name: name,
-        })}
-        aria-controls="collapse-text"
-        aria-expanded={open}
-      >
-        <img src={image} alt="Click here" />
-      </Button>
-
+        <Button className='buttons' data-testid = {name}
+          onClick={() => onClickButton({
+            image: imageOpen,
+            label: label,
+            link: "",
+            name: name,
+          })}
+          aria-controls="collapse-text"
+          aria-expanded={open}
+        >
+          <img src={image} alt="Click here" />
+        </Button>
 
     </div>
   )

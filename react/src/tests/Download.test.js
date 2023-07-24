@@ -5,7 +5,7 @@ import Download from '../blocs/Download';
 import '@testing-library/jest-dom/extend-expect';
 
 
-describe('Download component tests', () => {
+describe('Tests Download bloc', () => {
     const handleChange = jest.fn();
 
     afterEach(() => {

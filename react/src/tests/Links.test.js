@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor} from '@testing-library/react';
 import Links from '../blocs/Links';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Test Links bloc', () => {
+describe('Tests Links bloc', () => {
 
     test('Check the error message is not displayed for a valid URL', () => {
         const handleChange = jest.fn();

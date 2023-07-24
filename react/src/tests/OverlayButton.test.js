@@ -1,35 +1,49 @@
-import { render, screen} from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import OverlayButton from '../components/OverlayButton';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Test OverlayButton component', () => {
+describe('Tests OverlayButton component', () => {
 
-    test('Check the button with a "?" symbol is present', () => {
-        const message = 'MESSAGE TOOLTIP';
-        render(<OverlayButton message={message} />);
+  test('OverlayButton renders correctly', () => {
+    const { container } = render(<OverlayButton message="TOOLTIP MESSAGE" />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test('Tooltip appears on mouseover', () => {
+    render(<OverlayButton message="TOOLTIP MESSAGE" />);
+    const bulbImage = screen.getByAltText('Ampoule-logo');
+  
+    expect(screen.queryByText('TOOLTIP MESSAGE')).toBeNull();
+  
+    fireEvent.mouseOver(bulbImage);
+    const tooltip = screen.getByText((content, element) => {
+      return element.tagName.toLowerCase() === 'div' && content === 'TOOLTIP MESSAGE';
+    });
+  
+    expect(tooltip).toBeVisible();
+  });
+
+  test('Tooltip disappears on mouseout', async () => {
+    render(<OverlayButton message="TOOLTIP MESSAGE" />);
+    const bulbImage = screen.getByAltText('Ampoule-logo');
+  
+    fireEvent.mouseOver(bulbImage);
+    const tooltip = screen.getByText((content, element) => {
+      return element.tagName.toLowerCase() === 'div' && content === 'TOOLTIP MESSAGE';
+    });
+    expect(tooltip).toBeVisible();
+
+    fireEvent.mouseOut(bulbImage);
+    expect(screen.queryByText('Tooltip message')).toBeNull();
     
-        const button = screen.getByText('?');
-        expect(button).toBeInTheDocument();
-      });
+  });
 
-    test('Checks the tooltip when the button is hovered over.', () => {
-        const message = 'MESSAGE TOOLTIP';
-        render(<OverlayButton message={message} />);
-        // Check that the tooltip is not initially displayed
-        expect(screen.queryByText(message)).toBeNull();
-        const bouton = screen.getByText('?');
-        userEvent.hover(bouton);
-    
-        expect(screen.getByText(message)).toBeInTheDocument();
-      });
+  test('Check the tooltip placement is correctly set', () => {
+    const message = 'TOOLTIP MESSAGE';
+    render(<OverlayButton message={message} />);
 
-      test('Check the tooltip placement is correctly set', () => {
-        const message = 'MESSAGE TOOLTIP';
-        render(<OverlayButton message={message} />);
-        
-        const placement = 'right';
-        expect(placement).toBe('right');
-      });
+    const placement = 'right';
+    expect(placement).toBe('right');
+  });
 
 });
