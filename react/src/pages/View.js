@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import './View.css'
-import NavBar from '../components/Navbar'
 import CardDataService from "../services/card.service";
+import Info from '../components/Info';
 
 function View() {
 
@@ -15,6 +15,10 @@ function View() {
       .then(response => {
         setCard(response.data);
         console.log("load", response.data);
+
+        const img = `data:image/jpeg;base64,${response.data.file_link_background}`;
+        console.log(img)
+
       })
       .catch(e => {
         console.log(e);
@@ -24,8 +28,10 @@ function View() {
 
 
   return (
-    <div>
-      <NavBar />
+    <div className='position-view' style={{ backgroundColor: card.color_secondary }}>
+      <div className='block-card'>
+        <Info information={card} />
+      </div>
     </div>
   )
 }

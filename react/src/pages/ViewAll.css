@@ -1,0 +1,33 @@
+.view-all{
+    margin-top: 0;
+}
+
+
+.one-card{
+    background-color: #F0F0F0;
+}
+
+.banner-card{
+    background-color: #E5DFD3;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-card h1{
+    color: #4E4E4E;
+    font-size: 1.875rem;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.profile-card{
+    display: flex;
+    justify-content: space-between;
+}
+
+.all-cards{
+    width: 100%;
+
+}
