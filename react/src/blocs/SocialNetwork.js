@@ -58,16 +58,16 @@ export default function SocialNetwork({
   return (
     <div className='all-responsive'>
       <div className='social-networks'>
-        <IconNetwork image={facebook} name="facebook" label="www.facebook.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={linkedin} name="linkedin" label="www.linkedin.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={twitter} name="twitter" label="www.twitter.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={yt} name="youtube" label="www.youtube.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={instagram} name="instagram" label="www.instagram.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={github} name="github" label="GitHub ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={slack} name="slack" label="Slack ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={skype} name="skype" label="Skype ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={whatsapp} name="whatsapp" label="Whatsapp ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
-        <IconNetwork image={behance} name="behance" label="Behance ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} />
+        <IconNetwork image={facebook} name="facebook" label="www.facebook.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="facebook" />
+        <IconNetwork image={linkedin} name="linkedin" label="www.linkedin.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="linkedin" />
+        <IconNetwork image={twitter} name="twitter" label="www.twitter.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="twitter" />
+        <IconNetwork image={yt} name="youtube" label="www.youtube.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="youtube" />
+        <IconNetwork image={instagram} name="instagram" label="www.instagram.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="instagram" />
+        <IconNetwork image={github} name="github" label="GitHub ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="GitHub ID" />
+        <IconNetwork image={slack} name="slack" label="Slack ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Slack ID" />
+        <IconNetwork image={skype} name="skype" label="Skype ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Skype ID" />
+        <IconNetwork image={whatsapp} name="whatsapp" label="Whatsapp ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Whatsapp ID" />
+        <IconNetwork image={behance} name="behance" label="Behance ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Behance ID" />
       </div>
       <div className='petit_reseaux'>
         {links.map((link) =>

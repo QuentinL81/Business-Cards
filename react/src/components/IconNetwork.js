@@ -25,7 +25,7 @@ export default function IconNetwork({
 
   return (
     <div className='icon-network'>
-        <Button className='buttons'
+        <Button className='buttons' data-testid = {name}
           onClick={() => onClickButton({
             image: image,
             label: label,
