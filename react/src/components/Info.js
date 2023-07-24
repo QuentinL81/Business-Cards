@@ -10,16 +10,16 @@ import { ReactComponent as Localisation } from '../assets/Picto-Localisation.svg
 import { ReactComponent as Website } from '../assets/Picto-web.svg';
 import { ReactComponent as Portfolio } from '../assets/Picto-Portfolio.svg';
 import { ReactComponent as Social } from '../assets/Picto-Social-media.svg';
-import facebook from '../assets/facebook.svg';
-import twitter from '../assets/twitter.svg';
-import linkedin from '../assets/linkedin.svg';
-import instagram from '../assets/instagram.svg';
-import yt from '../assets/yt.svg';
-import skype from '../assets/skype.svg';
-import whatsapp from '../assets/whatsapp.svg';
-import behance from '../assets/behance.svg';
-import github from '../assets/github.svg';
-import slack from '../assets/slack.svg';
+import facebook from '../assets/facebookbleu.svg';
+import twitter from '../assets/twitterbleu.svg';
+import linkedin from '../assets/linkedinbleu.svg';
+import instagram from '../assets/instagrambleu.svg';
+import yt from '../assets/ytbleu.svg';
+import skype from '../assets/skypebleu.svg';
+import whatsapp from '../assets/whatsappbleu.svg';
+import behance from '../assets/behancebleu.svg';
+import github from '../assets/githubbleu.svg';
+import slack from '../assets/slackbleu.svg';
 
 export default function Info({
     information
@@ -147,9 +147,6 @@ export default function Info({
 
 
                     {/*      <div className='Define'>
-<p>Background image :</p>
-{information.fileLinkBackground && <img src={information.fileLinkBackground} alt='Background' width="200" />}
-</div>
 
 
 <div className='LoaderPage'>

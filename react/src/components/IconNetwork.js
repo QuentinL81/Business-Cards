@@ -3,22 +3,25 @@ import Button from 'react-bootstrap/Button';
 import './IconNetwork.css'
 
 export default function IconNetwork({
-  image,
+  imageOpen,
+  imageClose,
   label,
   name,
   addLink,
   removeLink,
 }) {
   const [open, setOpen] = useState(false);
-
+  const [image, setImage] = useState(imageClose)
   const onClickButton = (link) => {
-    if (open){
+    if (open) {
       removeLink(link)
       setOpen(false)
+      setImage(imageClose)
     }
-    else{
+    else {
       addLink(link)
       setOpen(true)
+      setImage(imageOpen)
     }
 
   }
@@ -27,7 +30,7 @@ export default function IconNetwork({
     <div className='icon-network'>
         <Button className='buttons' data-testid = {name}
           onClick={() => onClickButton({
-            image: image,
+            image: imageOpen,
             label: label,
             link: "",
             name: name,
@@ -38,7 +41,6 @@ export default function IconNetwork({
           <img src={image} alt="Click here" />
         </Button>
 
-     
     </div>
   )
 }
