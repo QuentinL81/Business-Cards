@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS card (
     qr_code VARCHAR(7) NOT NULL,
 
     /*URL*/
-    siteName VARCHAR (255),
-    siteUrl VARCHAR(255),
+    site_name VARCHAR (255),
+    site_url VARCHAR(255),
 
     /* Image*/
     file_link_profil BLOB,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS card (
 
     /* Social Networks  */
     facebook VARCHAR(255),
-    twitter VARCHAR(255),web sud toulouse
+    twitter VARCHAR(255),
     linkedin VARCHAR(255),
     instagram VARCHAR(255),
     skype VARCHAR(255),
