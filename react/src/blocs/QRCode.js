@@ -30,6 +30,7 @@ export default function QRCodeGenerator({
   return (
     <div className='QRCode'>
       <QRCode
+        data-testid="qr-code-svg"
         style={{ height: "auto", maxWidth: "150px", width: "150px" }}
         value={value}
         fgColor={QRCodeColor}
