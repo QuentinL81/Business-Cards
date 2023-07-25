@@ -5,6 +5,8 @@ services:
     container_name: mysql-card
     ports:
       - 3306:3306
+    security_opt:
+      - seccomp:unconfined
     environment:
       - MYSQL_USER=beorntech
       - MYSQL_PASSWORD=beorntech
