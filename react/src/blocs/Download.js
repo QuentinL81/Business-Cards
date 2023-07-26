@@ -8,13 +8,13 @@ import poubelle from '../assets/poubelle.svg'
 import Alert from 'react-bootstrap/Alert';
 
 export default function Download({ handleChange }) {
-  const [fileLinkDownload, setFileLinkDownload] = useState();
+  const [file_link_download, setFileLinkDownload] = useState();
   const [error, setError] = useState('');
 
   const handleDownloadChange = (event) => {
     if (event.target.files) {
       const file = event.target.files[0];
-      const fileLinkName = 'fileLinkDownload';
+      const fileLinkName = 'file_link_download';
       validateFile(file, setError, setFileLinkDownload, fileLinkName);
     }
   };
@@ -22,13 +22,13 @@ export default function Download({ handleChange }) {
   const handleImageRemove = () => {
     setFileLinkDownload(null);
     setError('');
-    handleChange({ target: { name: 'fileLinkDownload', value: null } });
+    handleChange({ target: { name: 'file_link_download', value: null } });
   };
 
   const handleUseDefaultDownload = () => {
     setFileLinkDownload(null);
     setError('');
-    handleChange({ target: { name: 'fileLinkDownload', value: null } });
+    handleChange({ target: { name: 'file_link_download', value: null } });
   }
 
   const validateFile = (file, setError, setFileLink, fileLinkName) => {
@@ -67,21 +67,21 @@ export default function Download({ handleChange }) {
 
         <div className='filedefine'>
           <input id="form-control" data-testid="Download-picture-input" onChange={handleDownloadChange} type='file' accept='image/png, image/jpeg, image/gif' />
-          {fileLinkDownload && !setError && <img src={fileLinkDownload} className='new_download_picture' alt='Download' />}
+          {file_link_download && !setError && <img src={file_link_download} className='new_download_picture' alt='Download' />}
           {error && (<Alert variant="danger">{error}</Alert>)}
 
 
-          {fileLinkDownload && (
+          {file_link_download && (
             <div className="preview-image">
-              <img src={fileLinkDownload} className='download-preview' alt="DownloadPreview" />
+              <img src={file_link_download} className='download-preview' alt="DownloadPreview" />
               <img src={poubelle} alt="remove" className="remove-btn" data-testid="remove-picture-input" onClick={handleImageRemove} />
-              {fileLinkDownload && <div className='sliderbis' onClick={handleUseDefaultDownload}></div>}
+              {file_link_download && <div className='sliderbis' onClick={handleUseDefaultDownload}></div>}
             </div>)}
         </div>
 
         <div className='default-Download-option' onClick={handleUseDefaultDownload}>
           <img src={bar} className='barDownload' alt='bar-logo' />
-          {!fileLinkDownload && <div className='slider' onClick={handleDownloadChange}></div>}
+          {!file_link_download && <div className='slider' onClick={handleDownloadChange}></div>}
         </div>
 
       </div>
