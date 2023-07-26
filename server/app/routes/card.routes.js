@@ -15,5 +15,8 @@ module.exports = app => {
   // Update a Card with id
   router.put("/:id", cards.update);
 
+  // Delete a Card with id
+  router.delete("/:id", cards.delete);
+
   app.use('/api/cards', router);
 };

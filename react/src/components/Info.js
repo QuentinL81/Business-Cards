@@ -158,15 +158,6 @@ export default function Info({
 
                 </div>
             </div>
-            <div className='QRCode'>
-                <p>QRCode</p>
-                < div className="color-box" style={{ QRCodeColor: information.QRCodeColor }}></div>
-            </div>
-
-            <div className='QRCode'>
-                <p>QRCode</p>
-                < div className="color-box" style={{ QRCodeColor: information.QRCodeColor }}></div>
-            </div>
         </div>
     );
 }
