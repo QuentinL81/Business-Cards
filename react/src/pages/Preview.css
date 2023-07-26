@@ -24,6 +24,7 @@
   overflow: auto;
   background-color: white;
   height: 65vh;
+  z-index: -2;
 }
 
 .infos {

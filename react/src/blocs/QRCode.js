@@ -6,7 +6,7 @@ import './QRCode.css';
 export default function QRCodeGenerator({
   handleChange
 }) {
-  const value = window.location.href;
+  const value = 'window.location.href';
   const [QRCodeColor, setQRCodeColor] = useState('#000000');
   const [colorQRCodeError, setColorQRCodeError] = useState('');
 
