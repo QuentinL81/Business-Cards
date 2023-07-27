@@ -69,20 +69,18 @@ export default function SubmitButton({ digitalData }) {
     setIsFieldsComplete(isFieldsValid);
 
     if (isFieldsValid) {
-      const defaultColors = {
-        colorPrimary: '#70C2DB',
-        colorSecondary: '#830E7E',
-        fileLinkBackground: 'defaultFileLinkBackground',
-        fileLinkProfile: 'defaultFileLinkProfile',
-        fileLinkLoader: 'defaultFileLinkLoader',
+      const defaultData = {
         QRCodeColor: '#830E7E',
-        fileLinkDownload: 'defaultFileLinkDownload'
       };
+
+      console.log("Data envoyé a l'api", digitalData)
 
       const updatedData = {
         ...digitalData,
-        ...Object.fromEntries(Object.entries(defaultColors).map(([key, value]) => [key, digitalData[key] !== null && digitalData[key] !== undefined ? digitalData[key] : value]))
+        ...Object.fromEntries(Object.entries(defaultData).map(([key, value]) => [key, digitalData[key] !== null && digitalData[key] !== undefined ? digitalData[key] : value]))
       };
+
+      console.log("Data envoyé a l'api apres update", updatedData)
 
       CardDataService.create(updatedData)
         .then(response => {

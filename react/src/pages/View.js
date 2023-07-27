@@ -16,9 +16,6 @@ function View() {
         setCard(response.data);
         console.log("load", response.data);
 
-        const img = `data:image/jpeg;base64,${response.data.file_link_background}`;
-        console.log(img)
-
       })
       .catch(e => {
         console.log(e);

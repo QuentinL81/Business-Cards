@@ -6,32 +6,16 @@ const Card = function() {
 }
 
 Card.create = (newCard, result) => {
-  const {
-    file_link_profil,
-    file_link_background,
-    file_link_download,
-    file_link_loader,
-    ...cardData
-  } = newCard;
 
   const sqlQuery = "INSERT INTO card SET ?";
-  const sqlValues = {
-    ...cardData,
-    // Convert the file
-    file_link_profil: file_link_profil || Buffer.alloc(0),
-    file_link_background: file_link_background || Buffer.alloc(0),
-    file_link_download: file_link_download || Buffer.alloc(0),
-    file_link_loader: file_link_loader || Buffer.alloc(0)
-  };
 
-  sql.query(sqlQuery, sqlValues, (err, res) => {
+  sql.query(sqlQuery, newCard, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
     newCard.id = res.insertId;
-    console.log("created card: ", newCard );
     result(null, newCard);
   });
 };
@@ -48,10 +32,12 @@ Card.findById = (id, result) => {
       const cardData = res[0];
 
       // Convert the file contents from bytes to a buffer
-      cardData.file_link_profil = Buffer.from(cardData.file_link_profil, 'binary');
-      cardData.file_link_background = Buffer.from(cardData.file_link_background, 'binary');
-      cardData.file_link_download = Buffer.from(cardData.file_link_download, 'binary');
-      cardData.file_link_loader = Buffer.from(cardData.file_link_loader, 'binary');
+      //cardData.file_link_profil = cardData.file_link_profil
+      //cardData.file_link_background = cardData.file_link_background
+      //cardData.file_link_download = cardData.file_link_download
+      //cardData.file_link_loader =  cardData.file_link_loader
+
+      cardData.file_link_background 
 
       console.log("found card: ", cardData);
       result(null, cardData);
@@ -76,10 +62,10 @@ Card.getAll = (result) => {
 
     // Convert the file contents from bytes to buffers
     const cardsData = res.map(card => {
-      card.file_link_profil = Buffer.from(card.file_link_profil, 'binary');
-      card.file_link_background = Buffer.from(card.file_link_background, 'binary');
-      card.file_link_download = Buffer.from(card.file_link_download, 'binary');
-      card.file_link_loader = Buffer.from(card.file_link_loader, 'binary');
+      card.file_link_profil = card.file_link_profil;
+      card.file_link_background = card.file_link_background;
+      card.file_link_download = card.file_link_download;
+      card.file_link_loader = card.file_link_loader;
       return card;
     });
 
@@ -92,10 +78,10 @@ Card.updateById = (id, card, result) => {
   const { file_link_profil, file_link_background, file_link_download, file_link_loader, ...updatedCard } = card;
 
   // Convert file data to bytes
-  const file_link_profil_bytes = Buffer.from(file_link_profil);
-  const file_link_background_bytes = Buffer.from(file_link_background);
-  const file_link_download_bytes = Buffer.from(file_link_download);
-  const file_link_loader_bytes = Buffer.from(file_link_loader);
+  const file_link_profil_bytes = file_link_profil;
+  const file_link_background_bytes = file_link_background;
+  const file_link_download_bytes = file_link_download;
+  const file_link_loader_bytes = file_link_loader;
 
   const query = `
     UPDATE card SET 
