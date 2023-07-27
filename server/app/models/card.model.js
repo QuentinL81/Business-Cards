@@ -62,10 +62,10 @@ Card.getAll = (result) => {
 
     // Convert the file contents from bytes to buffers
     const cardsData = res.map(card => {
-      card.file_link_profil = new Buffer.from(card.file_link_profil).toString('base64');
-      card.file_link_background = new Buffer.from(card.file_link_background).toString('base64');
-      card.file_link_download = new Buffer.from(card.file_link_download).toString('base64');
-      card.file_link_loader = new Buffer.from(card.file_link_loader).toString('base64');
+      card.file_link_profil = card.file_link_profil;
+      card.file_link_background = card.file_link_background;
+      card.file_link_download = card.file_link_download;
+      card.file_link_loader = card.file_link_loader;
       return card;
     });
 
@@ -78,10 +78,10 @@ Card.updateById = (id, card, result) => {
   const { file_link_profil, file_link_background, file_link_download, file_link_loader, ...updatedCard } = card;
 
   // Convert file data to bytes
-  const file_link_profil_bytes = Buffer.from(file_link_profil);
-  const file_link_background_bytes = Buffer.from(file_link_background);
-  const file_link_download_bytes = Buffer.from(file_link_download);
-  const file_link_loader_bytes = Buffer.from(file_link_loader);
+  const file_link_profil_bytes = file_link_profil;
+  const file_link_background_bytes = file_link_background;
+  const file_link_download_bytes = file_link_download;
+  const file_link_loader_bytes = file_link_loader;
 
   const query = `
     UPDATE card SET 

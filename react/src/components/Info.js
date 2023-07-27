@@ -38,9 +38,7 @@ export default function Info({
             <div className='background_picture'>
                 {information.file_link_background && <img src={"http://localhost:8080/" + information.file_link_background} alt='Background' />}
             </div>
-
-
-
+            
             <div className='nom-prénom' style={{ color: information.color_primary }}>
                 {information.first_name}<br></br>{information.last_name}
             </div>
