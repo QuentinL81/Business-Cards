@@ -1,7 +1,9 @@
 const Card = require("../models/card.model.js");
 const { ToCardsApi, ToCardApi, ToCardModel } = require("../mappers/card.mapper");
 const { body, validationResult } = require("express-validator");
-const fs  = require("fs");
+const fs = require("fs");
+
+
 
 // Escape special characters
 function escapeSpecialCharacters(str) {
@@ -13,7 +15,7 @@ function escapeSpecialCharacters(str) {
     return str;
   }
   const { escape } = require("validator");
-  return escape(str,["@", ".", "-", "_"]);
+  return escape(str, ["@", ".", "-", "_"]);
 }
 
 // Create and Save a new Card
@@ -48,8 +50,8 @@ exports.create = [
 
   // Check for validation errors
   (req, res, next) => {
-
-    console.log("DEBUT VALIDATION FIELDS")    
+    //console.log(req.body)
+    console.log("DEBUT VALIDATION FIELDS")
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -62,9 +64,8 @@ exports.create = [
 
     console.log("DEBUT AJOUT DB")
 
-    const card = ToCardModel(req.body);
 
-    console.log("card",card)
+    const card = ToCardModel(req.body);
 
     // Escape special characters
     for (const prop in card) {
@@ -73,13 +74,21 @@ exports.create = [
       }
     }
 
-    // // Save files as bytes
-    // card.file_link_profil = saveFileAsBytes(req.file_link_profil);
-    // card.file_link_background = saveFileAsBytes(req.file_link_background);
-    // card.file_link_download = saveFileAsBytes(req.file_link_download);
-    // card.file_link_loader = saveFileAsBytes(req.file_link_loader);
+    // Save files as bytes
+    // card.file_link_profil = saveFileAsBytes(req.body.file_link_profil);
+    // Pour accéder à la première image téléchargée (file_link_background)
+    const fileLinkBackground = req.files['file_link_background'][0];
+
+    // Pour accéder à la deuxième image téléchargée (file_link_profile)
+    const fileLinkProfile = req.files['file_link_profile'][0];
+    card.file_link_profil = fileLinkProfile.filename;
+
+    card.file_link_background = fileLinkBackground.filename;
+    // card.file_link_download = saveFileAsBytes(req.body.file_link_download);
+    // card.file_link_loader = saveFileAsBytes(req.body.file_link_loader);
 
 
+    console.log("cardtoSave", card)
     // Save Card in the database
     Card.create(card, (err, data) => {
       if (err) {
@@ -87,11 +96,16 @@ exports.create = [
           // Handle duplicate entry error
           return res.status(400).json({ error: "Duplicate entry" });
         } else {
+          console.log("err", err)
           // Handle other database errors
           return res.status(500).json({ error: "Database error" });
         }
       } else {
-        
+
+        // Save file in the database
+
+
+
         res.send(data);
       }
     });
@@ -156,7 +170,7 @@ exports.update = [
   body("slack").trim().isLength({ max: 255 }).optional(),
   body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
   body("behance").trim().isLength({ max: 255 }).optional().isURL(),
-  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),  
+  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
 
   // Check for validation errors
   (req, res, next) => {
