@@ -7,7 +7,7 @@ import QRCode from 'react-qr-code';
 import croix from "../assets/croix-popup.svg"
 
 function PopupQR({
-  valuecard,
+  valueQRCode,
   colorQRCode,
   showPopUp
 }) {
@@ -33,7 +33,7 @@ function PopupQR({
           Sharing your contact information more easily</p>
           <QRCode 
         style={{ height: "auto", maxWidth: "150px", width: "150px" }}
-        value={valuecard}
+        value={valueQRCode}
         fgColor={colorQRCode}
         level="H"
         viewBox={`10 10 256 256`}
