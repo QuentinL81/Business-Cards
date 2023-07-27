@@ -43,8 +43,19 @@ function ViewAll(
 
                         <div className="all-cards">
                             {cards.map(card =>
+                            {
+                                console.log("file_link_background", card.file_link_background.data)
+                                if (card.file_link_background) {
+
+                            
+                                    var image = btoa(String.fromCharCode.apply(card.file_link_background)).toString("base64");
+                                    console.log("image", image)
+                                }
+                                return (
                                 <div className='one-card' key={card.id}>
                                     <div className='profile-card'>
+                                    <img src={"data:image/png;base64," + card.file_link_background}  />
+
                                         {card.profile_picture}
                                         <div className='nom-prénom-allview'>
                                             {card.first_name}<br></br>{card.last_name}
@@ -70,7 +81,8 @@ function ViewAll(
                                     <Link to={"/view/" + card.id}>
                                         Preview
                                     </Link>
-                                </div>
+                                </div>)
+                            }
                             )}
                         </div>
                     </div>

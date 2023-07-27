@@ -1,6 +1,9 @@
 const express = require("express");
-// const bodyParser = require("body-parser"); /* deprecated */
+//const bodyParser = require("body-parser"); /* deprecated */
 const cors = require("cors");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+const path = require('path');
 
 const app = express();
 
@@ -9,6 +12,9 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+//Access to the images
+app.use('/', express.static(path.join(__dirname, '/uploads')));
 
 // parse requests of content-type - application/json
 app.use(express.json()); /* bodyParser.json() is deprecated */
@@ -21,7 +27,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to business card application." });
 });
 
-require("./app/routes/card.routes.js")(app);
+require("./app/routes/card.routes.js")(app, upload);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

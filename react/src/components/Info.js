@@ -32,11 +32,11 @@ export default function Info({
             <div className='profile1'>
                 <div className='blue1' style={{ backgroundColor: information.color_primary }}></div>
                 <div className='cercle1' style={{ backgroundColor: information.color_primary }} />
-                {information.file_link_profile && <img className='profile-picture' src={information.file_link_profile} alt='Profile' />}
+                {information.file_link_profil && <img className='profile-picture' src={"http://localhost:8080/" + information.file_link_profil} alt='Profile' />}
             </div>
 
             <div className='background_picture'>
-                {information.file_link_background && <img src={information.file_link_background} alt='Background' />}
+                {information.file_link_background && <img src={"http://localhost:8080/" + information.file_link_background} alt='Background' />}
             </div>
 
 
