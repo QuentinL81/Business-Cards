@@ -1,13 +1,25 @@
 import "./Navbar.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import {Link} from "react-router-dom"
 import beorn_image from '../assets/Logo-Beorn_Solutions.svg'
 
 function Navbar() {
   const [viewBView, setViewBView] = useState('VIEW ALREADY SAVED V-CARD');
+  const [isOnCardsPage, setIsOnCardsPage] = useState(false);
 
   const handleClick = () => {
-    setViewBView('CREATE A NEW V-CARD');
-  }
+    if (isOnCardsPage) {
+      window.location.href = "/create";
+    } else {
+      setViewBView('CREATE A NEW V-CARD');
+    }
+  };
+
+  useEffect(() => {
+    setIsOnCardsPage(window.location.pathname === "/cards");
+  }, []);
+
+
   return (
     <div>
       <div className="nav_mobile">
@@ -39,8 +51,17 @@ function Navbar() {
             <img className='beorn_navbar' src={beorn_image} alt="Beorn Logo" />
           </div>
           <li>
-            <a className='viewB' href='/cards' onClick={handleClick}>{viewBView}</a>
+          {isOnCardsPage ? (
+              <Link to="/create" className='viewB' onClick={handleClick}>
+                CREATE A NEW VIEW CARD
+              </Link>
+            ) : (
+              <a href='/cards' className='viewB' onClick={handleClick}>
+                {viewBView}
+                </a>
+            )}
           </li>
+          
         </ul>
       </nav>
     </div>

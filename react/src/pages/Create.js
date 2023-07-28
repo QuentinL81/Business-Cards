@@ -13,7 +13,7 @@ import NavBar from '../components/Navbar';
 import QRCode from '../blocs/QRCode';
 import { DigitalModel } from '../models/Digital.models';
 import ButtonPreviewMobile from '../components/Button_preview_mobile'
-import PopupQR from '../components/PopupQR';
+
 
 export default function Create() {
   const [userInformation, setUserInformation] = useState(new DigitalModel());

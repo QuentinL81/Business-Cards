@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS card (
     site_url VARCHAR(255),
 
     /* Image*/
-    file_link_profil BLOB,
-    file_link_background BLOB,
-    file_link_download BLOB,
-    file_link_loader BLOB,
+    file_link_profil VARCHAR(500),
+    file_link_background VARCHAR(500),
+    file_link_download VARCHAR(500),
+    file_link_loader VARCHAR(500),
 
     /* Social Networks  */
     facebook VARCHAR(255),

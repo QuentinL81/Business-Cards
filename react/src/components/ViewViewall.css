@@ -1,0 +1,30 @@
+/* Style de la barre */
+.custom-link {
+    position: relative;
+    width: 8px;
+    height: 150px;
+    background-color: lightgray;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Style du texte "View Card" */
+  .view-card-text {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+  }
+

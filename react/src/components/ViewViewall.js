@@ -1,4 +1,5 @@
 import QRCode from 'react-qr-code';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import trait from '../assets/trait-allview.svg'
 import modifier from '../assets/Picto-modifier.svg'
@@ -8,8 +9,11 @@ import telecharger from '../assets/telecharger.svg'
 import test from '../assets/user.jpg'
 import html2canvas from 'html2canvas';
 import CardDataService from "../services/card.service";
+import './ViewViewall.css';
 
-function ViewViewall({ card }) {
+function ViewViewall({ card, isSelected, onSelect }) {
+
+    const [isViewCardVisible, setIsViewCardVisible] = useState(false);
 
     const handleDownload = async () => {
         const element = document.getElementById('qrcode-' + card.id),
@@ -27,16 +31,12 @@ function ViewViewall({ card }) {
 
 
     const handleDelete = () => {
-        // Faites une requête DELETE vers votre API pour supprimer la carte avec l'ID spécifique
         CardDataService.delete(card.id)
             .then((response) => {
-                // La carte a été supprimée avec succès, mettez à jour l'interface utilisateur en conséquence
-                // Par exemple, supprimez la carte de la liste des cartes affichées
                 console.log(response.data.message);
-                window.location.reload();
+                window.location.reload(); // Force l'actualisation
             })
             .catch((error) => {
-                // Gérer les erreurs si la suppression de la carte échoue
                 console.error("Error deleting card:", error);
             });
     };
@@ -45,10 +45,11 @@ function ViewViewall({ card }) {
 
     return (
         <div className='one-card' key={card.id}>
-            <div className='profile-card'>
+            <div className={`profile-card ${isSelected ? 'selected' : ''}`}>
                 <div className='img-nom-prenom'>
-                    <img className='test-img' src={test} />
+                    <img className='test-img' src={"http://localhost:8080/" + card.file_link_profil} />
                     {card.profile_picture}
+                    <button onClick={() => onSelect(card)}>Select</button>
                     <div className='nom-prénom-allview'>
                         {card.first_name}<br></br>{card.last_name}
                     </div>
@@ -78,7 +79,13 @@ function ViewViewall({ card }) {
             </div>
 
             <Link to={"/view/" + card.id}>
-                P
+                <div
+                    className='custom-link'
+                    onMouseEnter={() => setIsViewCardVisible(true)}
+                    onMouseLeave={() => setIsViewCardVisible(false)}
+                >
+                    {isViewCardVisible && <span className="view-card-text">View Card</span>}
+                </div>
             </Link>
 
         </div>
