@@ -52,14 +52,14 @@ Card.getAll = (result) => {
       return;
     }
 
-    // // Convert the file contents from bytes to buffers
-    // const cardsData = res.map(card => {
-    //   card.file_link_profil = card.file_link_profil;
-    //   card.file_link_background = card.file_link_background;
-    //   card.file_link_download = card.file_link_download;
-    //   card.file_link_loader = card.file_link_loader;
-    //   return card;
-    // });
+    // Convert the file contents from bytes to buffers
+    const cardsData = res.map(card => {
+      card.file_link_profil = card.file_link_profil;
+      card.file_link_background = card.file_link_background;
+      card.file_link_download = card.file_link_download;
+      card.file_link_loader = card.file_link_loader;
+      return card;
+    });
 
     console.log("cards: ", cardsData);
     result(null, cardsData);
@@ -69,11 +69,11 @@ Card.getAll = (result) => {
 Card.updateById = (id, card, result) => {
   const { file_link_profil, file_link_background, file_link_download, file_link_loader, ...updatedCard } = card;
 
-  // // Convert file data to bytes
-  // const file_link_profil_bytes = file_link_profil;
-  // const file_link_background_bytes = file_link_background;
-  // const file_link_download_bytes = file_link_download;
-  // const file_link_loader_bytes = file_link_loader;
+  // Convert file data to bytes
+  const file_link_profil_bytes = file_link_profil;
+  const file_link_background_bytes = file_link_background;
+  const file_link_download_bytes = file_link_download;
+  const file_link_loader_bytes = file_link_loader;
 
   const query = `
     UPDATE card SET 
@@ -228,13 +228,13 @@ Card.removeAll = result => {
       return;
     }
 
-    // // Delete the associated files
-    // res.forEach(card => {
-    //   deleteFile(card.file_link_profil);
-    //   deleteFile(card.file_link_background);
-    //   deleteFile(card.file_link_download);
-    //   deleteFile(card.file_link_loader);
-    // });
+    // Delete the associated files
+    res.forEach(card => {
+      deleteFile(card.file_link_profil);
+      deleteFile(card.file_link_background);
+      deleteFile(card.file_link_download);
+      deleteFile(card.file_link_loader);
+    });
 
     // Once the associated files are deleted, delete all cards from the database
     sql.query("DELETE FROM card", (err, res) => {
