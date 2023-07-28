@@ -68,8 +68,6 @@ const Card = require("../models/card.model");
         apiCard.qr_code = card.qr_code || '';
         // Files
         apiCard.file_link_background = card.file_link_background || Buffer.alloc(0),
-        
-
         apiCard.file_link_profil = card.file_link_profil || Buffer.alloc(0),
         apiCard.file_link_download = card.file_link_download || Buffer.alloc(0),
         apiCard.file_link_loader = card.file_link_loader || Buffer.alloc(0),

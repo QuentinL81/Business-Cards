@@ -74,8 +74,6 @@ exports.create = [
       }
     }
 
-    // Save files as bytes
-    // card.file_link_profil = saveFileAsBytes(req.body.file_link_profil);
     // Pour accéder à la première image téléchargée (file_link_background)
     const fileLinkBackground = req.files['file_link_background'][0];
 
@@ -84,8 +82,6 @@ exports.create = [
     card.file_link_profil = fileLinkProfile.filename;
 
     card.file_link_background = fileLinkBackground.filename;
-    // card.file_link_download = saveFileAsBytes(req.body.file_link_download);
-    // card.file_link_loader = saveFileAsBytes(req.body.file_link_loader);
 
 
     console.log("cardtoSave", card)
@@ -101,12 +97,7 @@ exports.create = [
           return res.status(500).json({ error: "Database error" });
         }
       } else {
-
-        // Save file in the database
-
-
-
-        res.send(data);
+       res.send(data);
       }
     });
   },
@@ -189,19 +180,6 @@ exports.update = [
         card[prop] = escapeSpecialCharacters(card[prop]);
       }
     }
-    // // Save files as bytes
-    // if (req.file_link_profil) {
-    //   card.file_link_profil = saveFileAsBytes(req.file_link_profil);
-    // }
-    // if (req.file_link_background) {
-    //   card.file_link_background = saveFileAsBytes(req.file_link_background);
-    // }
-    // if (req.file_link_download) {
-    //   card.file_link_download = saveFileAsBytes(req.file_link_download);
-    // }
-    // if (req.file_link_loader) {
-    //   card.file_link_loader = saveFileAsBytes(req.file_link_loader);
-    // }
 
     // Update Card in the database
     Card.updateById(req.params.id, ToCardModel(req.body), (err, data) => {

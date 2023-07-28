@@ -3,8 +3,6 @@ module.exports = (app, upload) => {
 
   var router = require("express").Router();
 
-  //router.use(upload.single('file_link_background'))
-
   router.use(upload.fields([
     { name: 'file_link_background' },
     { name: 'file_link_profile' },
