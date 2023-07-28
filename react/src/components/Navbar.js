@@ -53,7 +53,7 @@ function Navbar() {
           <li>
           {isOnCardsPage ? (
               <Link to="/create" className='viewB' onClick={handleClick}>
-                CREATE A NEW VIEW CARD
+                CREATE A NEW V-CARD
               </Link>
             ) : (
               <a href='/cards' className='viewB' onClick={handleClick}>
