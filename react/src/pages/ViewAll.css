@@ -16,6 +16,10 @@
     background-color: #F0F0F0;
     display: flex;
     padding: 15px;
+    width: 100%;
+    ;
+    height: 100%;
+    position: relative;
 }
 
 .banner-card {
@@ -36,6 +40,7 @@
 .profile-card {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .all-cards {
@@ -43,7 +48,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 90%;
 
 }
 
@@ -64,6 +69,7 @@
     font-family: 'Montserrat';
     color: #000000;
     opacity: 0.29;
+    width: inherit;
 }
 
 .mdd a {
@@ -77,11 +83,12 @@
 }
 
 .test-img {
-    width: 30%;
+    width: 180px;
     border-radius: 50%;
     padding: 20px;
     padding-bottom: 0;
     padding-top: 0;
+    height: 140px;
 }
 
 .img-nom-prenom {
@@ -127,4 +134,20 @@
 .position-trait {
     width: 90%;
     overflow: hidden;
+}
+
+.position-trait img {
+    width: inherit;
+}
+
+.select-card {
+    opacity: 0;
+    /* Le bouton est invisible */
+    width: 70%;
+    /* Le bouton prend la largeur de la div parente */
+    height: 100%;
+    /* Le bouton prend la hauteur de la div parente */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
