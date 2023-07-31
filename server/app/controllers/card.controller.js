@@ -3,8 +3,6 @@ const { ToCardsApi, ToCardApi, ToCardModel } = require("../mappers/card.mapper")
 const { body, validationResult } = require("express-validator");
 const fs = require("fs");
 
-
-
 // Escape special characters
 function escapeSpecialCharacters(str) {
   // Exclude email field from escaping special characters
@@ -18,7 +16,7 @@ function escapeSpecialCharacters(str) {
   return escape(str, ["@", ".", "-", "_"]);
 }
 
-// Create and Save a new Card
+//----------------------------------------------------Create and Save a new Card
 exports.create = [
   // Required fields and constraints validation
   body("first_name").trim().isLength({ max: 30 }).notEmpty(),
@@ -26,7 +24,7 @@ exports.create = [
   body("mobile").trim().isLength({ max: 20 }).notEmpty(),
   body("business_phone").trim().isLength({ max: 20 }).notEmpty(),
   body("email").trim().isLength({ max: 100 }).notEmpty().isEmail(),
-  body("compagny").trim().isLength({ max: 50 }).notEmpty(),
+  body("company").trim().isLength({ max: 50 }).notEmpty(),
   body("position").trim().isLength({ max: 50 }).notEmpty(),
   body("job_id").trim().isLength({ max: 30 }).notEmpty(),
   body("department").trim().isLength({ max: 50 }).notEmpty(),
@@ -52,7 +50,9 @@ exports.create = [
   (req, res, next) => {
     //console.log(req.body)
     console.log("DEBUT VALIDATION FIELDS")
+    
     const errors = validationResult(req);
+    console.log(errors)
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -103,7 +103,70 @@ exports.create = [
   },
 ];
 
-// Retrieve all Cards from the database (with condition).
+//---------------------------------------------------- Duplicate Save a new Card
+exports.duplicate = [
+  // Required fields and constraints validation
+  body("first_name").trim().isLength({ max: 30 }).notEmpty(),
+  body("last_name").trim().isLength({ max: 30 }).notEmpty(),
+  body("mobile").trim().isLength({ max: 20 }).notEmpty(),
+  body("business_phone").trim().isLength({ max: 20 }).notEmpty(),
+  body("email").trim().isLength({ max: 100 }).notEmpty().isEmail(),
+  body("company").trim().isLength({ max: 50 }).notEmpty(),
+  body("position").trim().isLength({ max: 50 }).notEmpty(),
+  body("job_id").trim().isLength({ max: 30 }).notEmpty(),
+  body("department").trim().isLength({ max: 50 }).notEmpty(),
+  body("address").trim().isLength({ max: 500 }).notEmpty(),
+  body("resume").trim().isLength({ max: 500 }).notEmpty(),
+  body("site_name").trim().isLength({ max: 255 }).notEmpty(),
+  body("site_url").trim().isLength({ max: 255 }).notEmpty().isURL(),
+  
+  // Check for validation errors
+  (req, res, next) => {
+    //console.log(req.body)
+    console.log("DEBUT VALIDATION FIELDS duplicate")
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
+
+  // Card creation
+  (req, res) => {
+
+    console.log("DEBUT AJOUT DB duplicate")
+
+    const card = ToCardModel(req.body);
+    console.log("post card",req.body)
+
+    // Escape special characters
+    for (const prop in card) {
+      console.log("-----------for")
+      if (typeof card[prop] === "string") {
+        card[prop] = escapeSpecialCharacters(card[prop]);
+      }
+    }
+    console.log("cardtoSave", card)
+    // Save Card in the database
+    
+    Card.create(card, (err, data) => {
+      if (err) {
+        if (err.code === "ER_DUP_ENTRY") {
+          // Handle duplicate entry error
+          return res.status(400).json({ error: "Duplicate entry" });
+        } else {
+          console.log("err", err)
+          // Handle other database errors
+          return res.status(500).json({ error: "Database error" });
+        }
+      } else {
+       res.send(data);
+      }
+    });
+  },
+];
+
+//----------------------------------------------------Retrieve all Cards from the database (with condition).
 exports.findAll = (req, res) => {
   Card.getAll((err, data) => {
     if (err) {
@@ -115,7 +178,7 @@ exports.findAll = (req, res) => {
   });
 };
 
-// Find a single Card by Id
+//----------------------------------------------------Find a single Card by Id
 exports.findOne = (req, res) => {
   Card.findById(req.params.id, (err, data) => {
     if (err) {
@@ -134,7 +197,7 @@ exports.findOne = (req, res) => {
   });
 };
 
-// Update a Card identified by the id in the request
+//----------------------------------------------------Update a Card identified by the id in the request
 exports.update = [
   // Required fields and constraints validation
   body("firstName").trim().isLength({ max: 30 }).notEmpty(),
@@ -142,7 +205,7 @@ exports.update = [
   body("mobile").trim().isLength({ max: 20 }).notEmpty(),
   body("businessPhone").trim().isLength({ max: 20 }).notEmpty(),
   body("email").trim().isLength({ max: 100 }).notEmpty().isEmail(),
-  body("compagny").trim().isLength({ max: 50 }).notEmpty(),
+  body("company").trim().isLength({ max: 50 }).notEmpty(),
   body("position").trim().isLength({ max: 50 }).notEmpty(),
   body("jobId").trim().isLength({ max: 30 }).notEmpty(),
   body("department").trim().isLength({ max: 50 }).notEmpty(),
@@ -198,7 +261,7 @@ exports.update = [
   },
 ];
 
-// Delete a Card with the specified id in the request
+//----------------------------------------------------Delete a Card with the specified id in the request
 exports.delete = (req, res) => {
   Card.remove(req.params.id, (err, data) => {
     if (err) {

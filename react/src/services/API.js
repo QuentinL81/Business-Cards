@@ -20,7 +20,7 @@ function saveCard(digitalData) {
         mobile: digitalData.mobile,
         business_phone: digitalData.business_phone,
         email: digitalData.email,
-        compagny: digitalData.compagny,
+        company: digitalData.company,
         position: digitalData.position,
         job_id: digitalData.job_id,
         department: digitalData.department,

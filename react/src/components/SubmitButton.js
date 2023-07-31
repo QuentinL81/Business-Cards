@@ -20,7 +20,7 @@ export default function SubmitButton({ digitalData }) {
       'mobile',
       'business_phone',
       'email',
-      'compagny',
+      'company',
       'position',
       'job_id',
       'department',
@@ -127,7 +127,7 @@ export default function SubmitButton({ digitalData }) {
       'mobile',
       'business_phone',
       'email',
-      'compagny',
+      'company',
       'position',
       'job_id',
       'department',
@@ -161,14 +161,14 @@ export default function SubmitButton({ digitalData }) {
       }
     }
 
-    const isCompagnyValid = isTextValid(data.compagny) && isTextLengthValid(data.compagny, 50);
+    const iscompanyValid = isTextValid(data.company) && isTextLengthValid(data.company, 50);
     const isPositionValid = isTextValid(data.position) && isTextLengthValid(data.position, 50);
     const isDepartmentValid = isTextValid(data.department) && isTextLengthValid(data.department, 50);
     const isJobIdValid = isTextValid(data.job_id) && isTextLengthValid(data.job_id, 30);
     const isAddressValid = isTextValid(data.address) && isTextLengthValid(data.address, 500);
     const isResumeValid = isTextValid(data.resume) && isTextLengthValid(data.resume, 500);
 
-    if (!isCompagnyValid || !isPositionValid || !isDepartmentValid || !isJobIdValid || !isAddressValid || !isResumeValid) {
+    if (!iscompanyValid || !isPositionValid || !isDepartmentValid || !isJobIdValid || !isAddressValid || !isResumeValid) {
       return false;
     }
 
