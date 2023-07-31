@@ -2,19 +2,20 @@ import QRCode from 'react-qr-code';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import trait from '../assets/trait-allview.svg'
-import modifier from '../assets/Picto-modifier.svg'
-import dupliquer from '../assets/Picto-dupliquer.svg'
-import supprimer from '../assets/picto-Supprimer.svg'
-import telecharger from '../assets/telecharger.svg'
-import test from '../assets/user.jpg'
+import modify from '../assets/Picto-modifier.svg'
+import duplicate from '../assets/Picto-dupliquer.svg'
+import remove from '../assets/picto-Supprimer.svg'
+import download from '../assets/telecharger.svg'
 import html2canvas from 'html2canvas';
 import CardDataService from "../services/card.service";
 import './ViewViewall.css';
+
 
 function ViewViewall({ card, isSelected, onSelect }) {
 
     const [isViewCardVisible, setIsViewCardVisible] = useState(false);
 
+    //Function Download QRCode
     const handleDownload = async () => {
         const element = document.getElementById('qrcode-' + card.id),
             canvas = await html2canvas(element),
@@ -29,19 +30,29 @@ function ViewViewall({ card, isSelected, onSelect }) {
         document.body.removeChild(link);
     }
 
-
+    // Function Delete
     const handleDelete = () => {
         CardDataService.delete(card.id)
             .then((response) => {
                 console.log(response.data.message);
-                window.location.reload(); // Force l'actualisation
+                window.location.reload(); // updated page
             })
             .catch((error) => {
                 console.error("Error deleting card:", error);
             });
     };
 
-
+    // Function Duplicate
+    const handleDuplicate = () => {
+        CardDataService.duplicate(card)
+            .then((response) => {
+                console.log("Card duplicated successfully:", response.data.message);
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.error("Error duplicating card:", error);
+            });
+    };
 
     return (
         <div className='one-card' key={card.id}>
@@ -57,9 +68,9 @@ function ViewViewall({ card, isSelected, onSelect }) {
                 <div className='position-trait'>
                     <img className='trait' src={trait} alt="trait" />
                     <div className='mdd'>
-                        <a><img src={modifier} alt="Modify" />Modify</a>
-                        <a><img src={dupliquer} alt="Duplicate" />Duplicate</a>
-                        <a onClick={handleDelete}><img src={supprimer} alt="Delete" />Delete</a>
+                        <a><img src={modify} alt="Modify" />Modify</a>
+                        <a onClick={handleDuplicate}><img src={duplicate} alt="Duplicate" />Duplicate</a>
+                        <a onClick={handleDelete}><img src={remove} alt="Delete" />Delete</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +93,7 @@ function ViewViewall({ card, isSelected, onSelect }) {
                 </div>
                 </Link>
                 <div className='mdd-d'>
-                    <a onClick={handleDownload}><img src={telecharger} alt="telecharger" />Download</a>
+                    <a onClick={handleDownload}><img src={download} alt="download" />Download</a>
                 </div>
             </div>
         </div>

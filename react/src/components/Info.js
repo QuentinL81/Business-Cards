@@ -25,6 +25,7 @@ export default function Info({
     information
 }) {
 
+    console.log(information.file_link_profile)
     return (
 
         <div className='infos'>
@@ -39,10 +40,10 @@ export default function Info({
                         alt='Profile'
                     />
                 ) : (
-
+                    
                     <img
                         className='profile-picture'
-                        src={information.file_link_profile}
+                        src={information.file_link_profile instanceof File ? URL.createObjectURL(information.file_link_profile) : information.file_link_profile}
                         alt='Profile'
                     />
                 )}
@@ -86,7 +87,7 @@ export default function Info({
                             <p className='p'>Email</p>
                             <span className='span-exception'>{information.email}</span>
                             <p className='p'>Organisation</p>
-                            <span>{information.compagny}</span>
+                            <span>{information.company}</span>
                             <p className='p'>Job ID</p>
                             <span>{information.job_id}</span>
                             <p className='p'>Department</p>

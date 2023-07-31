@@ -58,7 +58,7 @@ export default function Informations({
       }
     }
 
-    if (name === 'compagny') {
+    if (name === 'company') {
       if (value.length > 50) {
         e.target.value = value.slice(0, 50);
         newErrors[name] = 'Company name should not exceed 50 characters';
@@ -154,8 +154,8 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Organisation <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control type="text" id="compagny" name="compagny" placeholder="Name of the organisation" onChange={handleInputChange} required />
-            {errors.compagny && <Alert variant="danger">{errors.compagny}</Alert>}
+            <Form.Control type="text" id="company" name="company" placeholder="Name of the organisation" onChange={handleInputChange} required />
+            {errors.company && <Alert variant="danger">{errors.company}</Alert>}
           </Form.Group>
           <Form.Group className="col">
             <Form.Control type="text" id="position" name="position" placeholder="Your position in the organisation" onChange={handleInputChange} required />

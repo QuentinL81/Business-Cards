@@ -11,6 +11,9 @@ module.exports = (app, upload) => {
   // Create a new Card
   router.post("/", cards.create);
 
+  // Duplicate a Card
+  router.post("/duplicate", cards.duplicate);
+
   // Retrieve all Cards
   router.get("/", cards.findAll);
 

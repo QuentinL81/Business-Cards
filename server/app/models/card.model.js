@@ -6,6 +6,11 @@ const Card = function() {}
 Card.create = (newCard, result) => {
 
   const sqlQuery = "INSERT INTO card SET ?";
+  newCard.id = null; // ajout pour le Duplicate
+
+  // TODO fichiers non gérés
+  newCard.file_link_download = "";
+  newCard.file_link_loader = "";
 
   sql.query(sqlQuery, newCard, (err, res) => {
     if (err) {

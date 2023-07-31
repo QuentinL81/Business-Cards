@@ -109,7 +109,7 @@ function Define({
     if (e.target.files) {
       const file = e.target.files[0];
       validateFile(file, setBackgroundError, setFileLinkBackground, 'file_link_background');
-      setProfileError('');
+      setBackgroundError('');
     }
   };
 
@@ -117,7 +117,7 @@ function Define({
     if (e.target.files) {
       const file = e.target.files[0];
       validateFile(file, setProfileError, setFileLinkProfile, 'file_link_profile');
-      setBackgroundError('');
+      setProfileError('');
     }
   };
 

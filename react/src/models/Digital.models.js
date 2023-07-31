@@ -1,6 +1,6 @@
 export class DigitalModel {
 
-    constructor(color_primary, color_secondary, file_link_background, file_link_profile, first_name, last_name, mobile, business_phone, email, compagny, position,
+    constructor(color_primary, color_secondary, file_link_background, file_link_profile, first_name, last_name, mobile, business_phone, email, company, position,
          job_id, department, address, resume, site_name, site_url, file_link_download, facebook, twitter, linkedin, instagram, skype, github, slack, youtube,
           behance, whatsapp, file_link_loader, qr_code) {
 
@@ -14,7 +14,7 @@ export class DigitalModel {
         this.mobile = mobile;
         this.business_phone = business_phone;
         this.email = email;
-        this.compagny = compagny;
+        this.company = company;
         this.position = position;
         this.job_id = job_id;
         this.department = department; 

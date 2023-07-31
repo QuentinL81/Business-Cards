@@ -13,6 +13,10 @@ class CardDataService {
         return http.post("/cards", data);
     }
 
+    duplicate(data){
+        return http.post('/cards/duplicate', data);
+    }
+
     update(id, data) {
         return http.put(`/cards/${id}`, data);
     }
