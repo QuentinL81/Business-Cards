@@ -25,7 +25,8 @@ import slackClose from '../assets/slackgris.svg';
 import { Alert, Collapse, Form } from 'react-bootstrap';
 
 export default function SocialNetwork({
-  handleChange
+  handleChange,
+  information
 }) {
   const [links, setLinks] = useState([]);
 
@@ -69,16 +70,16 @@ export default function SocialNetwork({
   return (
     <div className='all-responsive'>
       <div className='social-networks'>
-        <IconNetwork imageClose={facebookClose} imageOpen={facebookOpen} name="facebook" label="www.facebook.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="facebook" />
-        <IconNetwork imageClose={linkedinClose} imageOpen={linkedinOpen} name="linkedin" label="www.linkedin.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="linkedin" />
-        <IconNetwork imageClose={twitterClose} imageOpen={twitterOpen} name="twitter" label="www.twitter.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="twitter" />
-        <IconNetwork imageClose={ytClose} imageOpen={ytOpen} name="youtube" label="www.youtube.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="youtube" />
-        <IconNetwork imageClose={instagramClose} imageOpen={instagramOpen} name="instagram" label="www.instagram.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="instagram" />
-        <IconNetwork imageClose={githubClose} imageOpen={githubOpen} name="github" label="GitHub ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="GitHub ID" />
-        <IconNetwork imageClose={slackClose} imageOpen={slackOpen} name="slack" label="Slack ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Slack ID" />
-        <IconNetwork imageClose={skypeClose} imageOpen={skypeOpen} name="skype" label="Skype ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Skype ID" />
-        <IconNetwork imageClose={whatsappClose} imageOpen={whatsappOpen} name="whatsapp" label="Whatsapp ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Whatsapp ID" />
-        <IconNetwork imageClose={behanceClose} imageOpen={behanceOpen} name="behance" label="Behance ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Behance ID" />
+        <IconNetwork imageClose={facebookClose} imageOpen={facebookOpen} name="facebook" value={information.facebook} label="www.facebook.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="facebook" />
+        <IconNetwork imageClose={linkedinClose} imageOpen={linkedinOpen} name="linkedin" value={information.linkedin} label="www.linkedin.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="linkedin" />
+        <IconNetwork imageClose={twitterClose} imageOpen={twitterOpen} name="twitter" value={information.twitter} label="www.twitter.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="twitter" />
+        <IconNetwork imageClose={ytClose} imageOpen={ytOpen} name="youtube" value={information.youtube} label="www.youtube.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="youtube" />
+        <IconNetwork imageClose={instagramClose} imageOpen={instagramOpen} name="instagram" value={information.instagram} label="www.instagram.com/yourpage" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="instagram" />
+        <IconNetwork imageClose={githubClose} imageOpen={githubOpen} name="github" value={information.github} label="GitHub ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="GitHub ID" />
+        <IconNetwork imageClose={slackClose} imageOpen={slackOpen} name="slack" value={information.slack} label="Slack ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Slack ID" />
+        <IconNetwork imageClose={skypeClose} imageOpen={skypeOpen} name="skype" value={information.skype} label="Skype ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Skype ID" />
+        <IconNetwork imageClose={whatsappClose} imageOpen={whatsappOpen} name="whatsapp" value={information.whatsapp} label="Whatsapp ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Whatsapp ID" />
+        <IconNetwork imageClose={behanceClose} imageOpen={behanceOpen} name="behance" value={information.behance} label="Behance ID" handleChange={handleChange} addLink={addLink} removeLink={removeLink} data-testid="Behance ID" />
       </div>
       <div className='petit_reseaux'>
         {links.map((link) =>

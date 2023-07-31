@@ -3,7 +3,8 @@ import { Form, Row, Alert } from 'react-bootstrap';
 import './Information.css';
 
 export default function Informations({
-  handleChange
+  handleChange, 
+  information
 }) {
 
   const [errors, setErrors] = useState({});
@@ -122,11 +123,11 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Name <span className="required-field">*</span> </Form.Label>
           <Form.Group className="col">
-            <Form.Control type="text" id="first_name" name="first_name" placeholder="First name" onChange={handleInputChange} required />
+            <Form.Control type="text" id="first_name" name="first_name" value={information.first_name} placeholder="First name" onChange={handleInputChange} required />
             {errors.first_name && <Alert variant="danger">{errors.first_name}</Alert>}
           </Form.Group>
           <Form.Group className="col">
-            <Form.Control type="text" id="last_name" name="last_name" placeholder="Last name" onChange={handleInputChange} required />
+            <Form.Control type="text" id="last_name" name="last_name" value={information.last_name} placeholder="Last name" onChange={handleInputChange} required />
             {errors.last_name && <Alert variant="danger">{errors.last_name}</Alert>}
           </Form.Group>
         </Row>
@@ -134,11 +135,11 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Phone Number <span className="required-field">*</span> </Form.Label>
           <Form.Group className="col">
-            <Form.Control type="tel" id="mobile" name="mobile" placeholder="Home number" onChange={handleInputChange} required />
+            <Form.Control type="tel" id="mobile" name="mobile" value={information.mobile} placeholder="Home number" onChange={handleInputChange} required />
             {errors.mobile && <Alert variant="danger">{errors.mobile}</Alert>}
           </Form.Group>
           <Form.Group className="col">
-            <Form.Control type="tel" id="business_phone" name="business_phone" placeholder="Work number" onChange={handleInputChange} required />
+            <Form.Control type="tel" id="business_phone" name="business_phone" value={information.business_phone} placeholder="Work number" onChange={handleInputChange} required />
             {errors.business_phone && <Alert variant="danger">{errors.business_phone}</Alert>}
           </Form.Group>
         </Row>
@@ -146,7 +147,7 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Email <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control type="email" id="email" name="email" placeholder="Email address" onChange={handleInputChange} required />
+            <Form.Control type="email" id="email" name="email" value={information.email} placeholder="Email address" onChange={handleInputChange} required />
             {errors.email && <Alert variant="danger">{errors.email}</Alert>}
           </Form.Group>
         </Row>
@@ -154,11 +155,11 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Organisation <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control type="text" id="company" name="company" placeholder="Name of the organisation" onChange={handleInputChange} required />
+            <Form.Control type="text" id="company" name="company" value={information.company} placeholder="Name of the organisation" onChange={handleInputChange} required />
             {errors.company && <Alert variant="danger">{errors.company}</Alert>}
           </Form.Group>
           <Form.Group className="col">
-            <Form.Control type="text" id="position" name="position" placeholder="Your position in the organisation" onChange={handleInputChange} required />
+            <Form.Control type="text" id="position" name="position" value={information.position} placeholder="Your position in the organisation" onChange={handleInputChange} required />
             {errors.position && <Alert variant="danger">{errors.position}</Alert>}
           </Form.Group>
         </Row>
@@ -166,11 +167,11 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>More information <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control type="text" id="job_id" name="job_id" placeholder="Job ID" onChange={handleInputChange} required />
+            <Form.Control type="text" id="job_id" name="job_id" value={information.job_id} placeholder="Job ID" onChange={handleInputChange} required />
             {errors.job_id && <Alert variant="danger">{errors.job_id}</Alert>}
           </Form.Group>
           <Form.Group className="col">
-            <Form.Control type="text" id="department" name="department" placeholder="Department name" onChange={handleInputChange} required />
+            <Form.Control type="text" id="department" name="department" value={information.department} placeholder="Department name" onChange={handleInputChange} required />
             {errors.department && <Alert variant="danger">{errors.department}</Alert>}
           </Form.Group>
         </Row>
@@ -178,7 +179,7 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Address <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control as="textarea" rows={3} id="address" name="address" placeholder="Business Address" onChange={handleInputChange} required />
+            <Form.Control as="textarea" rows={3} id="address" name="address" value={information.address} placeholder="Business Address" onChange={handleInputChange} required />
             {errors.address && <Alert variant="danger">{errors.address}</Alert>}
           </Form.Group>
         </Row>
@@ -186,7 +187,7 @@ export default function Informations({
         <Row className="mb-3">
           <Form.Label>Resume <span className="required-field">*</span></Form.Label>
           <Form.Group className="col">
-            <Form.Control as="textarea" rows={3} id="resume" name="resume" placeholder="Brief about yourself and your skills" onChange={handleInputChange} required />
+            <Form.Control as="textarea" rows={3} id="resume" name="resume" value={information.resume} placeholder="Brief about yourself and your skills" onChange={handleInputChange} required />
             {errors.resume && <Alert variant="danger">{errors.resume}</Alert>}
           </Form.Group>
         </Row>

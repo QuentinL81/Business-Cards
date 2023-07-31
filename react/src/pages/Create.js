@@ -45,14 +45,14 @@ export default function Create() {
       <div className='row background'>
         <div className='col-8 blocks'>
           <div className='accordion_style_top'>
-            <AccordionDisplay children={<Define handleChange={handleChange} />} title="Design and customize" overlayButtonMessage="Customize the color, background, and profile images of the landing page of the QR Code. A landing page is a web page user lands on after scanning the QR Code." showOverlayButton={true} />
+            <AccordionDisplay children={<Define handleChange={handleChange} information={{}}/>} title="Design and customize" overlayButtonMessage="Customize the color, background, and profile images of the landing page of the QR Code. A landing page is a web page user lands on after scanning the QR Code." showOverlayButton={true} />
           </div>
-          <AccordionDisplay children={<Informations handleChange={handleChange} />} title="Basic information" />
-          <AccordionDisplay children={<Links handleChange={handleChange} />} title="Website links" overlayButtonMessage="Add web links to display on the landing page of your QR Code." showOverlayButton={true} />
-          <AccordionDisplay children={<Download handleChange={handleChange} />} title="Downloading images" />
-          <AccordionDisplay children={<SocialNetwork handleChange={handleChange} />} title="Social Networks" />
-          <AccordionDisplay children={<LoaderPage handleChange={handleChange} />} title="Page loader image" overlayButtonMessage="A page loader is an image displayed when it takes time to load the landing page after people scan this QR Code." showOverlayButton={true} />
-          <AccordionDisplay children={<QRCode handleChange={handleChange} />} title="Create QR Code" showOverlayButton={true} />
+          <AccordionDisplay children={<Informations handleChange={handleChange} information={{}} />} title="Basic information" />
+          <AccordionDisplay children={<Links handleChange={handleChange} information={{}}/>} title="Website links" overlayButtonMessage="Add web links to display on the landing page of your QR Code." showOverlayButton={true} />
+          <AccordionDisplay children={<Download handleChange={handleChange} information={{}}/>} title="Downloading images" />
+          <AccordionDisplay children={<SocialNetwork handleChange={handleChange} information={{}}/>} title="Social Networks" />
+          <AccordionDisplay children={<LoaderPage handleChange={handleChange} information={{}}/>} title="Page loader image" overlayButtonMessage="A page loader is an image displayed when it takes time to load the landing page after people scan this QR Code." showOverlayButton={true} />
+          <AccordionDisplay children={<QRCode handleChange={handleChange} information={{}}/>} title="Create QR Code" showOverlayButton={true} />
           <div className='blanc_button'>
             <SubmitButton digitalData={userInformation} />
           </div>

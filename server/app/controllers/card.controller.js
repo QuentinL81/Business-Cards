@@ -30,11 +30,11 @@ exports.create = [
   body("department").trim().isLength({ max: 50 }).notEmpty(),
   body("address").trim().isLength({ max: 500 }).notEmpty(),
   body("resume").trim().isLength({ max: 500 }).notEmpty(),
+  // URL
   body("site_name").trim().isLength({ max: 255 }).notEmpty(),
   body("site_url").trim().isLength({ max: 255 }).notEmpty().isURL(),
-  // Social networks, optional fields
-  /*
-  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  // Social Networks, optional fields
+  /*body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
   body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
   body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
   body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
@@ -43,13 +43,12 @@ exports.create = [
   body("slack").trim().isLength({ max: 255 }).optional(),
   body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
   body("behance").trim().isLength({ max: 255 }).optional().isURL(),
-  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
-  */
+  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),*/
 
   // Check for validation errors
   (req, res, next) => {
     //console.log(req.body)
-    console.log("DEBUT VALIDATION FIELDS")
+    console.log("CREATE - VALIDATION FIELDS")
     
     const errors = validationResult(req);
     console.log(errors)
@@ -79,10 +78,13 @@ exports.create = [
 
     // Pour accéder à la deuxième image téléchargée (file_link_profile)
     const fileLinkProfile = req.files['file_link_profile'][0];
+    
+    // Pour accéder à download (file_link_download)
+    const fileLinkDownload = req.files['file_link_download'][0];
+
     card.file_link_profil = fileLinkProfile.filename;
-
     card.file_link_background = fileLinkBackground.filename;
-
+    card.file_link_download = fileLinkDownload.filename;
 
     console.log("cardtoSave", card)
     // Save Card in the database
@@ -117,13 +119,25 @@ exports.duplicate = [
   body("department").trim().isLength({ max: 50 }).notEmpty(),
   body("address").trim().isLength({ max: 500 }).notEmpty(),
   body("resume").trim().isLength({ max: 500 }).notEmpty(),
+  // URL
   body("site_name").trim().isLength({ max: 255 }).notEmpty(),
   body("site_url").trim().isLength({ max: 255 }).notEmpty().isURL(),
+  // Social Networks, optional fields
+  // body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("skype").trim().isLength({ max: 255 }).optional(),
+  // body("github").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("slack").trim().isLength({ max: 255 }).optional(),
+  // body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("behance").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
   
   // Check for validation errors
   (req, res, next) => {
     //console.log(req.body)
-    console.log("DEBUT VALIDATION FIELDS duplicate")
+    console.log("DUPLICATE - VALIDATION FIELDS")
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -134,7 +148,7 @@ exports.duplicate = [
   // Card creation
   (req, res) => {
 
-    console.log("DEBUT AJOUT DB duplicate")
+    console.log("DEBUT AJOUT DB")
 
     const card = ToCardModel(req.body);
     console.log("post card",req.body)
@@ -215,16 +229,16 @@ exports.update = [
   body("siteName").trim().isLength({ max: 255 }).notEmpty(),
   body("siteUrl").trim().isLength({ max: 255 }).notEmpty().isURL(),
   // Social Networks, optional fields
-  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
-  body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
-  body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
-  body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
-  body("skype").trim().isLength({ max: 255 }).optional(),
-  body("github").trim().isLength({ max: 255 }).optional().isURL(),
-  body("slack").trim().isLength({ max: 255 }).optional(),
-  body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
-  body("behance").trim().isLength({ max: 255 }).optional().isURL(),
-  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("skype").trim().isLength({ max: 255 }).optional(),
+  // body("github").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("slack").trim().isLength({ max: 255 }).optional(),
+  // body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("behance").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
 
   // Check for validation errors
   (req, res, next) => {

@@ -33,25 +33,38 @@ export default function Info({
             <div className='profile1'>
                 <div className='blue1' style={{ backgroundColor: information.color_primary }}></div>
                 <div className='cercle1' style={{ backgroundColor: information.color_primary }} />
-                {information.file_link_profil ? (
+                {information.file_profil ? (
                     <img
                         className='profile-picture'
-                        src={"http://localhost:8080/" + information.file_link_profil}
+                        src={"http://localhost:8080/" + information.file_profil}
                         alt='Profile'
                     />
                 ) : (
-                    
+
                     <img
                         className='profile-picture'
                         src={information.file_link_profile instanceof File ? URL.createObjectURL(information.file_link_profile) : information.file_link_profile}
                         alt='Profile'
                     />
                 )}
-                
+
             </div>
 
             <div className='background_picture'>
-                {information.file_link_background && <img src={"http://localhost:8080/" + information.file_link_background} alt='Background' />}
+                {information.file_background ? (
+                    <img
+                        className='background-picture'
+                        src={"http://localhost:8080/" + information.file_background}
+                        alt='Background'
+                    />
+                ) : (
+
+                    <img
+                        className='background-picture'
+                        src={information.file_link_background instanceof File ? URL.createObjectURL(information.file_link_background) : information.file_link_background}
+                        alt='Background'
+                    />
+                )}
             </div>
 
             <div className='nom-prénom' style={{ color: information.color_primary }}>
@@ -133,7 +146,21 @@ export default function Info({
                         </div>
                         <h1 className='title-info' style={{ color: information.color_secondary }}>Portfolio</h1>
                         <div className='except-title-information-preview-portfolio'>
-                            {information.file_link_download && <img src={information.file_link_download} alt='DownloadLink' width="100%;" />}
+
+                            {information.file_download ? (
+                                <img
+                                    className='download-picture'
+                                    src={"http://localhost:8080/" + information.file_download}
+                                    alt='Download'
+                                />
+                            ) : (
+
+                                <img
+                                    className='download-picture'
+                                    src={information.file_link_download instanceof File ? URL.createObjectURL(information.file_link_download) : information.file_link_download}
+                                    alt='Download'
+                                />
+                            )}
                         </div>
                     </div>
 

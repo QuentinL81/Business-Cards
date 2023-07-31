@@ -6,6 +6,7 @@ module.exports = (app, upload) => {
   router.use(upload.fields([
     { name: 'file_link_background' },
     { name: 'file_link_profile' },
+    { name: 'file_link_download' },
   ]));
   
   // Create a new Card

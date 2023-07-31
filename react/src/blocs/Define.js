@@ -9,10 +9,11 @@ import defaultProfile from '../assets/user.jpg';
 import defaultBackground from '../assets/background_default.png'
 
 function Define({
-  handleChange
+  handleChange,
+  information
 }) {
-  const [colorPrimary, setColorPrimary] = useState('#70C2DB');
-  const [colorSecondary, setColorSecondary] = useState('#830E7E');
+  const [colorPrimary, setColorPrimary] = useState(information.color_primary ? information.color_primary : '#70C2DB');
+  const [colorSecondary, setColorSecondary] = useState(information.color_secondary ? information.color_secondary :'#830E7E');
 
   const [colorPrimaryError, setColorPrimaryError] = useState('');
   const [colorSecondaryError, setColorSecondaryError] = useState('');

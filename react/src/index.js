@@ -9,6 +9,7 @@ import Create from './pages/Create'
 import Home from './pages/Home';
 import View from './pages/View';
 import ViewAll from './pages/ViewAll';
+import Update from './pages/Update';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     element: <Create/>,
   },
   {
+    path: "/update/:id",
+    element: <Update/>,
+  },
+    {
     path: "/cards",
     element: <ViewAll/>,
   },
