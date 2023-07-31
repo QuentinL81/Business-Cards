@@ -7,7 +7,10 @@ import poubelle from '../assets/poubelle.svg'
 
 import Alert from 'react-bootstrap/Alert';
 
-export default function Download({ handleChange }) {
+export default function Download({ 
+  handleChange,
+  information
+ }) {
   const [file_link_download, setFileLinkDownload] = useState();
   const [error, setError] = useState('');
 
@@ -33,13 +36,13 @@ export default function Download({ handleChange }) {
 
   const validateFile = (file, setError, setFileLink, fileLinkName) => {
     const validFormats = ['image/png', 'image/jpeg', 'image/gif'];
-    const validSize = 500000; // Minimum file size (0.5 MB)
+    const validSize = 500; // Minimum file size (0.5 MB)
 
     if (validFormats.includes(file.type) && file.size >= validSize) {
       const fileLink = URL.createObjectURL(file);
       setFileLink(fileLink);
       setError('');
-      handleChange({ target: { name: fileLinkName, value: fileLink } });
+      handleChange({ target: { name: fileLinkName, value: file } });
     } else {
       let formatError = '';
       if (!validFormats.includes(file.type)) {

@@ -34,7 +34,7 @@ exports.create = [
   body("site_name").trim().isLength({ max: 255 }).notEmpty(),
   body("site_url").trim().isLength({ max: 255 }).notEmpty().isURL(),
   // Social Networks, optional fields
-  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  /*body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
   body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
   body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
   body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
@@ -43,7 +43,7 @@ exports.create = [
   body("slack").trim().isLength({ max: 255 }).optional(),
   body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
   body("behance").trim().isLength({ max: 255 }).optional().isURL(),
-  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
+  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),*/
 
   // Check for validation errors
   (req, res, next) => {
@@ -78,10 +78,13 @@ exports.create = [
 
     // Pour accéder à la deuxième image téléchargée (file_link_profile)
     const fileLinkProfile = req.files['file_link_profile'][0];
+    
+    // Pour accéder à download (file_link_download)
+    const fileLinkDownload = req.files['file_link_download'][0];
+
     card.file_link_profil = fileLinkProfile.filename;
-
     card.file_link_background = fileLinkBackground.filename;
-
+    card.file_link_download = fileLinkDownload.filename;
 
     console.log("cardtoSave", card)
     // Save Card in the database
@@ -120,16 +123,16 @@ exports.duplicate = [
   body("site_name").trim().isLength({ max: 255 }).notEmpty(),
   body("site_url").trim().isLength({ max: 255 }).notEmpty().isURL(),
   // Social Networks, optional fields
-  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
-  body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
-  body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
-  body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
-  body("skype").trim().isLength({ max: 255 }).optional(),
-  body("github").trim().isLength({ max: 255 }).optional().isURL(),
-  body("slack").trim().isLength({ max: 255 }).optional(),
-  body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
-  body("behance").trim().isLength({ max: 255 }).optional().isURL(),
-  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("skype").trim().isLength({ max: 255 }).optional(),
+  // body("github").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("slack").trim().isLength({ max: 255 }).optional(),
+  // body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("behance").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
   
   // Check for validation errors
   (req, res, next) => {
@@ -226,16 +229,16 @@ exports.update = [
   body("siteName").trim().isLength({ max: 255 }).notEmpty(),
   body("siteUrl").trim().isLength({ max: 255 }).notEmpty().isURL(),
   // Social Networks, optional fields
-  body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
-  body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
-  body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
-  body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
-  body("skype").trim().isLength({ max: 255 }).optional(),
-  body("github").trim().isLength({ max: 255 }).optional().isURL(),
-  body("slack").trim().isLength({ max: 255 }).optional(),
-  body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
-  body("behance").trim().isLength({ max: 255 }).optional().isURL(),
-  body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("facebook").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("twitter").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("linkedin").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("instagram").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("skype").trim().isLength({ max: 255 }).optional(),
+  // body("github").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("slack").trim().isLength({ max: 255 }).optional(),
+  // body("youtube").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("behance").trim().isLength({ max: 255 }).optional().isURL(),
+  // body("whatsapp").trim().isLength({ max: 255 }).optional().isURL(),
 
   // Check for validation errors
   (req, res, next) => {

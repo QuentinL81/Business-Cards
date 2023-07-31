@@ -54,6 +54,23 @@ function ViewViewall({ card, isSelected, onSelect }) {
             });
     };
 
+    // Function Modify
+    const handleModify = () => {
+
+       
+
+
+
+        // CardDataService.update(card)
+        //     .then((response) => {
+        //         console.log("Card modified successfully:", response.data.message);
+        //         window.location.reload();
+        //     })
+        //     .catch((error) => {
+        //         console.error("Error modifying card:", error);
+        //     });
+    };
+
     return (
         <div className='one-card' key={card.id}>
             <div className={`profile-card ${isSelected ? 'selected' : ''}`}>
@@ -68,7 +85,9 @@ function ViewViewall({ card, isSelected, onSelect }) {
                 <div className='position-trait'>
                     <img className='trait' src={trait} alt="trait" />
                     <div className='mdd'>
-                        <a><img src={modify} alt="Modify" />Modify</a>
+                        <Link to={"/update/" + card.id}>
+                            <img src={modify} alt="Modify" />Modify
+                        </Link>
                         <a onClick={handleDuplicate}><img src={duplicate} alt="Duplicate" />Duplicate</a>
                         <a onClick={handleDelete}><img src={remove} alt="Delete" />Delete</a>
                     </div>

@@ -34,7 +34,10 @@ Card.findById = (id, result) => {
     if (res.length) {
       const cardData = res[0];
 
-      cardData.file_link_background 
+      cardData.file_profil = cardData.file_link_profil;
+      cardData.file_background = cardData.file_link_background;
+      cardData.file_download = cardData.file_link_download;
+
 
       console.log("found card: ", cardData);
       result(null, cardData);

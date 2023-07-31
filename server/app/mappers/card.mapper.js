@@ -71,6 +71,11 @@ const Card = require("../models/card.model");
         apiCard.file_link_profil = card.file_link_profil || Buffer.alloc(0),
         apiCard.file_link_download = card.file_link_download || Buffer.alloc(0),
         apiCard.file_link_loader = card.file_link_loader || Buffer.alloc(0),
+
+        apiCard.file_profil = card.file_link_profil,
+        apiCard.file_background = card.file_link_background,
+        apiCard.file_download = card.file_link_download,
+
         // Social Networks
         apiCard.facebook = card.facebook || '';
         apiCard.twitter = card.twitter || '';

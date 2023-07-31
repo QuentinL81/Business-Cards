@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './IconNetwork.css'
+import Informations from '../blocs/Informations';
 
 export default function IconNetwork({
   imageOpen,

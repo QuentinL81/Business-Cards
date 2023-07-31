@@ -5,7 +5,8 @@ import plus from '../assets/plus2.svg';
 import bar from '../assets/bar.svg'
 
 export default function LoaderPage({
-  handleChange
+  handleChange,
+  information
 }) {
   const [fileLinkLoader, setFileLinkLoader] = useState();
   const [error, setError] = useState('');

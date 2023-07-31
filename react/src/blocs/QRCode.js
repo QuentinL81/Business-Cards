@@ -4,10 +4,11 @@ import { Alert } from 'react-bootstrap';
 import './QRCode.css';
 
 export default function QRCodeGenerator({
-  handleChange
+  handleChange,
+  information
 }) {
   const value = window.location.href;
-  const [QRCodeColor, setQRCodeColor] = useState('#000000');
+  const [QRCodeColor, setQRCodeColor] = useState(information.qr_code ? information.qr_code :'#000000');
   const [colorQRCodeError, setColorQRCodeError] = useState('');
 
   const validateColor = (color, setError) => {
