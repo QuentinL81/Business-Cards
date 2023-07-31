@@ -75,22 +75,17 @@ function ViewViewall({ card, isSelected, onSelect }) {
                 </div>
             </div>
             <div className='QR-download'>
-            <Link to={"/view/" + card.id}>
-                <div className='blanc-qr' id={"qrcode-" + card.id} onMouseEnter={() => setIsViewCardVisible(true)} onMouseLeave={() => setIsViewCardVisible(false)}>
-                    
-                        
-                            {isViewCardVisible && <span className="view-card-text">View Card</span>}
-                        
-                    
-
-                    <QRCode
-                        style={{ height: "auto", maxWidth: "125px", width: "150px" }}
-                        value={window.location.origin + "/view/" + card.id}
-                        fgColor={card.qr_code}
-                        level="H"
-                        viewBox={`0 0 256 256`}
-                    />
-                </div>
+                <Link to={"/view/" + card.id}>
+                    <div className='blanc-qr' id={"qrcode-" + card.id} onMouseEnter={() => setIsViewCardVisible(true)} onMouseLeave={() => setIsViewCardVisible(false)}>
+                        {isViewCardVisible && <span className="view-card-text">View Card</span>}
+                        <QRCode
+                            style={{ height: "auto", maxWidth: "125px", width: "150px" }}
+                            value={window.location.origin + "/view/" + card.id}
+                            fgColor={card.qr_code}
+                            level="H"
+                            viewBox={`0 0 256 256`}
+                        />
+                    </div>
                 </Link>
                 <div className='mdd-d'>
                     <a onClick={handleDownload}><img src={download} alt="download" />Download</a>
