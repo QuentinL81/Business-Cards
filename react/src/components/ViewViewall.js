@@ -49,7 +49,7 @@ function ViewViewall({ card, isSelected, onSelect }) {
                 <div className='img-nom-prenom'>
                     <img className='test-img' src={"http://localhost:8080/" + card.file_link_profil} />
                     {card.profile_picture}
-                    <button onClick={() => onSelect(card)}>Select</button>
+                    <button className='select-card' onClick={() => onSelect(card)}>Select</button>
                     <div className='nom-prénom-allview'>
                         {card.first_name}<br></br>{card.last_name}
                     </div>
@@ -64,7 +64,14 @@ function ViewViewall({ card, isSelected, onSelect }) {
                 </div>
             </div>
             <div className='QR-download'>
-                <div className='blanc-qr' id={"qrcode-" + card.id}>
+            <Link to={"/view/" + card.id}>
+                <div className='blanc-qr' id={"qrcode-" + card.id} onMouseEnter={() => setIsViewCardVisible(true)} onMouseLeave={() => setIsViewCardVisible(false)}>
+                    
+                        
+                            {isViewCardVisible && <span className="view-card-text">View Card</span>}
+                        
+                    
+
                     <QRCode
                         style={{ height: "auto", maxWidth: "125px", width: "150px" }}
                         value={window.location.origin + "/view/" + card.id}
@@ -73,21 +80,11 @@ function ViewViewall({ card, isSelected, onSelect }) {
                         viewBox={`0 0 256 256`}
                     />
                 </div>
+                </Link>
                 <div className='mdd-d'>
                     <a onClick={handleDownload}><img src={telecharger} alt="telecharger" />Download</a>
                 </div>
             </div>
-
-            <Link to={"/view/" + card.id}>
-                <div
-                    className='custom-link'
-                    onMouseEnter={() => setIsViewCardVisible(true)}
-                    onMouseLeave={() => setIsViewCardVisible(false)}
-                >
-                    {isViewCardVisible && <span className="view-card-text">View Card</span>}
-                </div>
-            </Link>
-
         </div>
     );
 }
