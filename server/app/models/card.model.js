@@ -74,12 +74,6 @@ Card.getAll = (result) => {
 Card.updateById = (id, card, result) => {
   const { file_link_profil, file_link_background, file_link_download, file_link_loader, ...updatedCard } = card;
 
-  // Convert file data to bytes
-  const file_link_profil_bytes = file_link_profil;
-  const file_link_background_bytes = file_link_background;
-  const file_link_download_bytes = file_link_download;
-  const file_link_loader_bytes = file_link_loader;
-
   const query = `
     UPDATE card SET 
       first_name = ?,
